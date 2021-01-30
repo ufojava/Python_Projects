@@ -27,7 +27,6 @@ def Generate_Computer_Lotto_Numbers():
 
     #Create random number between 1 and 59
     computer_random_six_number_two = random.randint(59, size=(6))
-    player_lotto_numbers_pick = []
     computer_lotto_numbers = []
 
     #Create computer number list
@@ -43,29 +42,15 @@ def Generate_Computer_Lotto_Numbers():
 
 
 
-#Keep the display for 3 seconds before priting the computer generated numbers
-time.sleep(3.0) 
-
-print('''
-********** Weekly Lotto Draw ***************
-
-''')
-
-#Displat the computer genrated numbers
-computer_joined_numbers = " " . join(str(Generate_Computer_Lotto_Numbers()))
-print(f"Lotto Numbers: {computer_joined_numbers}")
-print()
 
 
-
+#Function to take input selection from player
 def Player_Number_Picker():
 
 
 
-   
-
-
     max_num_pick = 6 #Maximum number of pick
+    player_lotto_numbers_pick = []
     pick_counter = 0
     pick_description = " "
 
@@ -103,9 +88,13 @@ def Player_Number_Picker():
         #Enter loto number
         os.system("clear")
 
-        player_joined_numbers = " ".join(str(player_lotto_numbers_pick))
-        print(f"Picked: {player_joined_numbers}")
+        #Display the players picked numbers
+        display_player_joined_numbers = " ".join(str(player_lotto_numbers_pick))
+        print(f"Picked: {display_player_joined_numbers}")
+
+
         print()
+        #Input player numbers
         player_lotto_pick = int(input(f"Pick {pick_description} number between 1 and 59: "))
         print()
 
@@ -119,34 +108,53 @@ def Player_Number_Picker():
         #Append the pick to the list
         player_lotto_numbers_pick.append(player_lotto_pick)
 
-    
-
-    os.system("clear")
-
-    #Display the final picked numbers
-    print(f"Picked Numbers: {player_joined_numbers}")
-
-
-
-    '''
-    This section will process the computer random numbers and picked numbers
-
-    '''
-
-    
-
+    #Create player set from the list
     player_lotto_numbers_pick_set = set(player_lotto_numbers_pick) #Player picked numbers
 
-    #Match numbers between Computer generated numbers and player numbers
+    #Return the player picked list
+    return player_lotto_numbers_pick_set
 
-    number_match = set.intersection(computer_gen_lotto_numbers_set, player_lotto_numbers_pick_set)
+    
 
+
+
+#Match numbers between Computer generated numbers and player numbers
+
+#number_match = set.intersection(computer_gen_lotto_numbers_set, player_lotto_numbers_pick_set)
 
 
 '''
 Main progran begins from here
 
 '''
+
+
+get_player_numbers = Player_Number_Picker()
+player_joined_numbers = " " . join(str(get_player_numbers))
+#Clear screen do display player lotto numbers
+#os.system("clear")
+print('''
+****** Player Lotto Numbers **********
+''')
+print(f"Player Numbers: {player_joined_numbers}")
+
+
+print('''
+****** Computer Generated Lotto Numbers ********
+''')
+
+#Keep the display for 3 seconds before priting the computer generated numbers
+time.sleep(3.0) 
+
+#Display the computer genrated numbers
+computer_joined_numbers = " " . join(str(Generate_Computer_Lotto_Numbers()))
+print(f"Lotto Numbers: {computer_joined_numbers}")
+print()
+
+
+
+
+
 
 #Call Player Picker  function
 

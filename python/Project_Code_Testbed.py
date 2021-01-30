@@ -45,6 +45,13 @@ print(picked_menu_option)
 
 my_horizontal_list = ["Ovie","Ufuoma","Igho","Bami","Tobo","Dafe","Jero"]
 
+
+print('''
+The results .....
+
+
+''')
+
 print(" " . join(my_horizontal_list))
 
 
