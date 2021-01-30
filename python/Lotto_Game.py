@@ -7,7 +7,7 @@ Generate randome 6 number for draw
 Enter pick 6 numbers
 Store the 6 number in a list / Array]
 Compare both arrays for similar numbers
-Award prizes money for  3 456
+Award prizes money for  3 4,5,6
 
 
 Written By: Ufuoma Okoro
