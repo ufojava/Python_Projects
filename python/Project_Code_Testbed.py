@@ -5,54 +5,27 @@ Synopsis: This is where I will perform unit testing
 
 '''
 
-#Test menu system
-
-picked_menu_option = 0
-
-import os
-
-def Lotto_Menu():
-
-    os.system("clear") #Clear screen
-    menu_option = int(input('''
-
-    ******* Weekly Lotto Menu *********
-
-    1. Pick Lotto Numbers
-
-    2. Lucky Dip
-
-    : '''
-    ))
-
-    if (menu_option == 1):
-        
-        return 1 #This option is for manaully picked number
-    
-    elif (menu_option == 2):
-        
-        return 2 #This option is for the lucky dip
-
-    else:
-        print("Invalid selection !!!")
-        return 0 #Invalid selection
-
-picked_menu_option = Lotto_Menu()
-
-print(picked_menu_option)
-
-#Print horizontal
-
-my_horizontal_list = ["Ovie","Ufuoma","Igho","Bami","Tobo","Dafe","Jero"]
 
 
-print('''
-The results .....
+list_one = [10,23,44,14]
+list_two = [10,14,8,6]
+
+list_one_set = set(list_one)
+list_two_set = set(list_two)
 
 
-''')
 
-print(" " . join(my_horizontal_list))
+match_numbers = len(set.intersection(list_one_set,list_two_set))
+
+number_match = (match_numbers >= 1)
+
+if (number_match):
+
+    print(f"{match_numbers} matches found !!")
+
+else:
+
+    print("No number match")
 
 
 

@@ -40,7 +40,8 @@ def Generate_Computer_Lotto_Numbers():
     return computer_gen_lotto_numbers_set
 
 #Run the computer function to genrate number
-computer_joined_numbers = " " . join(str(Generate_Computer_Lotto_Numbers()))
+get_computer_numbers = Generate_Computer_Lotto_Numbers()
+display_computer_joined_numbers = " " . join(str(get_computer_numbers))
 
 
 
@@ -119,11 +120,13 @@ def Player_Number_Picker():
 
     
 
+#Funciton to process Player and Computer sets
+def Process_Lotto_Matches(in_computer_numbers,in_player_numbers):
 
+    number_matches = set.intersection(in_computer_numbers,in_player_numbers)
 
-#Match numbers between Computer generated numbers and player numbers
+    return number_matches
 
-#number_match = set.intersection(computer_gen_lotto_numbers_set, player_lotto_numbers_pick_set)
 
 
 '''
@@ -132,8 +135,15 @@ Main progran begins from here
 '''
 
 
+
+#Call player functions to display playe lotto numbers
 get_player_numbers = Player_Number_Picker()
 player_joined_numbers = " " . join(str(get_player_numbers))
+
+#Funciton to retreive matching numbers between player imput and computer generated numbers
+get_lotto_number_matches = Process_Lotto_Matches(get_computer_numbers,get_player_numbers)
+
+
 #Clear screen do display player lotto numbers
 os.system("clear")
 print('''
@@ -151,16 +161,8 @@ time.sleep(3.0)
 
 #Display the computer genrated numbers
 
-print(f"Lotto Numbers: {computer_joined_numbers}")
+print(f"Lotto Numbers: {display_computer_joined_numbers}")
 print()
-
-
-
-
-
-
-#Call Player Picker  function
-
-#Player_Number_Picker()
+print(get_lotto_number_matches)
 
 
