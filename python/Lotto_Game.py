@@ -39,6 +39,9 @@ def Generate_Computer_Lotto_Numbers():
     #Return set Set
     return computer_gen_lotto_numbers_set
 
+#Run the computer function to genrate number
+computer_joined_numbers = " " . join(str(Generate_Computer_Lotto_Numbers()))
+
 
 
 
@@ -132,7 +135,7 @@ Main progran begins from here
 get_player_numbers = Player_Number_Picker()
 player_joined_numbers = " " . join(str(get_player_numbers))
 #Clear screen do display player lotto numbers
-#os.system("clear")
+os.system("clear")
 print('''
 ****** Player Lotto Numbers **********
 ''')
@@ -147,7 +150,7 @@ print('''
 time.sleep(3.0) 
 
 #Display the computer genrated numbers
-computer_joined_numbers = " " . join(str(Generate_Computer_Lotto_Numbers()))
+
 print(f"Lotto Numbers: {computer_joined_numbers}")
 print()
 
