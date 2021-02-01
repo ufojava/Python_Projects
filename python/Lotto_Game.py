@@ -163,6 +163,24 @@ time.sleep(3.0)
 
 print(f"Lotto Numbers: {display_computer_joined_numbers}")
 print()
-print(get_lotto_number_matches)
+
+if (len(get_lotto_number_matches) >= 1):
+
+    #Get the number matches
+    number_of_matches = len(get_lotto_number_matches)
+
+    if (number_of_matches == 1):
+
+        print(f" Congratulations, you have {number_of_matches} match: {get_lotto_number_matches}")
+
+    #If number is greater than 1 match
+    elif (number_of_matches > 1):
+
+        print(f"Congratulations, you have {number_of_matches} matches: {get_lotto_number_matches}")
+
+else:
+
+    print("Sorry, no number matches")
+print()
 
 
