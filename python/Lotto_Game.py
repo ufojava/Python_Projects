@@ -22,6 +22,8 @@ from numpy import sort
 import os
 import time
 
+player_name = ""
+
 def Generate_Computer_Lotto_Numbers():
 
 
@@ -127,12 +129,109 @@ def Process_Lotto_Matches(in_computer_numbers,in_player_numbers):
 
     return number_matches
 
+#Function to create space
+def Create_Line_Space(num_of_lines):
+
+    for space in range(int(num_of_lines)):
+        print()
+
+
+def Process_Words(in_word):
+
+    #Define how to slow word using os.system.stdout
+    slow_input_word = os.sys.stdout
+
+    for in_letter in in_word:
+
+        slow_input_word.write(in_letter)
+        slow_input_word.flush()
+        time.sleep(.1)
+    return ""
+
+
+
+
+def Game_Introduction():
+
+    #Read dictionary for greetings
+    get_greetings = open("Greeting_Words.txt")
+
+    #Variables
+
+    #Input questions
+    player_name_question = "What is your name? "
+    player_how_do_you_do_question = "How are you doing? "
+
+    Create_Line_Space(2)
+    input_player_name = input(f"{Process_Words(player_name_question)}")
+    Create_Line_Space(2)
+    input_player_how_do_you_do = input(f"{Process_Words(player_how_do_you_do_question)}")
+    Create_Line_Space(2)
+
+    #Check player well being
+    if(input_player_how_do_you_do in get_greetings.read()):
+
+        Process_Words("Glad you are doing well")
+    else:
+
+        Process_Words("Oh! sorry you are not doin so well")
+
+    return input_player_name
+
+
+def Calc_Prize_Money(in_number_match):
+
+    #Variable prize mone
+    one_num_match = (in_number_match == 1)
+    two_num_match = (in_number_match == 2)
+    three_num_match = (in_number_match == 3)
+    four_num_match = (in_number_match == 4)
+    five_num_match = (in_number_match == 5)
+    six_num_match = (in_number_match == 6)
+
+    #Apportion prize money in GB Pounds
+    if (one_num_match):
+
+        return 10.00
+
+    elif (two_num_match):
+
+        return 20.00
+
+    elif (three_num_match):
+
+        return 400.00
+
+    elif (four_num_match):
+
+        return 5000.00
+
+    elif (five_num_match):
+
+        return 25000.00
+
+    elif (six_num_match):
+
+        return 150000.00
+        
+    else:
+
+        return 0.00
+
+
+
 
 
 '''
 Main progran begins from here
 
 '''
+
+#Game Introduction
+player_name = Game_Introduction()
+
+
+
 
 
 
@@ -149,6 +248,7 @@ os.system("clear")
 print('''
 ****** Player Lotto Numbers **********
 ''')
+
 print(f"Player Numbers: {player_joined_numbers}")
 
 
@@ -164,23 +264,24 @@ time.sleep(3.0)
 print(f"Lotto Numbers: {display_computer_joined_numbers}")
 print()
 
-if (len(get_lotto_number_matches) >= 1):
 
-    #Get the number matches
-    number_of_matches = len(get_lotto_number_matches)
 
-    if (number_of_matches == 1):
+#Sleep before process below begin
+time.sleep(3.0)
 
-        print(f" Congratulations, you have {number_of_matches} match: {get_lotto_number_matches}")
+#Get proze money
+if (len(get_lotto_number_matches) == 1):
 
-    #If number is greater than 1 match
-    elif (number_of_matches > 1):
+    print(f"Congratulations !!! {player_name}, you have {len(get_lotto_number_matches)} match and have won £{Calc_Prize_Money(len(get_lotto_number_matches))}")
 
-        print(f"Congratulations, you have {number_of_matches} matches: {get_lotto_number_matches}")
+elif (len(get_lotto_number_matches) > 1):
+
+    print(f"Congratulations !!! {player_name}, you have {len(get_lotto_number_matches)} matches and have won £{Calc_Prize_Money(len(get_lotto_number_matches))}")
 
 else:
 
-    print("Sorry, no number matches")
+    print(f"Sorry {player_name}, you have had no matches and have won £{Calc_Prize_Money(len(get_lotto_number_matches))}")
+
 print()
 
 
