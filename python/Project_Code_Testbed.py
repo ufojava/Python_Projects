@@ -103,3 +103,15 @@ def Calc_Prize_Money_Test(in_number_match_test):
     
 
 Calc_Prize_Money_Test(2)
+
+'''
+Creating a GUI for application
+
+
+'''
+
+
+
+
+
+

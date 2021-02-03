@@ -19,8 +19,8 @@ Department Home Office
 #Import modules
 from numpy import random
 from numpy import sort
-import os
-import time
+import os, time, sys
+
 
 player_name = ""
 
@@ -151,30 +151,58 @@ def Process_Words(in_word):
 
 
 
+
+
 def Game_Introduction():
 
     #Read dictionary for greetings
     get_greetings = open("Greeting_Words.txt")
 
     #Variables
+    os.system("clear")
+    print('''
+    ******* UfoHome Lotto Guessing Game ********* 
+
+    ''')
 
     #Input questions
     player_name_question = "What is your name? "
-    player_how_do_you_do_question = "How are you doing? "
+    player_how_do_you_do_question = "How are you doing "
+    play_game_question = "Do you want a chance to win some money? y /n "
+    game_begin = "Lotto Game to begin..."
+    exit_program = "You have chosen not to play... program will terminate, good bye!!! \n"
 
     Create_Line_Space(2)
     input_player_name = input(f"{Process_Words(player_name_question)}")
+
     Create_Line_Space(2)
-    input_player_how_do_you_do = input(f"{Process_Words(player_how_do_you_do_question)}")
+    input_player_how_do_you_do = input(f"{Process_Words(player_how_do_you_do_question)} {Process_Words(input_player_name)}? ")
     Create_Line_Space(2)
 
     #Check player well being
     if(input_player_how_do_you_do in get_greetings.read()):
 
-        Process_Words("Glad you are doing well")
+        Process_Words(f"OK!! {input_player_name}, glad you are doing well!!")
+        Create_Line_Space(2)
+        play_game = input(f"{Process_Words(play_game_question)}")
+
+        #Check play game
+        if (play_game == "y" or play_game == "Y"):
+            Create_Line_Space(2)
+            Process_Words(game_begin)
+            time.sleep(2.0)
+        else:
+            Create_Line_Space(2)
+            Process_Words(exit_program)
+            time.sleep(2.0)
+            sys.exit()
+            
+
+        
+        
     else:
 
-        Process_Words("Oh! sorry you are not doin so well")
+        Process_Words(f"Oh!! sorry {input_player_name}, you are not doing too good!!")
 
     return input_player_name
 
@@ -227,61 +255,69 @@ Main progran begins from here
 
 '''
 
-#Game Introduction
-player_name = Game_Introduction()
+run_script = "y"
+
+while (run_script == "y" or run_script == "Y"):
+
+
+    #Game Introduction
+    player_name = Game_Introduction()
+
+
+    #Call player functions to display playe lotto numbers
+    get_player_numbers = Player_Number_Picker()
+    player_joined_numbers = " " . join(str(get_player_numbers))
+
+    #Funciton to retreive matching numbers between player imput and computer generated numbers
+    get_lotto_number_matches = Process_Lotto_Matches(get_computer_numbers,get_player_numbers)
+
+
+    #Clear screen do display player lotto numbers
+    os.system("clear")
+    print('''
+    ****** Player Lotto Numbers **********
+    ''')
+
+    print(f"Player Numbers: {player_joined_numbers}")
+
+
+    print('''
+    ****** Computer Generated Lotto Numbers ********
+    ''')
+
+    #Keep the display for 3 seconds before priting the computer generated numbers
+    time.sleep(3.0) 
+
+    #Display the computer genrated numbers
+
+    print(f"Lotto Numbers: {display_computer_joined_numbers}")
+    print()
 
 
 
+    #Sleep before process below begin
+    time.sleep(3.0)
 
+    #Get prize money
+    if (len(get_lotto_number_matches) == 1):
 
+        print(f"Congratulations !!! {player_name}, you have {len(get_lotto_number_matches)} match and have won £{Calc_Prize_Money(len(get_lotto_number_matches))}")
 
-#Call player functions to display playe lotto numbers
-get_player_numbers = Player_Number_Picker()
-player_joined_numbers = " " . join(str(get_player_numbers))
+    elif (len(get_lotto_number_matches) > 1):
 
-#Funciton to retreive matching numbers between player imput and computer generated numbers
-get_lotto_number_matches = Process_Lotto_Matches(get_computer_numbers,get_player_numbers)
+        print(f"Congratulations !!! {player_name}, you have {len(get_lotto_number_matches)} matches and have won £{Calc_Prize_Money(len(get_lotto_number_matches))}")
 
+    else:
 
-#Clear screen do display player lotto numbers
-os.system("clear")
-print('''
-****** Player Lotto Numbers **********
-''')
+        print(f"Sorry {player_name}, you have had no matches and have won £{Calc_Prize_Money(len(get_lotto_number_matches))}")
 
-print(f"Player Numbers: {player_joined_numbers}")
+    print()
 
+    rerun_script = input("Do you wish to repeat program? y/n ")
+    if (rerun_script == "y" or rerun_script == "Y"):
+        run_script = rerun_script
+    else:
+        run_script = rerun_script
 
-print('''
-****** Computer Generated Lotto Numbers ********
-''')
-
-#Keep the display for 3 seconds before priting the computer generated numbers
-time.sleep(3.0) 
-
-#Display the computer genrated numbers
-
-print(f"Lotto Numbers: {display_computer_joined_numbers}")
-print()
-
-
-
-#Sleep before process below begin
-time.sleep(3.0)
-
-#Get proze money
-if (len(get_lotto_number_matches) == 1):
-
-    print(f"Congratulations !!! {player_name}, you have {len(get_lotto_number_matches)} match and have won £{Calc_Prize_Money(len(get_lotto_number_matches))}")
-
-elif (len(get_lotto_number_matches) > 1):
-
-    print(f"Congratulations !!! {player_name}, you have {len(get_lotto_number_matches)} matches and have won £{Calc_Prize_Money(len(get_lotto_number_matches))}")
-
-else:
-
-    print(f"Sorry {player_name}, you have had no matches and have won £{Calc_Prize_Money(len(get_lotto_number_matches))}")
-
-print()
 
 
