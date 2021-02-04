@@ -1,7 +1,7 @@
 '''
-Synposis: Script to read csv file and to write to the csv file
+Synopsis: Script to read csv file and to write to the csv file
 
-Wrtitten By: Ufo Okoro
+Wrtiten By: Ufo Okoro
 
 Department: Home Office
 
