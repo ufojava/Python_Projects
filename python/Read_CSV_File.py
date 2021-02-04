@@ -10,7 +10,7 @@ Dept: Home Office
 import csv
 
 #Import csv file data
-with open("Personal_Data_V2.csv", "r") as personal_data_import:
+with open("Personal_Data_V2.csv", "r", newline="") as personal_data_import:
 
     #Define the reader
     data_reader = csv.DictReader(personal_data_import)
