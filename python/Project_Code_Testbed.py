@@ -58,7 +58,7 @@ def Print_Slowly():
         for space in range(int(in_num_space)):
             print()
 
-
+'''
     #Take in player name
     name_question = "What is your name: "
     lotto_player_name = input(f"{Process_Word(name_question)} ")
@@ -102,13 +102,22 @@ def Calc_Prize_Money_Test(in_number_match_test):
         print("Two number match £20.00")
     
 
-Calc_Prize_Money_Test(2)
-
+#Calc_Prize_Money_Test(2)
+'''
 '''
 Creating a GUI for application
 
 
 '''
+
+import random
+
+
+list_of_questions = ["q_one", "q_two", "q_three", "q_four", "q_five", "q_six", "q_seven", "q_eight", "q_nine", "q_ten"]
+
+random.shuffle(list_of_questions)
+
+print(list_of_questions)
 
 
 
