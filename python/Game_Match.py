@@ -11,10 +11,17 @@ Department: CodeBase
 import os
 from numpy import random, sort
 
+#Colorama is an third party library
+from colorama import init
+init()
+from colorama import Fore,Back,Style
+
+
 #Variables
 
 #Player number Array / List
 player_numbers = []
+player_prize_money = 0.0
 
 #Function to generate and sort 10 numbers in range  0 - 20
 def Gen_Computer_Numbers():
@@ -86,14 +93,6 @@ def Get_Player_Numbers():
     #Return player input numbers
     return sort_player_numbers
 
-
-
-#Call Function Gen_Com;puter_Numbers and assign to variable
-computer_numbers = Gen_Computer_Numbers()
-
-#Call Function for player input numbers
-player_numbers = Get_Player_Numbers()
-
 #Function to convert Computer and Player numbers for matching
 def Match_Numbers(in_computer_numbers,in_player_numbers):
 
@@ -108,28 +107,98 @@ def Match_Numbers(in_computer_numbers,in_player_numbers):
 
     return matched_numbers
 
+#Function to compute player prize money
+def Prize_Money(in_match_num):
+
+    #Variables
+    prize_money = 0
+
+    #Define prize money
+    match_three = (in_match_num == 3)
+    match_four = (in_match_num == 4)
+    match_five = (in_match_num == 5)
+    match_six = (in_match_num == 6)
+
+    #Allocate proze money
+    if (match_three):
+
+        prize_money = 20.00
+
+        return prize_money
+
+    elif (match_four):
+
+        prize_money = 350.00
+
+        return prize_money
+
+    elif (match_five):
+
+        prize_money = 6000.00
+
+        return prize_money
+
+    elif (match_six):
+
+        prize_money = 50000.00
+
+        return prize_money
+
+    else:
+
+        prize_money = 0.00
+
+        return prize_money
+    
+
+
+
+
+#Call Function Gen_Com;puter_Numbers and assign to variable
+computer_numbers = Gen_Computer_Numbers()
+
+#Call Function for player input numbers
+player_numbers = Get_Player_Numbers()
+
+
+
+
+
 #Main program starts here
 #Clear screen to describe the function of the gamne
 
 os.system("clear")
-print('''
+print(Fore.GREEN + '''
 Match Game Results:
 
 ''')
-print(f"Computer generated numbers: {computer_numbers}")
+print(Fore.YELLOW + f"Computer generated numbers: {computer_numbers}")
 print()
-print(f"Player input numbers: {player_numbers}")
+print(Fore.BLUE + f"Player input numbers: {player_numbers}" + Style.RESET_ALL)
+
+#Get matching numbers from set
 get_matched_numbers = Match_Numbers(computer_numbers,player_numbers)
+
+#Count the matching numbers from the set
 total_number_of_matches = len(get_matched_numbers)
 print()
 
 if (total_number_of_matches == 1):
 
-    print(f"{total_number_of_matches} match  {get_matched_numbers}")
+    #Call function to get prize money
+    player_prize_money = Prize_Money(total_number_of_matches)
+    
+
+    print(f"{total_number_of_matches} match  {get_matched_numbers}. Your prize money is £{player_prize_money}")
 
 elif (total_number_of_matches > 1):
 
-    print(f"{total_number_of_matches} matches  {get_matched_numbers}")
+    #Call function to get prize money
+    player_prize_money = Prize_Money(total_number_of_matches)
+
+    print(f"{total_number_of_matches} matches  {get_matched_numbers}. Your prize money is £{player_prize_money}")
+
+    
 
 else:
 
