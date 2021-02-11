@@ -14,7 +14,7 @@ def Questions():
     How best can you describe Strings, Integers, Floats and Booleans?
     '''
     q_two = '''
-    In Python, how do you call a String, Integer, Float and Boolean? 
+    In Python, how do you call a String, Integer, Float: ? 
     '''
 
     q_three = '''
@@ -22,7 +22,7 @@ def Questions():
     '''
 
     q_four = '''
-    Create a list of numbers 1 to 20
+    Create a list containing 3 String, 2 Intgers and 1 Floats  press enter
     '''
 
     q_five = '''
@@ -53,12 +53,26 @@ def Questions():
     Call the function by assinging to a variable
     '''
 
-    list_of_questions = [q_one, q_two, q_three, q_four, q_five, q_six, q_seven, q_eight, q_nine, q_ten]
+    #list_of_questions = [q_one, q_two, q_three, q_four, q_five, q_six, q_seven, q_eight, q_nine, q_ten]
+
+    list_of_questions = {
+
+        "q_one_key": q_one,
+        "q_two_key": q_two,
+        "q_three_key": q_three,
+        "q_four_key": q_four,
+        "q_five_key": q_five,
+        "q_six_key": q_six,
+        "q_seven_key": q_seven,
+        "q_eight_key": q_eight,
+        "q_nine_key": q_nine,
+        "q_ten_key": q_ten 
+    }
 
 
     #Shuffle list
 
-    random.shuffle(list_of_questions)
+    #random.shuffle(list_of_questions)
     return list_of_questions
 
     

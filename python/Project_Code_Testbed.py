@@ -39,6 +39,7 @@ def Print_Slowly():
 
     import os
     import time
+    from numpy import random
 
     print_slow = os.sys.stdout
     read_greeting = open("Greeting_Words.txt")
@@ -108,7 +109,7 @@ def Calc_Prize_Money_Test(in_number_match_test):
 Creating a GUI for application
 
 
-'''
+
 
 import random
 
@@ -118,7 +119,99 @@ list_of_questions = ["q_one", "q_two", "q_three", "q_four", "q_five", "q_six", "
 random.shuffle(list_of_questions)
 
 print(list_of_questions)
+'''
 
+#Create list which contains string an integer values and count the number of integers
+
+question_list = []
+
+print('''
+Input value and press enter
+''')
+input_counter = 6
+import re
+
+num_of_int = 0
+num_of_str = 0
+num_of_float = 0
+
+'''
+#Loop for list
+for in_list in range(input_counter):
+
+    if (in_list == 0):
+        in_status = "first"
+    elif (in_list == 1):
+        in_status = "second"
+    elif (in_list == 2):
+        in_status = "third"
+    elif (in_list == 3):
+        in_status = "fourth"
+    elif (in_list == 4):
+        in_status = "fifth"
+    elif (in_list == 5):
+        in_status = "sixth"
+
+    in_value = input(f"Input {in_status} list value : ")
+
+    if (in_value.isdigit()):
+
+    
+        convert_input_int = int(in_value)
+
+        question_list.append(convert_input_int)
+        num_of_int += 1
+
+    elif (re.findall("[.]",in_value)):
+
+        convert_input_float = float(in_value)
+
+        question_list.append(convert_input_float)
+        num_of_float += 1
+
+        
+    else:
+        question_list.append(in_value)
+        num_of_str += 1
+
+
+
+
+    #Appened input to list
+    
+
+    #Need to count the number of integers, str and floats
+
+    for dataType in question_list:
+
+        if (isinstance(dataType,str)):
+            num_of_str += 1
+        if (isinstance(dataType,int)):
+            num_of_int += 1
+        if (isinstance(dataType,float)):
+            num_of_float += 1
+
+print(question_list)
+print(f"String: {num_of_str}, Integer: {num_of_int}, Float: {num_of_float}")
+'''
+
+#Use of dictionary
+
+def Test_Question():
+
+    set_q_one = '''This is the first'''
+    set_q_two = "This is the second"
+    set_q_three = "This is the third"
+
+
+    my_questions = {"set_q_one_key": set_q_one,"set_q_two_key":set_q_two,"set_q_three_key":set_q_three}
+
+    for quest in my_questions:
+        
+        if (quest == "set_q_one_key"):
+            print(my_questions[quest])
+
+Test_Question()
 
 
 
