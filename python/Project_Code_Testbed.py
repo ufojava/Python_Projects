@@ -125,9 +125,7 @@ print(list_of_questions)
 
 question_list = []
 
-print('''
-Input value and press enter
-''')
+
 input_counter = 6
 import re
 
@@ -211,7 +209,70 @@ def Test_Question():
         if (quest == "set_q_one_key"):
             print(my_questions[quest])
 
-Test_Question()
+#Test_Question()
+
+def Data_Type():
+
+    str_variable = "String"
+    int_variable = 5
+    float_variable = 2.0
+
+    all_data_types = [str_variable,int_variable,float_variable]
+
+    for d_type in all_data_types:
+
+        print(type(d_type))
+
+        input("Press any key to continue..")
+
+#Data_Type()
+
+#Test creation of a variable that need to be passed into a funciton
+
+first_complex_variable = input("Input your first parameter for your complex variable: ")
+print()
+conditional_operator = input("Input your operator, <, >, >=, <=: ")
+print()
+second_complex_variable = input("Input your second parameter for your complex variable: ")
+
+def Return_Complex_Variable(in_first_param, in_operator,in_second_param):
+
+    convert_first_param = int(in_first_param)
+    convert_second_param = int(in_second_param)
+
+    #Check for operator
+    if (in_operator == "<"):
+
+        complex_expression = (convert_first_param < convert_second_param)
+
+    elif (in_operator == ">"):
+
+
+        complex_expression = (convert_first_param > convert_second_param)
+
+    elif (in_operator == ">="):
+
+        complex_expression = (convert_first_param >= convert_second_param)
+
+    elif (in_operator == "<="):
+
+        complex_expression = (convert_first_param <= convert_second_param)
+
+    elif (in_operator == "="):
+
+        complex_expression = (convert_first_param == convert_second_param)
+
+    
+    
+
+    if(complex_expression):
+        print("Condtion is true")
+    else:
+        print("Conditions is false")
+
+Return_Complex_Variable(first_complex_variable,conditional_operator,second_complex_variable)
+
+
 
 
 

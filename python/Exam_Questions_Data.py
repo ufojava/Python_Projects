@@ -30,7 +30,9 @@ def Questions():
     '''
 
     q_six = '''
-    How do you best describe a variable ?
+    Create a complex variable to print:
+    1. true if the condition is me
+    2. else print false
     '''
 
     q_seven = '''
