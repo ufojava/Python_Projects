@@ -226,14 +226,15 @@ def Data_Type():
         input("Press any key to continue..")
 
 #Data_Type()
+def take_input():
 
-#Test creation of a variable that need to be passed into a funciton
+    #Test creation of a variable that need to be passed into a funciton
 
-first_complex_variable = input("Input your first parameter for your complex variable: ")
-print()
-conditional_operator = input("Input your operator, <, >, >=, <=: ")
-print()
-second_complex_variable = input("Input your second parameter for your complex variable: ")
+    first_complex_variable = input("Input your first parameter for your complex variable: ")
+    print()
+    conditional_operator = input("Input your operator, <, >, >=, <=: ")
+    print()
+    second_complex_variable = input("Input your second parameter for your complex variable: ")
 
 def Return_Complex_Variable(in_first_param, in_operator,in_second_param):
 
@@ -270,7 +271,33 @@ def Return_Complex_Variable(in_first_param, in_operator,in_second_param):
     else:
         print("Conditions is false")
 
-Return_Complex_Variable(first_complex_variable,conditional_operator,second_complex_variable)
+#Return_Complex_Variable(first_complex_variable,conditional_operator,second_complex_variable)
+
+#Function to take 2 inputs from the terminal
+def Take_Multiple_Inputs():
+    import os
+    #The sume of 2 variables
+
+    try:
+
+        add_assign, in_int = input("Add assignment and integer: ").split()
+
+        add_variable = 5
+
+        if (add_assign == "+="):
+
+            add_variable += int(in_int)
+
+            print(add_variable)
+    except:
+
+        pass
+    print("Test completed")
+    
+        
+
+
+Take_Multiple_Inputs()
 
 
 

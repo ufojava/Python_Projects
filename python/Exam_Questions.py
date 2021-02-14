@@ -326,9 +326,57 @@ def Question_Six():
 
 def Question_Seven():
 
-    print('''
-    Place Holder Question Seven
-    ''')
+    #Question severn score
+    question_seven_score = 0
+
+    #Solve the Arithmetical problems:
+    print("1. Using variable assignment add 5 to existing variable. Answer should be 10 ")
+    print()
+
+    try:
+
+        in_add_assign, in_add_int = input("Input Add assignment and number: ").split()
+
+        add_variable = 5
+
+        if ( in_add_assign == "+="):
+
+            add_variable += int(in_add_int)
+            print(f"Correct Add Assignment: {add_variable}")
+
+            #Add to one point to score
+            question_seven_score += 1
+
+        else:
+            print(f"{in_add_assign} is incorrect")
+    except:
+        pass
+
+    print("Using assignment multiply 10 and you answer should be 190: ")
+    print()
+
+    try:
+
+        in_multiply_assign, in_multiply_int = input("input Multiply assigment and number: ").split()
+
+        #Multiply Variable
+        multiply_variable = 19
+
+        if ( in_multiply_assign == "*="):
+
+            multiply_variable *= int(in_multiply_int)
+            print(f"Correct multiply assigment: {multiply_variable}")
+
+            #Add one point to the seven score
+            question_seven_score += 1
+
+        else:
+
+            print(f"{in_multiply_assign} is incorrect")
+    except:
+        pass
+
+    
 
 def Question_Eight():
 
@@ -398,7 +446,7 @@ def Question_Answer():
         '''
 
         q_seven = '''
-        Create 3 variable that stores the string, Integer and Float values
+        Solve the variable assignment problems:
         '''
 
         q_eight = '''
