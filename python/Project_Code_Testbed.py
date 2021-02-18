@@ -294,10 +294,43 @@ def Take_Multiple_Inputs():
         pass
     print("Test completed")
     
-        
+
+#Take_Multiple_Inputs()
+
+#Function create an if statement for student
+
+def IF_Statement_Builder():
+
+    
+
+    in_if_statement_first_line = input("input the complete line of your IF statement: ")
+    print()
+    
+
+    in_if_statement_else = input("Input your ELSE statement line: ")
+    print()
+    in_do_somthing_if_statement_false = input("Input message if condition is not ment: ")
+
+    #Process student input information
+    if (in_if_statement_first_line == "if(20 > 10):" or in_if_statement_first_line == "if (20 > 10):"):
+
+        print("first line check passed")
+    else:
+        print("First ine check incorrect")
+    
+    
+
+#IF_Statement_Builder() 
+
+#Test color
+
+CRED = "\033[91m"
+CEND = "\033[0m"
+
+print(f"{CRED} The Color begins here {CEND}")
 
 
-Take_Multiple_Inputs()
+
 
 
 

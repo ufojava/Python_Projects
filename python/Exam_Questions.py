@@ -13,6 +13,18 @@ import re #Reg Expression
 from numpy import random
 
 
+#Colour Pallette
+colour_end = "\33[0m" #Terminate Colour
+colour_green = "\33[32m" #Colour Green
+colour_blue = "\33[34m" #Colour Blue
+colour_red = "\33[31m" #Colour Red
+colour_yellow = "\33[33m"
+colour_blue_bg = "\33[44m" #Colour Blue Background
+colour_violet_bg = "\33[45m"
+
+
+
+
     
 
 def Question_One():
@@ -29,20 +41,20 @@ def Question_One():
     d. None of the above
     ''')
     #Take player answer
-    question_one_answer = input("Select correct answer: ")
+    question_one_answer = input(f"{colour_yellow}Select correct answer: {colour_end}")
 
     #Test for input type - must be string
     while not (question_one_answer == "a" or question_one_answer == "b" or question_one_answer == "c" or question_one_answer == "d" ):
 
-        question_one_answer = input("Invalid selection!!! Make Selection: ")
+        question_one_answer = input(f"{colour_red}Invalid selection!!! Make Selection: {colour_end}")
     
     if (question_one_answer == "a"):
 
-        print(f"{question_one_answer} is the correct answer")
+        print(f"{colour_green}{question_one_answer} is the correct answer{colour_end}")
         question_one_score += 1
     else:
 
-        print(f"{question_one_answer} is incorrect")
+        print(f"{colour_red}{question_one_answer} is incorrect{colour_end}")
         
     return question_one_score
 
@@ -54,41 +66,41 @@ def Question_Two():
 
     #Variable
     # In Python, how do you call a String, Integer, Float and Boolean? 
-    str_answer_input = input("Call the string function and press Enter: ")
+    str_answer_input = input(f"{colour_yellow}Call the string function and press Enter:{colour_end} ")
     print()
-    int_answer_input = input("Call the Integer function and press Enter: ")
+    int_answer_input = input(f"{colour_yellow}Call the Integer function and press Enter:{colour_end} ")
     print()
-    float_answer_input = input("Call the float function and press Enter: ")
+    float_answer_input = input(f"{colour_yellow}Call the float function and press Enter:{colour_end} ")
     print()
 
     #Check answer
     if (str_answer_input == "str"):
         
-        print(f"{str_answer_input} is the correct answer")
+        print(f"{colour_green}{str_answer_input} is the correct answer{colour_end}")
 
         #Add a point to the score
         question_two_score += 1
 
     else:
-        print(f"{str_answer_input} is incorrect. You call a String function with a str()")
+        print(f"{colour_red}{str_answer_input} is incorrect. You call a String function with a str(){colour_end}")
     
     if (int_answer_input == "int"):
         
-        print(f"{int_answer_input} is the correct answer")
+        print(f"{colour_green}{int_answer_input} is the correct answer{colour_end}")
 
         #Add  a point to the score
         question_two_score += 1
     else:
-        print(f"{int_answer_input} is incorrect. You call an Integer function with a int()")
+        print(f"{colour_red}{int_answer_input} is incorrect. You call an Integer function with a int(){colour_end}")
 
     if (float_answer_input == "float"):
 
-        print(f"{float_answer_input} is the correct answer")
+        print(f"{colour_green}{float_answer_input} is the correct answer{colour_end}")
 
         #Add a point to the score
         question_two_score += 1
     else:
-        print(f"{float_answer_input} is incorrect. you call a float function with a float()")
+        print(f"{colour_red}{float_answer_input} is incorrect. you call a float function with a float(){colour_end}")
     
     #Return question score
     return question_two_score
@@ -106,21 +118,21 @@ def Question_Three():
     d. A list is used to store items in a single variable
     ''')
     print()
-    question_three_answer = input("Make your selection: ")
+    question_three_answer = input(f"{colour_yellow}Make your selection:{colour_end} ")
     
     #Check for valid input
     while not (question_three_answer == "a" or question_three_answer == "b" or question_three_answer == "c" or question_three_answer == "d"):
 
-        question_three_answer = input("Invalid selecction !!! Make your selection: ")
+        question_three_answer = input(f"{colour_red}Invalid selecction !!! Make your selection:{colour_end} ")
         print()
 
     if (question_three_answer == "a"):
 
-        print(f"{question_three_answer} is the correct answer")
+        print(f"{colour_green}{question_three_answer} is the correct answer{colour_end}")
         question_three_score += 3
     else:
 
-        print(f"{question_three_answer} is the incorrect answer. A list can store multiples of different data types in a single varaiable")
+        print(f"{colour_red}{question_three_answer} is the incorrect answer. A list can store multiples of different data types in a single varaiable{colour_end}")
     
     #Return Score
     return question_three_score
@@ -138,10 +150,7 @@ def Question_Four():
     num_of_str = 0
     num_of_float = 0
 
-
-    print('''
-    Input value and press enter
-    ''')
+    #Loop Counter Range
     input_counter = 6
 
     #Loop for list
@@ -160,7 +169,7 @@ def Question_Four():
         elif (in_list == 5):
             in_status = "sixth"
 
-        in_value = input(f"Input list value {in_status}: ")
+        in_value = input(f"{colour_yellow}Input list value {in_status}:{colour_end} ")
 
         #Check for digital input
         if (in_value.isdigit()):
@@ -191,16 +200,17 @@ def Question_Four():
             question_list.append(in_value)
 
     print()
-    print(f"String: {num_of_str}, Integer {num_of_int}, Float: {num_of_float}")
+    print(f"{colour_green}String: {num_of_str}, Integer {num_of_int}, Float: {num_of_float}{colour_end}")
+    print()
 
     #Check input
 
     if (num_of_str == 3 and num_of_int == 2 and num_of_float == 1):
 
-        print(f"{question_list} list is correct")
+        print(f"{colour_green}{question_list} list is correct{colour_end}")
     else:
 
-        print(f"{question_list} is incorrect. You should have 3 string, 2 integers and 1 float.")
+        print(f"{colour_red}{question_list} is incorrect. You should have 3 string, 2 integers and 1 float.{colour_end}")
 
     #3 Mark score for question
     question_four_score += 3
@@ -212,31 +222,31 @@ def Question_Five():
     question_five_score = 0
 
     #Using a For Loop, print the elements in a list containing months of the year
-    print('''
+    print(f'''
     For Loop in a List
     Your code task
-    1. Create a List name: first_three_months
-    2. Items in the list shold be the first three months in format: jan....
+    1. Create a List with name: {colour_blue_bg}first_three_months{colour_end}
+    2. Items in the list shold be the first three months in format: {colour_blue_bg}jan....{colour_end}
 
     The result will display the 3 months
     ''')
 
     #List of month
     print()
-    first_three_months = input("Enter List name: ")
+    first_three_months = input(f"{colour_yellow}Enter list name:{colour_end} ")
     print()
-    first_month = input("Input your first month: ")
+    first_month = input(f"{colour_yellow}Input your first month:{colour_end} ")
     print()
-    second_month = input("Now your second month: ")
+    second_month = input(f"{colour_yellow}Now your second month:{colour_end} ")
     print()
-    third_month = input("Finally, your third month: ")
+    third_month = input(f"{colour_yellow}Finally, your third month:{colour_end} ")
 
     def Student_Question_Five(in_list_name,mth_one,mth_two,mth_three):
 
         #Check for student input
         if (in_list_name != "first_three_months" or mth_one != "jan" or mth_two != "feb" or mth_three != "mar"):
 
-            print(" Incorrect answer. One or more of your input(s) is/are wrong.")
+            print(f"{colour_red}Incorrect answer. One or more of your input(s) is/are wrong.{colour_end}")
 
         else:
 
@@ -253,7 +263,7 @@ def Question_Five():
             
             for month in in_list_name:
 
-                print(month)
+                print(f"{colour_green}{month}{colour_end}")
         
             #Add score
             #question_five_score += 3
@@ -273,16 +283,16 @@ def Question_Six():
     #Question score
     question_six_score = 0
 
-    first_number = input("Input your first number: ")
+    first_number = input(f"{colour_yellow}Input your first number:{colour_end} ")
     print()
-    in_operator = input("Enter your operator: ")
+    in_operator = input(f"{colour_yellow}Enter your operator:{colour_end} ")
 
     #Validate the operator
     while not (in_operator == "<" or in_operator == ">" or in_operator == ">=" or in_operator == "<="):
-        in_operator = input("Invalid operator, enter operator: ")
+        in_operator = input(f"{colour_red}Invalid operator, enter operator:{colour_end} ")
     
     print()
-    second_number = input("Enter your second number: ")
+    second_number = input(f"{colour_yellow}Enter your second number:{colour_end} ")
 
     def Proc_Complex_Variable(in_first_param, in_operator, in_second_param):
 
@@ -311,12 +321,12 @@ def Question_Six():
         #Solve true and false 
         if (complex_variable):
 
-            print("True. Your answer is correct")
+            print(f"{colour_green}True. Your answer is correct{colour_end}")
             #question_six_score += 3
 
         else:
 
-            print("False. You answer is incorrect")
+            print(f"{colour_red}False. You answer is incorrect{colour_end}")
 
         #Return score
         return question_six_score
@@ -330,34 +340,40 @@ def Question_Seven():
     question_seven_score = 0
 
     #Solve the Arithmetical problems:
-    print("1. Using variable assignment add 5 to existing variable. Answer should be 10 ")
+    print(f"{colour_blue_bg}1. Using variable assignment add 5 to existing variable. Answer should be 10{colour_end} ")
     print()
 
     try:
 
-        in_add_assign, in_add_int = input("Input Add assignment and number: ").split()
+        in_add_assign, in_add_int = input(f"{colour_yellow}Input Add assignment and number:{colour_end} ").split()
 
         add_variable = 5
 
         if ( in_add_assign == "+="):
 
             add_variable += int(in_add_int)
-            print(f"Correct Add Assignment: {add_variable}")
 
-            #Add to one point to score
-            question_seven_score += 1
+            #Check total which should equal 10
+            if (add_variable == 10):
+                
+                print()
+                print(f"{colour_green}Correct Add Assignment: {add_variable}{colour_end}")
 
-        else:
-            print(f"{in_add_assign} is incorrect")
+                #Add to one point to score
+                question_seven_score += 1
+
+            else:
+                print(f"{colour_red}{add_variable} is incorrect{colour_end}")
     except:
         pass
-
-    print("Using assignment multiply 10 and you answer should be 190: ")
+    
+    print()
+    print(f"{colour_blue_bg}Using assignment multiply 10 and you answer should be 190:{colour_end} ")
     print()
 
     try:
 
-        in_multiply_assign, in_multiply_int = input("input Multiply assigment and number: ").split()
+        in_multiply_assign, in_multiply_int = input(f"{colour_yellow}input Multiply assigment and number:{colour_end} ").split()
 
         #Multiply Variable
         multiply_variable = 19
@@ -365,14 +381,18 @@ def Question_Seven():
         if ( in_multiply_assign == "*="):
 
             multiply_variable *= int(in_multiply_int)
-            print(f"Correct multiply assigment: {multiply_variable}")
 
-            #Add one point to the seven score
-            question_seven_score += 1
+            if (multiply_variable == 190):
 
-        else:
+                print()
+                print(f"{colour_green}Correct multiply assigment: {multiply_variable}{colour_end}")
 
-            print(f"{in_multiply_assign} is incorrect")
+                #Add one point to the seven score
+                question_seven_score += 1
+
+            else:
+                print()
+                print(f"{colour_red}{in_multiply_assign} is incorrect{colour_end}")
     except:
         pass
 
@@ -380,9 +400,46 @@ def Question_Seven():
 
 def Question_Eight():
 
-    print('''
-    Place Holder Question Eight
-    ''')
+    #Question eight score
+    question_eight_score = 0
+
+    #First line of the IF Statement
+    in_if_statement_first_line = input(f"{colour_yellow}Input the first line of your IF statement:{colour_end} ")
+    print()
+
+    #Else condition if not ment
+    in_else_statement_line = input(f"{colour_yellow}Input ELSE statement line:{colour_end} ")
+
+
+    #Check student work
+
+    #Stage one IF Statement
+    if (in_if_statement_first_line == "if(20 > 10):" or in_if_statement_first_line == "if (20 > 10):"):
+
+        print()
+        print(f"{colour_green}{in_if_statement_first_line} is Correct{colour_end}")
+
+        #Add one point to question 8 score
+        question_eight_score += 1
+
+    else:
+
+        print()
+        print(f"{colour_red}{in_if_statement_first_line} is incorrect{colour_end}")
+    
+    #Stage 2 print output statement
+    if (in_else_statement_line.startswith("else:")):
+
+        print()
+        print(f"{colour_green}{in_else_statement_line} is correct{colour_end}")
+
+        #Add one point to the question 8 score
+        question_eight_score += 1
+    else:
+
+        print(f"{colour_red}{in_else_statement_line} is incorrect{colour_end}")
+
+
 
 def Question_Nine():
 
@@ -418,42 +475,42 @@ def Question_Answer():
         #Variable
         question_counter = 0
 
-        q_one = '''
-        How best can you describe Strings, Integers, Floats and Booleans?
+        q_one = f'''
+        {colour_blue_bg}How best can you describe Strings, Integers, Floats and Booleans?{colour_end}
         '''
-        q_two = '''
-        In Python, how do you call a String, Integer, Float: ? 
-        '''
-
-        q_three = '''
-        In Python, what is a list? 
+        q_two = f'''
+        {colour_blue_bg}In Python, how do you call a String, Integer, Float: ?{colour_end} 
         '''
 
-        q_four = '''
-        Create a list containing 3 String, 2 Intgers and 1 Floats  press enter
+        q_three = f'''
+        {colour_blue_bg}In Python, what is a list?{colour_end} 
         '''
 
-        q_five = '''
-        Using a For Loop, print the elements in a list containing months of the year
+        q_four = f'''
+        {colour_blue_bg}Create a list containing 3 String, 2 Intgers and 1 Floats  press enter{colour_end}
         '''
 
-        q_six = '''
-        Create a complex variable that prints true:
-        1. You will input your first digit
-        2. Enter an operator >, <, >= or <=
-        3. Now you final number
-        The return has to be true get a correct result.
+        q_five = f'''
+        {colour_blue_bg}Using a For Loop, print the elements in a list containing months of the year{colour_end}
         '''
 
-        q_seven = '''
-        Solve the variable assignment problems:
+        q_six = f'''
+        {colour_blue_bg}Create a complex variable that prints true:{colour_end}
+
+        {colour_blue_bg}1. You will input your first digit{colour_end}
+        {colour_blue_bg}2. Enter an operator >, <, >= or <={colour_end}
+        {colour_blue_bg}3. Now you final number{colour_end}
+        {colour_blue_bg}The return has to be true get a correct result.{colour_end}
         '''
 
-        q_eight = '''
-        Using the IF, ELIF and ELSE Conditional statements, create a code block that will:
-        1. Check a variable value of 20 and print "This is 20"
-        2. Check another variable value of 30 and print "This is 30"
-        3. Else print "This is neither 20 or 30"
+        q_seven = f'''
+        {colour_blue_bg}Solve the variable assignment problems:{colour_end}
+        '''
+
+        q_eight = f'''
+        {colour_blue_bg}Using the IF, ELIF and ELSE Conditional statements, create a code block.{colour_end}
+
+        {colour_blue_bg}You goal is to print Success if 20 is greater than 10 else print Unsuccessful{colour_end}
         '''
 
         q_nine = '''
@@ -462,6 +519,7 @@ def Question_Answer():
 
         q_ten = '''
         Create a Function that will print "This is my first function"
+
         Call the function by assinging to a variable
         '''
 
@@ -479,7 +537,7 @@ def Question_Answer():
             #Increment queston counter
             question_counter += 1
 
-            print(f"Question {question_counter}")
+            print(f"{colour_blue}Test Question {question_counter} {colour_end}")
         
 
             #Check answer
@@ -491,7 +549,8 @@ def Question_Answer():
 
                 #Call Anser One
                 Question_One()
-                input("Press any key to continue ...")
+                print()
+                input(f"{colour_violet_bg}Press any key to continue ...{colour_end}")
 
             elif (question == "q_two_key"):
 
@@ -499,7 +558,8 @@ def Question_Answer():
 
                 #Call Answer Two
                 Question_Two()
-                input("Press any key to continue ...")
+                print()
+                input(f"{colour_violet_bg}Press any key to continue ...{colour_end}")
 
             elif (question == "q_three_key"):
 
@@ -507,7 +567,8 @@ def Question_Answer():
 
                 #Call Answer Three
                 Question_Three()
-                input("Press any key to continue ...")
+                print()
+                input(f"{colour_violet_bg}Press any key to continue ...{colour_end}")
 
             elif (question == "q_four_key"):
 
@@ -515,7 +576,8 @@ def Question_Answer():
 
                 #Call Answer four
                 Question_Four()
-                input("Press any key to continue ...")
+                print()
+                input(f"{colour_violet_bg}Press any key to continue ...{colour_end}")
 
             elif (question == "q_five_key"):
 
@@ -523,7 +585,8 @@ def Question_Answer():
 
                 #Call Answer five
                 Question_Five()
-                input("Press any key to continue ...")
+                print()
+                input(f"{colour_violet_bg}Press any key to continue ...{colour_end}")
 
             elif (question == "q_six_key"):
 
@@ -531,7 +594,8 @@ def Question_Answer():
 
                 #Call Answer six
                 Question_Six()
-                input("Press any key to continue ...")
+                print()
+                input(f"{colour_violet_bg}Press any key to continue ...{colour_end}")
 
             elif (question == "q_seven_key"):
 
@@ -539,7 +603,8 @@ def Question_Answer():
 
                 #Call Answer Seven
                 Question_Seven()
-                input("Press any key to continue ...")
+                print()
+                input(f"{colour_violet_bg}Press any key to continue ...{colour_end}")
 
             elif (question == "q_eight_key"):
 
@@ -547,7 +612,8 @@ def Question_Answer():
 
                 #Call Answer Eight
                 Question_Eight()
-                input("Press any key to continue ...")
+                print()
+                input(f"{colour_violet_bg}Press any key to continue ...{colour_end}")
 
             elif (question == "q_nine_key"):
 
@@ -555,7 +621,8 @@ def Question_Answer():
 
                 #Call Answer Nine
                 Question_Nine()
-                input("Press any key to continue ...")
+                print()
+                input(f"{colour_violet_bg}Press any key to continue ...{colour_end}")
 
             elif (question == "q_ten_key"):
 
@@ -563,7 +630,8 @@ def Question_Answer():
 
                 #Call Answer Ten
                 Question_Ten()
-                input("Press any key to continue ...")
+                print()
+                input(f"{colour_violet_bg}Press any key to continue ...{colour_end}")
 
     Questions()
 
