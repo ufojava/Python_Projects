@@ -322,12 +322,217 @@ def IF_Statement_Builder():
 
 #IF_Statement_Builder() 
 
-#Test color
+#Create questions contained within a lis a loop through each one an assign the value to a variable
 
-CRED = "\033[91m"
-CEND = "\033[0m"
+def Question_Module():
 
-print(f"{CRED} The Color begins here {CEND}")
+
+    question_list = ["What is your name? ", "How old are you? ","Your city of birth? "]
+
+    player_name = " "
+    player_age = " "
+    player_birth_city = " "
+
+    for player_detail in question_list:
+
+        if (question_list[0] == player_detail):
+            player_name = player_detail
+
+        elif (question_list[1] == player_detail):
+            player_age = player_detail
+
+        elif (question_list[2] == player_detail):
+            player_birth_city = player_detail
+
+    #Print the details
+    print(player_name)
+    print(player_age)
+    print(player_birth_city)
+
+#Question_Module()
+
+def Question_Ten_Template():
+
+    import os
+
+    #Colour
+    colour_end = "\33[0m"
+    colour_blue = "\33[34m"
+    colour_green = "\33[32m"
+    colour_red = "\33[31m"
+
+    player_question_description = [f"{colour_blue}Player 1 jersey number:{colour_end} ", f"{colour_red}Player 2 jersey number:{colour_end} ", f"{colour_green}Player 3 jersey number:{colour_end} "]
+
+    player_one = 0
+    player_two = 0
+    player_three = 0
+
+    player_counter = 0
+
+    while True:
+
+        for player in player_question_description:
+
+            os.system("clear")
+            take_input = input(f"{player}")
+
+            if (player == player_question_description[0]):
+
+                #Convert input
+                convert_player_one = int(take_input)
+                player_one = convert_player_one
+
+                #Increase counter
+                player_counter += 1
+
+            elif (player == player_question_description[1]):
+                
+                #Conver input
+                convert_player_two = int(take_input)
+                player_two = convert_player_two
+
+                #Increase counter
+                player_counter += 1
+
+
+            elif (player == player_question_description[2]):
+
+                #Conver input
+                convert_player_three = int(take_input)
+                player_three = convert_player_three
+
+                #Increase counter
+                player_counter += 1
+
+        if (player_counter == 3):
+            break
+    
+    os.system("clear")
+    print(f"{colour_blue}Player 1 jersey number: {player_one}{colour_end}")
+    print()
+    print(f"{colour_red}Player 2 jersey number: {player_two}{colour_end}")
+    print()
+    print(f"{colour_green}Player 3 jersey number: {player_three}{colour_end}")
+    print()
+
+
+#Question_Ten_Template()
+
+def Question_Nine():
+
+    import os
+
+    #Colour Pallette
+    colour_end = "\33[0m" #Terminate Colour
+    colour_green = "\33[32m" #Colour Green
+    colour_blue = "\33[34m" #Colour Blue
+    colour_red = "\33[31m" #Colour Red
+    colour_yellow = "\33[33m"
+    colour_blue_bg = "\33[44m" #Colour Blue Background
+    colour_violet_bg = "\33[45m"
+
+    #University Description
+    university_student_ages = [f"{colour_blue}Student one age:{colour_end} ", f"{colour_red}Student two age:{colour_end} ", f"{colour_green}Student three age:{colour_end} "]
+
+    #Variables
+    student_one = 0
+    student_two = 0
+    student_three = 0
+
+    student_counter = 0
+
+    aggregate_student_ages = 0
+
+    while True:
+
+        #Take input from student
+        for student in university_student_ages:
+
+            #Clear Screen
+            os.system("clear")
+            print(f"{colour_blue_bg}Enter student age between 17 and 65{colour_end}")
+            print()
+            print(f"{colour_blue_bg}Variable for total number of students:{colour_end} {colour_yellow}aggregate_student_ages{colour_end}")
+            print()
+            print(f"{colour_blue_bg}Variable for student one:{colour_end} {colour_yellow}student_one{colour_end}")
+            print(f"{colour_blue_bg}Variable for student two:{colour_end} {colour_yellow}student_two{colour_end}")
+            print(f"{colour_blue_bg}Variable for student three:{colour_end} {colour_yellow}student_three{colour_end}")
+
+            print()
+            input_age = int(input(f"{student}"))
+            print()
+            input_assignment = input(f"Input assigment command to add {student} to {colour_yellow}aggregate_student_ages:{colour_end} ")
+
+            #Check command
+            if (input_assignment == "aggregate_student_ages += student_one" or input_assignment == "aggregate_student_ages += student_two" or input_assignment == "aggregate_student_ages += student_three"):
+
+
+
+                while not (input_age > 0 and input_age < 65):
+                    input_age = int(input(f"{student}"))
+            
+
+                if (student == university_student_ages[0]):
+
+                    #Convert input to intgers
+                    convert_student_one = int(input_age)
+
+                    #Assign age to student one
+                    student_one = convert_student_one
+
+                    #Increment student counter
+                    student_counter += 1
+
+                    #Add age number to the total
+                    aggregate_student_ages += student_one
+                
+                elif (student == university_student_ages[1]):
+
+                    #Convert input to intgers
+                    convert_student_two = int(input_age)
+
+                    #Assign age to student one
+                    student_two = convert_student_two
+
+                    #Increment student counter
+                    student_counter += 1
+
+                    #Add age number to the total
+                    aggregate_student_ages += student_two
+
+                elif (student == university_student_ages[2]):
+
+                    #Convert input to intgers
+                    convert_student_three = int(input_age)
+
+                    #Assign age to student one
+                    student_three = convert_student_three
+
+                    #Increment student counter
+                    student_counter += 1
+
+                    #Add age number to the total
+                    aggregate_student_ages += student_three
+
+            else:
+
+                print(f"{colour_red}Incorrect Assignement Operator for{colour_end} {student}")
+                print()
+                input(f"{colour_violet_bg}Press any key to continue...{colour_end}")
+
+        #Break While loop if counter is 3
+        if (student_counter == 3):
+
+            print()
+            print(f"{colour_green}The total number of student ages is: {aggregate_student_ages}{colour_end}") 
+            break
+
+Question_Nine()
+
+
+
+
+
 
 
 

@@ -261,6 +261,7 @@ def Question_Five():
             in_list_name.append(mth_three)
             print()
             
+            print(f"{colour_green} Correct{colour_end}")
             for month in in_list_name:
 
                 print(f"{colour_green}{month}{colour_end}")
@@ -443,9 +444,105 @@ def Question_Eight():
 
 def Question_Nine():
 
-    print('''
-    Place Holder Question Nine
-    ''')
+    #University Description
+    university_student_ages = [f"{colour_blue}Student one age:{colour_end} ", f"{colour_red}Student two age:{colour_end} ", f"{colour_green}Student three age:{colour_end} "]
+
+    #Variables
+    student_one = 0
+    student_two = 0
+    student_three = 0
+
+    student_counter = 0
+
+    aggregate_student_ages = 0
+
+    while True:
+
+        #Take input from student
+        for student in university_student_ages:
+
+            #Clear Screen
+            os.system("clear")
+            print(f"{colour_blue_bg}Enter student age between 17 and 65{colour_end}")
+            print()
+            print(f"{colour_blue_bg}Variable for total number of students:{colour_end} {colour_yellow}aggregate_student_ages{colour_end}")
+            print()
+            print(f"{colour_blue_bg}Variable for student one:{colour_end} {colour_yellow}student_one{colour_end}")
+            print(f"{colour_blue_bg}Variable for student two:{colour_end} {colour_yellow}student_two{colour_end}")
+            print(f"{colour_blue_bg}Variable for student three:{colour_end} {colour_yellow}student_three{colour_end}")
+            print()
+
+            input_age = int(input(f"{student}"))
+            print()
+            input_assignment = input(f"Input assigment command to add {student} to {colour_yellow}aggregate_student_ages: {colour_end}")
+
+            #Check command
+            if (input_assignment == "aggregate_student_ages += student_one" or input_assignment == "aggregate_student_ages += student_two" or input_assignment == "aggregate_student_ages += student_three"):
+
+
+
+                while not (input_age > 0 and input_age < 65):
+                    input_age = int(input(f"{student}"))
+            
+
+                if (student == university_student_ages[0]):
+
+                    #Convert input to intgers
+                    convert_student_one = int(input_age)
+
+                    #Assign age to student one
+                    student_one = convert_student_one
+
+                    #Increment student counter
+                    student_counter += 1
+
+                    #Add age number to the total
+                    aggregate_student_ages += student_one
+                
+                elif (student == university_student_ages[1]):
+
+                    #Convert input to intgers
+                    convert_student_two = int(input_age)
+
+                    #Assign age to student one
+                    student_two = convert_student_two
+
+                    #Increment student counter
+                    student_counter += 1
+
+                    #Add age number to the total
+                    aggregate_student_ages += student_two
+
+                elif (student == university_student_ages[2]):
+
+                    #Convert input to intgers
+                    convert_student_three = int(input_age)
+
+                    #Assign age to student one
+                    student_three = convert_student_three
+
+                    #Increment student counter
+                    student_counter += 1
+
+                    #Add age number to the total
+                    aggregate_student_ages += student_three
+
+            else:
+
+                print()
+                print(f"{colour_red}Incorrect Assignement Operator for{colour_end} {student}")
+                print()
+                input(f"{colour_violet_bg}Press any key to continue...{colour_end}")
+
+        #Break While loop if counter is 3
+        if (student_counter == 3):
+
+            print()
+            print(f"{colour_green}The total number of student ages is: {aggregate_student_ages}{colour_end}") 
+            break
+
+
+
 
 def Question_Ten():
 
@@ -513,8 +610,9 @@ def Question_Answer():
         {colour_blue_bg}You goal is to print Success if 20 is greater than 10 else print Unsuccessful{colour_end}
         '''
 
-        q_nine = '''
-        Create a function that will return the sum of 2 numbers
+        q_nine = f'''
+        {colour_blue_bg}You company accountant requires you to create a script to add up the ages of their three students{colour_end}
+        {colour_blue_bg}What Assignment Operator will you use to send the added up students ages?{colour_end}
         '''
 
         q_ten = '''
