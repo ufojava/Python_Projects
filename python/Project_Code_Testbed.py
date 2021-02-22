@@ -360,6 +360,7 @@ def Question_Ten_Template():
     colour_blue = "\33[34m"
     colour_green = "\33[32m"
     colour_red = "\33[31m"
+    colour_yellow = "\33[33m"
 
     player_question_description = [f"{colour_blue}Player 1 jersey number:{colour_end} ", f"{colour_red}Player 2 jersey number:{colour_end} ", f"{colour_green}Player 3 jersey number:{colour_end} "]
 
@@ -527,7 +528,64 @@ def Question_Nine():
             print(f"{colour_green}The total number of student ages is: {aggregate_student_ages}{colour_end}") 
             break
 
-Question_Nine()
+#Question_Nine()
+
+
+def Question_Two():
+
+    import os
+
+    colour_end = "\33[0m"
+    colour_blue = "\33[34m"
+    colour_green = "\33[32m"
+    colour_red = "\33[31m"
+    colour_yellow = "\33[33m"
+
+    question_two_score = 0
+
+    data_type_list = ["String","Integer","Float"]
+
+    #Variable
+    # In Python, how do you call a String, Integer, Float and Boolean? 
+    for data_type in data_type_list:
+
+        os.system("clear")
+
+        answer_input = input(f"{colour_yellow}Call the {data_type} function and press Enter:{colour_end} ")
+        print()
+
+        #Check answer
+        if (answer_input == "str"):
+            
+            print(f"{colour_green}{answer_input} is the correct answer{colour_end}")
+
+            #Add a point to the score
+            question_two_score += 1
+        
+        elif (answer_input == "int"):
+            
+            print(f"{colour_green}{answer_input} is the correct answer{colour_end}")
+
+            #Add  a point to the score
+            question_two_score += 1
+
+        elif (answer_input == "float"):
+
+            print(f"{colour_green}{answer_input} is the correct answer{colour_end}")
+
+            #Add a point to the score
+            question_two_score += 1
+        
+        #Return question score
+        #return question_two_score
+
+Question_Two()
+
+
+
+
+
+
 
 
 

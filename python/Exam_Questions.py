@@ -23,17 +23,27 @@ colour_blue_bg = "\33[44m" #Colour Blue Background
 colour_violet_bg = "\33[45m"
 
 
+def Exam_Header(in_question_number):
 
+    print(f"{colour_green}******** CODEBASE FUNDAMENTALS EXAMINATION *******{colour_end}")
+    print()
+    print(f"{colour_blue}Queston {in_question_number}{colour_end}")
 
     
 
 def Question_One():
 
-    #Variable
-    #How best can you describe Strings, Integers, Floats and Booleans?
-    question_one_score = 0
     
+    question_one_score = 0
+    os.system("clear")
+    Exam_Header("1")
 
+    print()
+    print(f'''
+    {colour_blue_bg}How best can you describe Strings, Integers, Floats and Booleans?{colour_end}
+    ''')
+    
+    print()
     print('''
     a. Strings, Integers and Floats can be described as Data Types
     b. String = Text, Integers = Numbers, Floats = Numbers with floating points
@@ -64,52 +74,70 @@ def Question_Two():
 
     question_two_score = 0
 
+    data_type_list = ["String","Integer","Float"]
+
     #Variable
     # In Python, how do you call a String, Integer, Float and Boolean? 
-    str_answer_input = input(f"{colour_yellow}Call the string function and press Enter:{colour_end} ")
-    print()
-    int_answer_input = input(f"{colour_yellow}Call the Integer function and press Enter:{colour_end} ")
-    print()
-    float_answer_input = input(f"{colour_yellow}Call the float function and press Enter:{colour_end} ")
-    print()
+    for data_type in data_type_list:
 
-    #Check answer
-    if (str_answer_input == "str"):
+        os.system("clear")
+        #Call header function
+        Exam_Header("2")
+
+        print(f'''
+        {colour_blue_bg}In Python, how do you call a String, Integer, Float: ?{colour_end} 
+        ''')
+
+        print()
+        answer_input = input(f"{colour_yellow}Call the {data_type} function and press Enter:{colour_end} ")
+        print()
+
+        #Check answer
+        if (answer_input == "str"):
+            
+            print(f"{colour_green}{answer_input} is the correct answer{colour_end}")
+
+            #Add a point to the score
+            question_two_score += 1
+
+            print()
+            #Pause process untill key is pressed
+            input(f"{colour_violet_bg}Press enter key to continue...{colour_end}")
         
-        print(f"{colour_green}{str_answer_input} is the correct answer{colour_end}")
+        elif (answer_input == "int"):
+            
+            print(f"{colour_green}{answer_input} is the correct answer{colour_end}")
 
-        #Add a point to the score
-        question_two_score += 1
+            #Add  a point to the score
+            question_two_score += 1
 
-    else:
-        print(f"{colour_red}{str_answer_input} is incorrect. You call a String function with a str(){colour_end}")
-    
-    if (int_answer_input == "int"):
+            print()
+            #Pause process untill key is pressed
+            input(f"{colour_violet_bg}Press enter key to continue...{colour_end}")
+
+        elif (answer_input == "float"):
+
+            print(f"{colour_green}{answer_input} is the correct answer{colour_end}")
+
+            #Add a point to the score
+            question_two_score += 1
+
         
-        print(f"{colour_green}{int_answer_input} is the correct answer{colour_end}")
-
-        #Add  a point to the score
-        question_two_score += 1
-    else:
-        print(f"{colour_red}{int_answer_input} is incorrect. You call an Integer function with a int(){colour_end}")
-
-    if (float_answer_input == "float"):
-
-        print(f"{colour_green}{float_answer_input} is the correct answer{colour_end}")
-
-        #Add a point to the score
-        question_two_score += 1
-    else:
-        print(f"{colour_red}{float_answer_input} is incorrect. you call a float function with a float(){colour_end}")
-    
-    #Return question score
-    return question_two_score
+        #Return question score
+        #return question_two_score
 
 def Question_Three():
 
     #Variable
     #In Python, what is a list?
     question_three_score = 0
+
+    os.system("clear")
+    Exam_Header("3")
+
+    print(f'''
+    {colour_blue_bg}In Python, what is a list?{colour_end} 
+    ''')
 
     print('''
     a. All the answers below
@@ -155,6 +183,16 @@ def Question_Four():
 
     #Loop for list
     for in_list in range(input_counter):
+
+        os.system("clear")
+
+        #Call header function
+        Exam_Header("4")
+
+        print()
+        print(f'''
+        {colour_blue_bg}Create a list containing 3 String, 2 Intgers and 1 Floats  press enter{colour_end}
+        ''')
 
         if (in_list == 0):
             in_status = "first"
@@ -221,6 +259,15 @@ def Question_Five():
     #Question score
     question_five_score = 0
 
+    os.system("clear")
+    Exam_Header("5")
+
+    print(f'''
+    {colour_blue_bg}Using a For Loop, print the elements in a list containing months of the year{colour_end}
+    ''')
+
+
+    print()
     #Using a For Loop, print the elements in a list containing months of the year
     print(f'''
     For Loop in a List
@@ -231,15 +278,29 @@ def Question_Five():
     The result will display the 3 months
     ''')
 
+    month_data = ["list_name","first_month","second_month","third_month"]
+
+    get_month_data = []
+
     #List of month
     print()
-    first_three_months = input(f"{colour_yellow}Enter list name:{colour_end} ")
-    print()
-    first_month = input(f"{colour_yellow}Input your first month:{colour_end} ")
-    print()
-    second_month = input(f"{colour_yellow}Now your second month:{colour_end} ")
-    print()
-    third_month = input(f"{colour_yellow}Finally, your third month:{colour_end} ")
+
+    for m_data in month_data:
+
+        os.system("clear")
+        Exam_Header("5")
+
+        print(f'''
+        {colour_blue_bg}Using a For Loop, print the elements in a list containing months of the year{colour_end}
+        ''')
+
+        in_month_data = input(f"{colour_yellow}Enter {m_data}:{colour_end} ")
+        
+        get_month_data.append(in_month_data)
+        print()
+        print(f"{colour_green}You have input {in_month_data}{colour_end}")
+        print()
+        input(f"{colour_violet_bg}Press enter to continue...{colour_end}")
 
     def Student_Question_Five(in_list_name,mth_one,mth_two,mth_three):
 
@@ -274,7 +335,7 @@ def Question_Five():
 
 
     #Call Student function        
-    Student_Question_Five(first_three_months,first_month,second_month,third_month)
+    Student_Question_Five(get_month_data[0],get_month_data[1],get_month_data[2],get_month_data[3])
 
 
 
@@ -546,9 +607,26 @@ def Question_Nine():
 
 def Question_Ten():
 
-    print('''
-    Place Holder Question Ten
+    #Import Library
+    import os
+
+    #Colour palet
+    colour_end = "\33[0m"
+    colour_red = "\33[31m"
+    colour_green = "\33[32m"
+    colour_yellow = "\33[33m"
+    colour_blue = "\33[34m"
+    colour_blue_bg = "\33[44m"
+    colour_violet_bg = "\33[45m"
+
+    print(f'''
+    {colour_blue_bg}1. Input your first Integer, press enter and input the second intger for testing your code block{colour_end}
+    {colour_blue_bg}2. The variable holding the processed variables is:{colour_end} {colour_violet_bg}accounting_total{colour_end}
+    {colour_blue_bg}3. What command do you use to send{colour_end}{colour_violet_bg}accounting_total{colour_end} {colour_blue_bg} when function is called?{colour_end}
+
     ''')
+
+
 
 
 
@@ -615,10 +693,9 @@ def Question_Answer():
         {colour_blue_bg}What Assignment Operator will you use to send the added up students ages?{colour_end}
         '''
 
-        q_ten = '''
-        Create a Function that will print "This is my first function"
-
-        Call the function by assinging to a variable
+        q_ten = f'''
+        {colour_blue_bg}A fucntions is created to produce a accounting figures which is part of a software for the accounting dpeartment{colour_end}
+        {colour_blue_bg}Call the function by assinging to a variable{colour_end}
         '''
 
         #List of all questions
@@ -634,9 +711,6 @@ def Question_Answer():
             os.system("clear")
             #Increment queston counter
             question_counter += 1
-
-            print(f"{colour_blue}Test Question {question_counter} {colour_end}")
-        
 
             #Check answer
             if (question == "q_one_key"):
