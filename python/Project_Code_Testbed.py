@@ -579,7 +579,25 @@ def Question_Two():
         #Return question score
         #return question_two_score
 
-Question_Two()
+#Question_Two()
+
+def Test_Input():
+
+    #Test for Integeer entry
+
+    in_test_interger = input("Input number: ")
+
+    if (in_test_interger.isdigit()):
+
+        print("This is a number")
+    
+    else:
+
+        print("Is not digit")
+
+
+Test_Input()
+
 
 
 

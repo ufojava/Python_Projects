@@ -367,29 +367,6 @@ def Question_Six():
     #Student entered values
     received_values = []
 
-    
-
-    for value in input_values:
-
-        Exam_Header("6")
-
-        print(f'''
-        {colour_blue_bg}Create a complex variable that prints true:{colour_end}
-
-        {colour_blue_bg}1. You will input your first digit{colour_end}
-        {colour_blue_bg}2. Enter an operator >, <, >= or <={colour_end}
-        {colour_blue_bg}3. Now you final number{colour_end}
-        {colour_blue_bg}The return has to be true get a correct result.{colour_end}
-        ''')
-
-        get_value = input(f"{colour_yellow}{value}: {colour_end}")
-
-        #Add value to the Received List
-        received_values.append(get_value)
-
-    #ERROR CHECK INPUT IN QUESTION 6*****
-
-
     def Proc_Complex_Variable(in_first_param, in_operator, in_second_param):
 
         #Convert string numbers to integers
@@ -431,14 +408,52 @@ def Question_Six():
 
         #Return score
         return question_six_score
+
     
-    #Call function six
-    Proc_Complex_Variable(received_values[0],received_values[1],received_values[2])
+
+    for value in input_values:
+
+        Exam_Header("6")
+
+        print(f'''
+        {colour_blue_bg}Create a complex variable that prints true:{colour_end}
+
+        {colour_blue_bg}1. You will input your first digit{colour_end}
+        {colour_blue_bg}2. Enter an operator >, <, >= or <={colour_end}
+        {colour_blue_bg}3. Now you final number{colour_end}
+        {colour_blue_bg}The return has to be true get a correct result.{colour_end}
+        ''')
+
+        get_value = input(f"{colour_yellow}{value}: {colour_end}")
+
+        #Add value to the Received List
+        received_values.append(get_value)
+    
+    #Set expression to check Operator
+    chk_operator = (received_values[1] == ">" or received_values[1] == "<" or received_values[1] == ">=" or received_values[1] == "<=")
+
+    if (received_values[0].isdigit() and received_values[2].isdigit() and chk_operator):
+
+         #Call function six
+        Proc_Complex_Variable(received_values[0],received_values[1],received_values[2])
+
+    else:
+
+        #Call Title
+        Exam_Header("6")
+
+        print(f"{colour_red}Incorrect input !!!, You entered {received_values}{colour_end}")
+
+
+
 
 def Question_Seven():
 
     #Question severn score
     question_seven_score = 0
+
+    #Call Title
+    Exam_Header("7")
 
     #Solve the Arithmetical problems:
     print(f"{colour_blue_bg}1. Using variable assignment add 5 to existing variable. Answer should be 10{colour_end} ")
@@ -456,24 +471,39 @@ def Question_Seven():
 
             #Check total which should equal 10
             if (add_variable == 10):
-                
-                print()
+
+                #Call Title
+                Exam_Header("7")
+            
                 print(f"{colour_green}Correct Add Assignment: {add_variable}{colour_end}")
 
                 #Add to one point to score
                 question_seven_score += 1
 
+                #Pause program
+                print()
+                input(f"{colour_violet_bg}Press enter to continue..{colour_end}")
+
             else:
+
+                #Call Title
+                Exam_Header("7")
+
                 print(f"{colour_red}{add_variable} is incorrect{colour_end}")
+
+                print()
+                input(f"{colour_violet_bg}Press enter to continue..{colour_end}")
     except:
         pass
     
-    print()
+    #Call Title
+    Exam_Header("7")
+
     print(f"{colour_blue_bg}Using assignment multiply 10 and you answer should be 190:{colour_end} ")
     print()
 
     try:
-
+    
         in_multiply_assign, in_multiply_int = input(f"{colour_yellow}input Multiply assigment and number:{colour_end} ").split()
 
         #Multiply Variable
@@ -485,14 +515,20 @@ def Question_Seven():
 
             if (multiply_variable == 190):
 
-                print()
+                #Call Title
+                Exam_Header("7")
+
                 print(f"{colour_green}Correct multiply assigment: {multiply_variable}{colour_end}")
 
                 #Add one point to the seven score
                 question_seven_score += 1
 
+
             else:
-                print()
+                
+                #Call Title
+                Exam_Header("7")
+
                 print(f"{colour_red}{in_multiply_assign} is incorrect{colour_end}")
     except:
         pass
