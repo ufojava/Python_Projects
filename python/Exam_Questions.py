@@ -25,9 +25,16 @@ colour_violet_bg = "\33[45m"
 
 def Exam_Header(in_question_number):
 
+    #Import library
+    import os
+
+    #Clear Screen
+    os.system("clear")
+
     print(f"{colour_green}******** CODEBASE FUNDAMENTALS EXAMINATION *******{colour_end}")
     print()
     print(f"{colour_blue}Queston {in_question_number}{colour_end}")
+    print()
 
     
 
@@ -35,7 +42,6 @@ def Question_One():
 
     
     question_one_score = 0
-    os.system("clear")
     Exam_Header("1")
 
     print()
@@ -43,7 +49,6 @@ def Question_One():
     {colour_blue_bg}How best can you describe Strings, Integers, Floats and Booleans?{colour_end}
     ''')
     
-    print()
     print('''
     a. Strings, Integers and Floats can be described as Data Types
     b. String = Text, Integers = Numbers, Floats = Numbers with floating points
@@ -60,9 +65,14 @@ def Question_One():
     
     if (question_one_answer == "a"):
 
+        #Title Header
+        Exam_Header(1)
+
         print(f"{colour_green}{question_one_answer} is the correct answer{colour_end}")
         question_one_score += 1
     else:
+        #Title
+        Exam_Header(1)
 
         print(f"{colour_red}{question_one_answer} is incorrect{colour_end}")
         
@@ -80,7 +90,6 @@ def Question_Two():
     # In Python, how do you call a String, Integer, Float and Boolean? 
     for data_type in data_type_list:
 
-        os.system("clear")
         #Call header function
         Exam_Header("2")
 
@@ -132,7 +141,6 @@ def Question_Three():
     #In Python, what is a list?
     question_three_score = 0
 
-    os.system("clear")
     Exam_Header("3")
 
     print(f'''
@@ -156,9 +164,15 @@ def Question_Three():
 
     if (question_three_answer == "a"):
 
+        #Call header 
+        Exam_Header(3)
+
         print(f"{colour_green}{question_three_answer} is the correct answer{colour_end}")
         question_three_score += 3
     else:
+
+        #Call header
+        Exam_Header(3)
 
         print(f"{colour_red}{question_three_answer} is the incorrect answer. A list can store multiples of different data types in a single varaiable{colour_end}")
     
@@ -184,8 +198,6 @@ def Question_Four():
     #Loop for list
     for in_list in range(input_counter):
 
-        os.system("clear")
-
         #Call header function
         Exam_Header("4")
 
@@ -207,7 +219,7 @@ def Question_Four():
         elif (in_list == 5):
             in_status = "sixth"
 
-        in_value = input(f"{colour_yellow}Input list value {in_status}:{colour_end} ")
+        in_value = input(f"{colour_yellow}Input lists {in_status} value: {colour_end} ")
 
         #Check for digital input
         if (in_value.isdigit()):
@@ -259,7 +271,6 @@ def Question_Five():
     #Question score
     question_five_score = 0
 
-    os.system("clear")
     Exam_Header("5")
 
     print(f'''
@@ -287,10 +298,11 @@ def Question_Five():
 
     for m_data in month_data:
 
-        os.system("clear")
         Exam_Header("5")
 
         print(f'''
+        1. Create a List with name: {colour_blue_bg}first_three_months{colour_end}
+        2. Items in the list shold be the first three months in format: {colour_blue_bg}jan....{colour_end}
         {colour_blue_bg}Using a For Loop, print the elements in a list containing months of the year{colour_end}
         ''')
 
@@ -307,6 +319,8 @@ def Question_Five():
         #Check for student input
         if (in_list_name != "first_three_months" or mth_one != "jan" or mth_two != "feb" or mth_three != "mar"):
 
+            #Call Title
+            Exam_Header("5")
             print(f"{colour_red}Incorrect answer. One or more of your input(s) is/are wrong.{colour_end}")
 
         else:
@@ -321,8 +335,11 @@ def Question_Five():
             in_list_name.append(mth_two)
             in_list_name.append(mth_three)
             print()
+
+            #Call Title
+            Exam_Header("5")
             
-            print(f"{colour_green} Correct{colour_end}")
+            print(f"{colour_green}Correct{colour_end}")
             for month in in_list_name:
 
                 print(f"{colour_green}{month}{colour_end}")
@@ -345,16 +362,33 @@ def Question_Six():
     #Question score
     question_six_score = 0
 
-    first_number = input(f"{colour_yellow}Input your first number:{colour_end} ")
-    print()
-    in_operator = input(f"{colour_yellow}Enter your operator:{colour_end} ")
+    input_values = ["Input First Number", "Input Operator", "Input Second Number"]
 
-    #Validate the operator
-    while not (in_operator == "<" or in_operator == ">" or in_operator == ">=" or in_operator == "<="):
-        in_operator = input(f"{colour_red}Invalid operator, enter operator:{colour_end} ")
+    #Student entered values
+    received_values = []
+
     
-    print()
-    second_number = input(f"{colour_yellow}Enter your second number:{colour_end} ")
+
+    for value in input_values:
+
+        Exam_Header("6")
+
+        print(f'''
+        {colour_blue_bg}Create a complex variable that prints true:{colour_end}
+
+        {colour_blue_bg}1. You will input your first digit{colour_end}
+        {colour_blue_bg}2. Enter an operator >, <, >= or <={colour_end}
+        {colour_blue_bg}3. Now you final number{colour_end}
+        {colour_blue_bg}The return has to be true get a correct result.{colour_end}
+        ''')
+
+        get_value = input(f"{colour_yellow}{value}: {colour_end}")
+
+        #Add value to the Received List
+        received_values.append(get_value)
+
+    #ERROR CHECK INPUT IN QUESTION 6*****
+
 
     def Proc_Complex_Variable(in_first_param, in_operator, in_second_param):
 
@@ -383,18 +417,23 @@ def Question_Six():
         #Solve true and false 
         if (complex_variable):
 
+            #Call Title
+            Exam_Header("6")
+
             print(f"{colour_green}True. Your answer is correct{colour_end}")
             #question_six_score += 3
 
         else:
 
+            #Call Title
+            Exam_Header("6")
             print(f"{colour_red}False. You answer is incorrect{colour_end}")
 
         #Return score
         return question_six_score
     
     #Call function six
-    Proc_Complex_Variable(first_number,in_operator,second_number)
+    Proc_Complex_Variable(received_values[0],received_values[1],received_values[2])
 
 def Question_Seven():
 
