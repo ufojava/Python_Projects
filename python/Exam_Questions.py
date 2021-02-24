@@ -540,41 +540,72 @@ def Question_Eight():
     #Question eight score
     question_eight_score = 0
 
-    #First line of the IF Statement
-    in_if_statement_first_line = input(f"{colour_yellow}Input the first line of your IF statement:{colour_end} ")
-    print()
+    
 
-    #Else condition if not ment
-    in_else_statement_line = input(f"{colour_yellow}Input ELSE statement line:{colour_end} ")
+    task_list = ["IF", "ELSE"]
 
+    get_input = []
+
+
+
+    for prompt in task_list:
+
+        #Call Title
+        Exam_Header("8")
+
+        print(f'''
+        {colour_blue_bg}Using the IF, ELIF and ELSE Conditional statements, create a code block.{colour_end}
+
+        {colour_blue_bg}You goal is to print Success if 20 is greater than 10 else print Unsuccessful{colour_end}
+        ''')
+
+        #First line of the IF Statement
+        build_code_input = input(f"{colour_yellow}{prompt}..: {colour_end} ")
+
+        #Add input to list
+        get_input.append(build_code_input)
+        print()
 
     #Check student work
 
     #Stage one IF Statement
-    if (in_if_statement_first_line == "if(20 > 10):" or in_if_statement_first_line == "if (20 > 10):"):
+    if (get_input[0] == "if(20 > 10):" or get_input[0] == "if (20 > 10):" or get_input[0] == "IF(20 > 10):" or get_input[0] == "IF (20 > 10):"):
 
-        print()
-        print(f"{colour_green}{in_if_statement_first_line} is Correct{colour_end}")
+        #Call Title
+        Exam_Header("8")
+
+        print(f"{colour_green}{get_input[0]} is Correct{colour_end}")
 
         #Add one point to question 8 score
         question_eight_score += 1
 
+        #Pause program
+        print()
+        input(f"{colour_violet_bg}Press enter to continue..{colour_end}")
+
     else:
 
-        print()
-        print(f"{colour_red}{in_if_statement_first_line} is incorrect{colour_end}")
+        #Call Title
+        Exam_Header("8")
+
+        print(f"{colour_red}{get_input[0]} is incorrect{colour_end}")
     
     #Stage 2 print output statement
-    if (in_else_statement_line.startswith("else:")):
+    if (get_input[1] == "else:" or get_input[1] == "ELSE:"):
 
-        print()
-        print(f"{colour_green}{in_else_statement_line} is correct{colour_end}")
+        #Call Title
+        Exam_Header("8")
+
+        print(f"{colour_green}{get_input[1]} is correct{colour_end}")
 
         #Add one point to the question 8 score
         question_eight_score += 1
     else:
 
-        print(f"{colour_red}{in_else_statement_line} is incorrect{colour_end}")
+        #Call Title
+        Exam_Header("8")
+
+        print(f"{colour_red}{get_input[1]} is incorrect{colour_end}")
 
 
 
