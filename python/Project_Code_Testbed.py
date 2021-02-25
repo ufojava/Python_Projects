@@ -616,11 +616,12 @@ def Test_Input():
 
 #Test_Input()
 
-import os
+aggregate_age_list = [10,5,8,7]
 
-get_operating_system = os.name
+sum_of_list = sum(aggregate_age_list)
 
-print(get_operating_system)
+print(sum_of_list)
+
 
 
 

@@ -10,7 +10,7 @@ Dept: HOme Office
 #Import Questions from Data File
 import os
 import re #Reg Expression
-from numpy import random
+
 
 
 #Colour Pallette
@@ -634,9 +634,7 @@ def Question_Nine():
     university_student_ages = [f"{colour_blue}Student one age:{colour_end} ", f"{colour_red}Student two age:{colour_end} ", f"{colour_green}Student three age:{colour_end} "]
 
     #Variables
-    student_one = 0
-    student_two = 0
-    student_three = 0
+    get_student_ages = []
 
     student_counter = 0
 
@@ -649,76 +647,41 @@ def Question_Nine():
 
             #Clear Screen
             Clear_Screen()
-            print(f"{colour_blue_bg}Enter student age between 17 and 65{colour_end}")
-            print()
-            print(f"{colour_blue_bg}Variable for total number of students:{colour_end} {colour_yellow}aggregate_student_ages{colour_end}")
-            print()
-            print(f"{colour_blue_bg}Variable for student one:{colour_end} {colour_yellow}student_one{colour_end}")
-            print(f"{colour_blue_bg}Variable for student two:{colour_end} {colour_yellow}student_two{colour_end}")
-            print(f"{colour_blue_bg}Variable for student three:{colour_end} {colour_yellow}student_three{colour_end}")
+
+            Exam_Header("9")
+
+            print(f"{colour_blue_bg}Enter three student ages range (17 and 65){colour_end}")
             print()
 
-            input_age = int(input(f"{student}"))
+            input_student_ages = input(f"{student}")
             print()
-            input_assignment = input(f"Input assigment command to add {student} to {colour_yellow}aggregate_student_ages: {colour_end}")
 
-            #Check command
-            if (input_assignment == "aggregate_student_ages += student_one" or input_assignment == "aggregate_student_ages += student_two" or input_assignment == "aggregate_student_ages += student_three"):
-
-
-
-                while not (input_age > 0 and input_age < 65):
-                    input_age = int(input(f"{student}"))
+            while not (input_student_ages.isdigit()):
+                input_student_ages = input(f"{colour_red}Inavlid input!!{colour_end} {student}")
             
+            #Convert student age digit to integer
+            age_converter = int(input_student_ages)
 
-                if (student == university_student_ages[0]):
+            #Check age range
+            age_range = (age_converter > 16 and age_converter < 66)
 
-                    #Convert input to intgers
-                    convert_student_one = int(input_age)
+            if (age_range):
 
-                    #Assign age to student one
-                    student_one = convert_student_one
+                #Add ages to list
+                get_student_ages.append(age_converter)
 
-                    #Increment student counter
-                    student_counter += 1
+                #Increment the counter by one
+                student_counter += 1
 
-                    #Add age number to the total
-                    aggregate_student_ages += student_one
-                
-                elif (student == university_student_ages[1]):
-
-                    #Convert input to intgers
-                    convert_student_two = int(input_age)
-
-                    #Assign age to student one
-                    student_two = convert_student_two
-
-                    #Increment student counter
-                    student_counter += 1
-
-                    #Add age number to the total
-                    aggregate_student_ages += student_two
-
-                elif (student == university_student_ages[2]):
-
-                    #Convert input to intgers
-                    convert_student_three = int(input_age)
-
-                    #Assign age to student one
-                    student_three = convert_student_three
-
-                    #Increment student counter
-                    student_counter += 1
-
-                    #Add age number to the total
-                    aggregate_student_ages += student_three
+                #Sum of all the ages
+                aggregate_student_ages = sum(get_student_ages)
 
             else:
 
-                print()
-                print(f"{colour_red}Incorrect Assignement Operator for{colour_end} {student}")
-                print()
-                input(f"{colour_violet_bg}Press any key to continue...{colour_end}")
+                Exam_Header("9")
+                print(f"{colour_red}Incorrect age input: {input_student_ages}{colour_end}")
+                return
+
 
         #Break While loop if counter is 3
         if (student_counter == 3):
