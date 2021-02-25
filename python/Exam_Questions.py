@@ -23,13 +23,32 @@ colour_blue_bg = "\33[44m" #Colour Blue Background
 colour_violet_bg = "\33[45m"
 
 
+#Fuction to clear screen
+def Clear_Screen():
+
+    #Import Library
+    import os
+
+    #Apply appropirate clear screen
+    if (os.name == "nt"):
+
+        #Apply Windows clear screen
+        os.system("cls")
+
+    else:
+
+        #Apply Linux or Mac OS
+        os.system("clear")
+
+
+
 def Exam_Header(in_question_number):
 
     #Import library
     import os
 
     #Clear Screen
-    os.system("clear")
+    Clear_Screen()
 
     print(f"{colour_green}******** CODEBASE FUNDAMENTALS EXAMINATION *******{colour_end}")
     print()
@@ -629,7 +648,7 @@ def Question_Nine():
         for student in university_student_ages:
 
             #Clear Screen
-            os.system("clear")
+            Clear_Screen()
             print(f"{colour_blue_bg}Enter student age between 17 and 65{colour_end}")
             print()
             print(f"{colour_blue_bg}Variable for total number of students:{colour_end} {colour_yellow}aggregate_student_ages{colour_end}")
@@ -814,7 +833,7 @@ def Question_Answer():
         for question in list_of_questions:
 
             #Clear screen
-            os.system("clear")
+            Clear_Screen()
             #Increment queston counter
             question_counter += 1
 

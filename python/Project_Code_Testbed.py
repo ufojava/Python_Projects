@@ -6,6 +6,24 @@ Synopsis: This is where I will perform unit testing
 '''
 
 
+#Fuction to clear screen
+def Clear_Screen():
+
+    #Import Library
+    import os
+
+    #Apply appropirate clear screen
+    if (os.name == "nt"):
+
+        #Apply Windows clear screen
+        os.system("cls")
+
+    else:
+
+        #Apply Linux or Mac OS
+        os.system("clear")
+
+
 
 #Funciton to match numbers in 2 sets of numbers
 def print_match():
@@ -596,7 +614,14 @@ def Test_Input():
         print("Is not digit")
 
 
-Test_Input()
+#Test_Input()
+
+import os
+
+get_operating_system = os.name
+
+print(get_operating_system)
+
 
 
 
