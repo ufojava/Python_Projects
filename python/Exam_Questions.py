@@ -88,14 +88,18 @@ def Question_One():
         Exam_Header(1)
 
         print(f"{colour_green}{question_one_answer} is the correct answer{colour_end}")
-        question_one_score += 1
+        question_one_score += 3
+
+        #Return score value
+        return question_one_score
     else:
         #Title
         Exam_Header(1)
 
         print(f"{colour_red}{question_one_answer} is incorrect{colour_end}")
-        
-    return question_one_score
+
+        #Return the current score
+        return question_one_score
 
     
 #Question 2 Function
@@ -121,7 +125,7 @@ def Question_Two():
         print()
 
         #Check answer
-        if (answer_input == "str"):
+        if (answer_input == "str" and data_type == data_type_list[0]):
             
             print(f"{colour_green}{answer_input} is the correct answer{colour_end}")
 
@@ -131,8 +135,10 @@ def Question_Two():
             print()
             #Pause process untill key is pressed
             input(f"{colour_violet_bg}Press enter key to continue...{colour_end}")
+            
+
         
-        elif (answer_input == "int"):
+        elif (answer_input == "int" and data_type == data_type_list[1]):
             
             print(f"{colour_green}{answer_input} is the correct answer{colour_end}")
 
@@ -143,16 +149,18 @@ def Question_Two():
             #Pause process untill key is pressed
             input(f"{colour_violet_bg}Press enter key to continue...{colour_end}")
 
-        elif (answer_input == "float"):
+        elif (answer_input == "float" and data_type == data_type_list[2]):
 
             print(f"{colour_green}{answer_input} is the correct answer{colour_end}")
 
             #Add a point to the score
             question_two_score += 1
 
+            #Return the question score 2
+            return question_two_score
+
         
-        #Return question score
-        #return question_two_score
+        
 
 def Question_Three():
 
@@ -188,15 +196,20 @@ def Question_Three():
 
         print(f"{colour_green}{question_three_answer} is the correct answer{colour_end}")
         question_three_score += 3
+
+        #Return Score
+        return question_three_score
     else:
 
         #Call header
         Exam_Header(3)
 
         print(f"{colour_red}{question_three_answer} is the incorrect answer. A list can store multiples of different data types in a single varaiable{colour_end}")
+
+        #Return Score
+        return question_three_score
     
-    #Return Score
-    return question_three_score
+    
 
 def Question_Four():
 
@@ -277,13 +290,17 @@ def Question_Four():
     if (num_of_str == 3 and num_of_int == 2 and num_of_float == 1):
 
         print(f"{colour_green}{question_list} list is correct{colour_end}")
+
+        #3 Mark score for question
+        question_four_score += 3
+        return question_four_score
+
     else:
 
         print(f"{colour_red}{question_list} is incorrect. You should have 3 string, 2 integers and 1 float.{colour_end}")
 
-    #3 Mark score for question
-    question_four_score += 3
-    return question_four_score
+        #3 Mark score for question
+        return question_four_score
 
 def Question_Five():
 
@@ -335,6 +352,8 @@ def Question_Five():
 
     def Student_Question_Five(in_list_name,mth_one,mth_two,mth_three):
 
+        sub_question_five_score = 0
+
         #Check for student input
         if (in_list_name != "first_three_months" or mth_one != "jan" or mth_two != "feb" or mth_three != "mar"):
 
@@ -359,19 +378,23 @@ def Question_Five():
             Exam_Header("5")
             
             print(f"{colour_green}Correct{colour_end}")
+            #Add score
+            sub_question_five_score  += 3
+
             for month in in_list_name:
 
                 print(f"{colour_green}{month}{colour_end}")
         
-            #Add score
-            #question_five_score += 3
+            
 
-        #Return the score for question 5
-        return question_five_score
+            #Return the score for question 5
+            return sub_question_five_score 
 
 
     #Call Student function        
-    Student_Question_Five(get_month_data[0],get_month_data[1],get_month_data[2],get_month_data[3])
+    question_five_score = Student_Question_Five(get_month_data[0],get_month_data[1],get_month_data[2],get_month_data[3])
+
+    return question_five_score
 
 
 
@@ -728,11 +751,11 @@ def Question_Ten():
     a. str) b. int) c. float) d. bool) e. none of the above)
     
     ''')
-    sutdent_answer = input(f"{colour_yellow}Input your asnwer:{colour_end} ")
+    student_answer = input(f"{colour_yellow}Input your asnwer:{colour_end} ")
 
     #Error check input
 
-    while not (sutdent_answer == "a" or sutdent_answer == "b" or sutdent_answer == "c" or sutdent_answer == "d" or sutdent_answer == "e"):
+    while not (student_answer == "a" or student_answer == "b" or student_answer == "c" or student_answer == "d" or student_answer == "e"):
 
         Exam_Header("10")
 
@@ -745,18 +768,18 @@ def Question_Ten():
         
         ''')
         print()
-        sutdent_answer = input(f"{colour_red}Invalid selection!!!{colour_end}{colour_yellow} Input your asnwer:{colour_end} ")
+        student_answer = input(f"{colour_red}Invalid selection!!!{colour_end}{colour_yellow} Choose from options a to e:{colour_end} ")
 
-    if (sutdent_answer == "c"):
+    if (student_answer == "c"):
 
         #Get question title
         Exam_Header("10")
-        print(f"{colour_green}{sutdent_answer} is correct. The division assigment operator always returns a float data type{colour_end}")
+        print(f"{colour_green}{student_answer} is correct. The division assigment operator always returns a float data type{colour_end}")
 
     else:
 
         Exam_Header("10")
-        print(f"{colour_red}{sutdent_answer} is incorrect. The division assigment operator always returns a float data type{colour_end}")
+        print(f"{colour_red}{student_answer} is incorrect. The division assigment operator always returns a float data type{colour_end}")
 
 
 
@@ -775,7 +798,7 @@ def Question_Ten():
 def Question_Answer():
 
     
-    total_scores = 0
+    
 
     #Variables
     def Questions():
@@ -783,6 +806,7 @@ def Question_Answer():
 
         #Variable
         question_counter = 0
+        total_scores = 0
 
         q_one = f'''
         {colour_blue_bg}How best can you describe Strings, Integers, Floats and Booleans?{colour_end}
@@ -854,45 +878,47 @@ def Question_Answer():
                 print(list_of_questions[question])
 
                 #Call Anser One
-                Question_One()
+                total_scores += Question_One()
+                
                 print()
-                input(f"{colour_violet_bg}Press any key to continue ...{colour_end}")
+                input(f"{colour_yellow}Current Score is: {total_scores}{colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
+                
 
             elif (question == "q_two_key"):
 
                 print(list_of_questions[question])
 
                 #Call Answer Two
-                Question_Two()
+                total_scores += Question_Two()
                 print()
-                input(f"{colour_violet_bg}Press any key to continue ...{colour_end}")
+                input(f"{colour_yellow}Current Score is: {total_scores}{colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
 
             elif (question == "q_three_key"):
 
                 print(list_of_questions[question])
 
                 #Call Answer Three
-                Question_Three()
+                total_scores += Question_Three()
                 print()
-                input(f"{colour_violet_bg}Press any key to continue ...{colour_end}")
+                input(f"{colour_yellow}Current Score is: {total_scores}{colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
 
             elif (question == "q_four_key"):
 
                 print(list_of_questions[question])
 
                 #Call Answer four
-                Question_Four()
+                total_scores += Question_Four()
                 print()
-                input(f"{colour_violet_bg}Press any key to continue ...{colour_end}")
+                input(f"{colour_yellow}Current Score is: {total_scores}{colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
 
             elif (question == "q_five_key"):
 
                 print(list_of_questions[question])
 
                 #Call Answer five
-                Question_Five()
+                total_scores += Question_Five()
                 print()
-                input(f"{colour_violet_bg}Press any key to continue ...{colour_end}")
+                input(f"{colour_yellow}Current Score is: {total_scores}{colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
 
             elif (question == "q_six_key"):
 

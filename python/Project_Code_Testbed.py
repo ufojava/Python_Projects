@@ -616,11 +616,23 @@ def Test_Input():
 
 #Test_Input()
 
-aggregate_age_list = [10,5,8,7]
+def Retrun_Score():
 
-sum_of_list = sum(aggregate_age_list)
+    num_one = 20
 
-print(sum_of_list)
+    num_two = 50
+
+    sum_num = num_one + num_two
+    return sum_num
+
+
+current_score = 0
+total_score = 0
+
+total_number = Retrun_Score()
+
+current_score += total_number
+print(current_score)
 
 
 
