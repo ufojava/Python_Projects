@@ -650,7 +650,8 @@ def Question_Nine():
 
             Exam_Header("9")
 
-            print(f"{colour_blue_bg}Enter three student ages range (17 and 65){colour_end}")
+            print(f"{colour_blue_bg}Goal is to get the ages of 3 students, send the total of the ages to the company accounts department{colour_end}")
+            print(f"{colour_blue_bg}Enter three student ages range{colour_end} {colour_yellow}(17 and 65){colour_end}{colour_blue_bg} and send the total to accounts{colour_end}")
             print()
 
             input_student_ages = input(f"{student}")
@@ -686,33 +687,72 @@ def Question_Nine():
         #Break While loop if counter is 3
         if (student_counter == 3):
 
-            print()
-            print(f"{colour_green}The total number of student ages is: {aggregate_student_ages}{colour_end}") 
-            break
+            #Request input for the return value 
+            input_student_return_value = input(f"{colour_yellow}Do you know the function return value? Enter the number:{colour_end}  ")
+
+            #Check that input is digit
+            while not (input_student_return_value.isdigit):
+                print()
+                input_student_return_value = input(f"{colour_red}Invalid input !!! Enter return value:{colour_end} ")
+            
+            #Convert the input to intger
+            converted_return_value = int(input_student_return_value)
+
+            #Evaluate agregate student ages with question return value input
+            if (converted_return_value == aggregate_student_ages):
+
+                Exam_Header("9")
+                print()
+                print(f"{colour_green}Correct. Your return value input was{colour_end} {colour_yellow}{converted_return_value}{colour_end} {colour_green}and aggregate student ages was{colour_end}{colour_yellow} {aggregate_student_ages}{colour_end}")
+                print()
+            
+            else:
+
+                Exam_Header("9")
+                print()
+                print(f"{colour_red}Incorrect!! Your return value{colour_end}{colour_yellow} {converted_return_value}{colour_end}{colour_red} did not match the total of the re students ages of{colour_end}{colour_yellow} {aggregate_student_ages}{colour_end}")
+        break
 
 
 
 
 def Question_Ten():
 
-    #Import Library
-    import os
-
-    #Colour palet
-    colour_end = "\33[0m"
-    colour_red = "\33[31m"
-    colour_green = "\33[32m"
-    colour_yellow = "\33[33m"
-    colour_blue = "\33[34m"
-    colour_blue_bg = "\33[44m"
-    colour_violet_bg = "\33[45m"
+    Exam_Header("10")
 
     print(f'''
-    {colour_blue_bg}1. Input your first Integer, press enter and input the second intger for testing your code block{colour_end}
-    {colour_blue_bg}2. The variable holding the processed variables is:{colour_end} {colour_violet_bg}accounting_total{colour_end}
-    {colour_blue_bg}3. What command do you use to send{colour_end}{colour_violet_bg}accounting_total{colour_end} {colour_blue_bg} when function is called?{colour_end}
+    {colour_blue_bg}Variable_one = 20{colour_end}
+    {colour_blue_bg}Using the division assignment operator to divide variable_one by 5, what is the return data type{colour_end}
 
+    Answer is:
+
+    a. str
+    b. int
+    c. float
+    d. bool
+    e. none of the above
     ''')
+    print()
+    sutdent_answer = input(f"{colour_yellow}Input your asnwer:{colour_end} ")
+
+    #Error check input
+
+    while not (sutdent_answer == "a" or sutdent_answer == "b" or sutdent_answer == "c" or sutdent_answer == "d" or sutdent_answer == "e"):
+
+        sutdent_answer = input(f"Invalid selection!!! {colour_red}Input your asnwer:{colour_end} ")
+
+    if (sutdent_answer == "c"):
+
+        #Get question title
+        Exam_Header("10")
+        print(f"{colour_green}{sutdent_answer} is correct. The division assigment operator always returns a float data type{colour_end}")
+
+    else:
+
+        Exam_Header("10")
+        print(f"{colour_red}{sutdent_answer} is incorrect. The division assigment operator always returns a float data type{colour_end}")
+
+
 
 
 
@@ -782,8 +822,8 @@ def Question_Answer():
         '''
 
         q_ten = f'''
-        {colour_blue_bg}A fucntions is created to produce a accounting figures which is part of a software for the accounting dpeartment{colour_end}
-        {colour_blue_bg}Call the function by assinging to a variable{colour_end}
+        {colour_blue_bg}Variable_one = 20{colour_end}
+        {colour_blue_bg}Using the division assignment operator to divide variable_one by 5, what is the return data type{colour_end}
         '''
 
         #List of all questions
