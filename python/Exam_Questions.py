@@ -723,23 +723,29 @@ def Question_Ten():
     print(f'''
     {colour_blue_bg}Variable_one = 20{colour_end}
     {colour_blue_bg}Using the division assignment operator to divide variable_one by 5, what is the return data type{colour_end}
-
     Answer is:
 
-    a. str
-    b. int
-    c. float
-    d. bool
-    e. none of the above
+    a. str) b. int) c. float) d. bool) e. none of the above)
+    
     ''')
-    print()
     sutdent_answer = input(f"{colour_yellow}Input your asnwer:{colour_end} ")
 
     #Error check input
 
     while not (sutdent_answer == "a" or sutdent_answer == "b" or sutdent_answer == "c" or sutdent_answer == "d" or sutdent_answer == "e"):
 
-        sutdent_answer = input(f"Invalid selection!!! {colour_red}Input your asnwer:{colour_end} ")
+        Exam_Header("10")
+
+        print(f'''
+        {colour_blue_bg}Variable_one = 20{colour_end}
+        {colour_blue_bg}Using the division assignment operator to divide variable_one by 5, what is the return data type{colour_end}
+        Answer is:
+
+        a. str) b. int) c. float) d. bool) e. none of the above)
+        
+        ''')
+        print()
+        sutdent_answer = input(f"{colour_red}Invalid selection!!!{colour_end}{colour_yellow} Input your asnwer:{colour_end} ")
 
     if (sutdent_answer == "c"):
 
