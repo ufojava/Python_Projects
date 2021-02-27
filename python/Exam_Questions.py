@@ -156,8 +156,8 @@ def Question_Two():
             #Add a point to the score
             question_two_score += 1
 
-            #Return the question score 2
-            return question_two_score
+    #Return the question score 2
+    return question_two_score
 
         
         
@@ -387,8 +387,8 @@ def Question_Five():
         
             
 
-            #Return the score for question 5
-            return sub_question_five_score 
+        #Return the score for question 5
+        return sub_question_five_score 
 
 
     #Call Student function        
@@ -415,6 +415,10 @@ def Question_Six():
         convert_first_param = int(in_first_param)
         convert_second_param = int(in_second_param)
 
+        #Sub Question six score
+        sub_question_six_score = 0
+
+
         #Check and assign operator
         if (in_operator == "<"):
 
@@ -440,7 +444,13 @@ def Question_Six():
             Exam_Header("6")
 
             print(f"{colour_green}True. Your answer is correct{colour_end}")
-            #question_six_score += 3
+
+            #Add points to sub question score
+            sub_question_six_score += 3
+            
+            return sub_question_six_score
+        
+
 
         else:
 
@@ -448,8 +458,11 @@ def Question_Six():
             Exam_Header("6")
             print(f"{colour_red}False. You answer is incorrect{colour_end}")
 
-        #Return score
-        return question_six_score
+            #Retun sub score
+            return sub_question_six_score
+
+            
+
 
     
 
@@ -476,8 +489,10 @@ def Question_Six():
 
     if (received_values[0].isdigit() and received_values[2].isdigit() and chk_operator):
 
-         #Call function six
-        Proc_Complex_Variable(received_values[0],received_values[1],received_values[2])
+        #Call function six
+        question_six_score = Proc_Complex_Variable(received_values[0],received_values[1],received_values[2])
+        
+    
 
     else:
 
@@ -485,6 +500,10 @@ def Question_Six():
         Exam_Header("6")
 
         print(f"{colour_red}Incorrect input !!!, You entered {received_values}{colour_end}")
+
+    
+
+    return question_six_score
 
 
 
@@ -925,9 +944,9 @@ def Question_Answer():
                 print(list_of_questions[question])
 
                 #Call Answer six
-                Question_Six()
+                total_scores += Question_Six()
                 print()
-                input(f"{colour_violet_bg}Press any key to continue ...{colour_end}")
+                input(f"{colour_yellow}Current Score is: {total_scores}{colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
 
             elif (question == "q_seven_key"):
 
