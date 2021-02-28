@@ -65,7 +65,7 @@ def Question_One():
 
     print()
     print(f'''
-    {colour_blue_bg}How best can you describe Strings, Integers, Floats and Booleans?{colour_end}
+    {colour_blue_bg}How best can you describe {colour_end} {colour_yellow}Strings{colour_end}, {colour_yellow}Integers{colour_end}, {colour_yellow}Floats{colour_end} {colour_blue_bg}and{colour_end} {colour_yellow}Booleans?{colour_end}
     ''')
     
     print('''
@@ -117,11 +117,11 @@ def Question_Two():
         Exam_Header("2")
 
         print(f'''
-        {colour_blue_bg}In Python, how do you call a String, Integer, Float: ?{colour_end} 
+        {colour_blue_bg}In Python, how do you call a {colour_end} {colour_yellow}String{colour_end}, {colour_yellow}Integer{colour_end}, {colour_yellow}Float: ?{colour_end} 
         ''')
 
         print()
-        answer_input = input(f"{colour_yellow}Call the {data_type} function and press Enter:{colour_end} ")
+        answer_input = input(f"Call the{colour_yellow} {data_type} {colour_end} function and press Enter: ")
         print()
 
         #Check answer
@@ -171,7 +171,7 @@ def Question_Three():
     Exam_Header("3")
 
     print(f'''
-    {colour_blue_bg}In Python, what is a list?{colour_end} 
+    {colour_blue_bg}In Python, what is a {colour_end}{colour_yellow}list?{colour_end} 
     ''')
 
     print('''
@@ -235,7 +235,7 @@ def Question_Four():
 
         print()
         print(f'''
-        {colour_blue_bg}Create a list containing 3 String, 2 Intgers and 1 Floats  press enter{colour_end}
+        {colour_blue_bg}Create a {colour_end}{colour_yellow}list{colour_end} {colour_blue_bg}containing{colour_end} {colour_yellow}3 Strings{colour_end}, {colour_yellow}2 Intgers{colour_end} {colour_blue_bg}and{colour_end} {colour_yellow}1 Float{colour_end} {colour_blue_bg} press enter{colour_end}
         ''')
 
         if (in_list == 0):
@@ -315,15 +315,6 @@ def Question_Five():
 
 
     print()
-    #Using a For Loop, print the elements in a list containing months of the year
-    print(f'''
-    For Loop in a List
-    Your code task
-    1. Create a List with name: {colour_blue_bg}first_three_months{colour_end}
-    2. Items in the list shold be the first three months in format: {colour_blue_bg}jan....{colour_end}
-
-    The result will display the 3 months
-    ''')
 
     month_data = ["list_name","first_month","second_month","third_month"]
 
@@ -337,9 +328,9 @@ def Question_Five():
         Exam_Header("5")
 
         print(f'''
-        1. Create a List with name: {colour_blue_bg}first_three_months{colour_end}
-        2. Items in the list shold be the first three months in format: {colour_blue_bg}jan....{colour_end}
-        {colour_blue_bg}Using a For Loop, print the elements in a list containing months of the year{colour_end}
+        {colour_blue_bg}1. Create a List with name:{colour_end} {colour_yellow}first_three_months{colour_end}
+        {colour_blue_bg}2. Enter first three months.{colour_end} {colour_yellow}Input a month at a time and press enter. Example: jan{colour_end}
+    
         ''')
 
         in_month_data = input(f"{colour_yellow}Enter {m_data}:{colour_end} ")
@@ -471,12 +462,12 @@ def Question_Six():
         Exam_Header("6")
 
         print(f'''
-        {colour_blue_bg}Create a complex variable that prints true:{colour_end}
+        {colour_blue_bg}Create a complex variable that prints{colour_end}{colour_yellow} true:{colour_end}
 
-        {colour_blue_bg}1. You will input your first digit{colour_end}
-        {colour_blue_bg}2. Enter an operator >, <, >= or <={colour_end}
-        {colour_blue_bg}3. Now you final number{colour_end}
-        {colour_blue_bg}The return has to be true get a correct result.{colour_end}
+        {colour_blue_bg}1. You will input your first{colour_end}{colour_yellow} Integer{colour_end}
+        {colour_blue_bg}2. Enter an {colour_end}{colour_yellow}operator >, <, >= or <={colour_end}
+        {colour_blue_bg}3. Now you second{colour_end}{colour_yellow} Integer{colour_end}
+        {colour_blue_bg}The return has to be{colour_end} {colour_yellow}true{colour_end} {colour_blue_bg}get a correct result.{colour_end}
         ''')
 
         get_value = input(f"{colour_yellow}{value}: {colour_end}")
@@ -517,7 +508,7 @@ def Question_Seven():
     Exam_Header("7")
 
     #Solve the Arithmetical problems:
-    print(f"{colour_blue_bg}1. Using variable assignment add 5 to existing variable. Answer should be 10{colour_end} ")
+    print(f"{colour_blue_bg}1. Using variable assignment {colour_end}{colour_yellow}add 5{colour_end} {colour_blue_bg}to an existing variable. Answer should be{colour_end} {colour_yellow}10{colour_end} ")
     print()
 
     try:
@@ -539,7 +530,7 @@ def Question_Seven():
                 print(f"{colour_green}Correct Add Assignment: {add_variable}{colour_end}")
 
                 #Add to one point to score
-                question_seven_score += 1
+                question_seven_score += 1.5
 
                 #Pause program
                 print()
@@ -560,7 +551,7 @@ def Question_Seven():
     #Call Title
     Exam_Header("7")
 
-    print(f"{colour_blue_bg}Using assignment multiply 10 and you answer should be 190:{colour_end} ")
+    print(f"{colour_blue_bg}Using assignment{colour_end}{colour_yellow} multiply 10{colour_end}{colour_blue_bg} and you answer should be{colour_end} {colour_yellow}190:{colour_end} ")
     print()
 
     try:
@@ -582,7 +573,8 @@ def Question_Seven():
                 print(f"{colour_green}Correct multiply assigment: {multiply_variable}{colour_end}")
 
                 #Add one point to the seven score
-                question_seven_score += 1
+                question_seven_score += 1.5
+                return int(question_seven_score)
 
 
             else:
@@ -591,6 +583,7 @@ def Question_Seven():
                 Exam_Header("7")
 
                 print(f"{colour_red}{in_multiply_assign} is incorrect{colour_end}")
+                return int(question_seven_score)
     except:
         pass
 
@@ -953,9 +946,9 @@ def Question_Answer():
                 print(list_of_questions[question])
 
                 #Call Answer Seven
-                Question_Seven()
+                total_scores += Question_Seven()
                 print()
-                input(f"{colour_violet_bg}Press any key to continue ...{colour_end}")
+                input(f"{colour_yellow}Current Score is: {total_scores}{colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
 
             elif (question == "q_eight_key"):
 
