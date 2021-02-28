@@ -819,6 +819,9 @@ def Question_Answer():
         #Variable
         question_counter = 0
         total_scores = 0
+        max_Score = 30
+
+        
 
         q_one = f'''
         {colour_blue_bg}How best can you describe Strings, Integers, Floats and Booleans?{colour_end}
@@ -891,9 +894,12 @@ def Question_Answer():
 
                 #Call Anser One
                 total_scores += Question_One()
+
+                #Calculate Percentage
+                percent_score = ((total_scores / max_Score) * 100)
                 
                 print()
-                input(f"{colour_yellow}Current Score is: {total_scores}{colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
+                input(f"{colour_yellow}Current Score is: {total_scores} ({percent_score}%){colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
                 
 
             elif (question == "q_two_key"):
@@ -902,8 +908,12 @@ def Question_Answer():
 
                 #Call Answer Two
                 total_scores += Question_Two()
+
+                #Calculate Percentage
+                percent_score = ((total_scores / max_Score) * 100)
+
                 print()
-                input(f"{colour_yellow}Current Score is: {total_scores}{colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
+                input(f"{colour_yellow}Current Score is: {total_scores} ({percent_score}%){colour_end}{colour_violet_bg}Press any key to continue ...{colour_end}")
 
             elif (question == "q_three_key"):
 
@@ -911,8 +921,12 @@ def Question_Answer():
 
                 #Call Answer Three
                 total_scores += Question_Three()
+
+                #Calculate Percentage
+                percent_score = ((total_scores / max_Score) * 100)
+
                 print()
-                input(f"{colour_yellow}Current Score is: {total_scores}{colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
+                input(f"{colour_yellow}Current Score is: {total_scores} ({percent_score}%){colour_end}{colour_violet_bg}Press any key to continue ...{colour_end}")
 
             elif (question == "q_four_key"):
 
@@ -920,8 +934,12 @@ def Question_Answer():
 
                 #Call Answer four
                 total_scores += Question_Four()
+
+                #Calculate Percentage
+                percent_score = ((total_scores / max_Score) * 100)
+
                 print()
-                input(f"{colour_yellow}Current Score is: {total_scores}{colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
+                input(f"{colour_yellow}Current Score is: {total_scores} ({percent_score}%){colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
 
             elif (question == "q_five_key"):
 
@@ -929,8 +947,13 @@ def Question_Answer():
 
                 #Call Answer five
                 total_scores += Question_Five()
+
+                #Calculate Percentage
+                percent_score = ((total_scores / max_Score) * 100)
+
+
                 print()
-                input(f"{colour_yellow}Current Score is: {total_scores}{colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
+                input(f"{colour_yellow}Current Score is: {total_scores} ({percent_score}%){colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
 
             elif (question == "q_six_key"):
 
@@ -938,8 +961,12 @@ def Question_Answer():
 
                 #Call Answer six
                 total_scores += Question_Six()
+
+                #Calculate Percentage
+                percent_score = ((total_scores / max_Score) * 100)
+
                 print()
-                input(f"{colour_yellow}Current Score is: {total_scores}{colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
+                input(f"{colour_yellow}Current Score is: {total_scores} ({percent_score}%){colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
 
             elif (question == "q_seven_key"):
 
@@ -947,8 +974,12 @@ def Question_Answer():
 
                 #Call Answer Seven
                 total_scores += Question_Seven()
+
+                #Calculate Percentage
+                percent_score = ((total_scores / max_Score) * 100)
+                
                 print()
-                input(f"{colour_yellow}Current Score is: {total_scores}{colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
+                input(f"{colour_yellow}Current Score is: {total_scores} ({percent_score}%){colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
 
             elif (question == "q_eight_key"):
 
@@ -976,6 +1007,8 @@ def Question_Answer():
                 Question_Ten()
                 print()
                 input(f"{colour_violet_bg}Press any key to continue ...{colour_end}")
+
+    
 
     Questions()
 
