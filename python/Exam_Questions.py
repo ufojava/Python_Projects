@@ -608,9 +608,9 @@ def Question_Eight():
         Exam_Header("8")
 
         print(f'''
-        {colour_blue_bg}Using the IF, ELIF and ELSE Conditional statements, create a code block.{colour_end}
+        {colour_blue_bg}Using the{colour_end} {colour_yellow}IF, ELIF and ELSE{colour_end} {colour_blue_bg}Conditional statements, create a code block.{colour_end}
 
-        {colour_blue_bg}You goal is to print Success if 20 is greater than 10 else print Unsuccessful{colour_end}
+        {colour_blue_bg}You goal is to print{colour_end} {colour_yellow}True if 20 is greater than 10 else{colour_end} {colour_blue_bg}print{colour_end} {colour_yellow}False{colour_end}
         ''')
 
         #First line of the IF Statement
@@ -654,12 +654,18 @@ def Question_Eight():
 
         #Add one point to the question 8 score
         question_eight_score += 1
+
+        return question_eight_score
+
     else:
 
         #Call Title
         Exam_Header("8")
 
         print(f"{colour_red}{get_input[1]} is incorrect{colour_end}")
+
+        #Send score
+        return question_eight_score
 
 
 
@@ -896,7 +902,7 @@ def Question_Answer():
                 total_scores += Question_One()
 
                 #Calculate Percentage
-                percent_score = ((total_scores / max_Score) * 100)
+                percent_score = int(((total_scores / max_Score) * 100))
                 
                 print()
                 input(f"{colour_yellow}Current Score is: {total_scores} ({percent_score}%){colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
@@ -910,7 +916,7 @@ def Question_Answer():
                 total_scores += Question_Two()
 
                 #Calculate Percentage
-                percent_score = ((total_scores / max_Score) * 100)
+                percent_score = int(((total_scores / max_Score) * 100))
 
                 print()
                 input(f"{colour_yellow}Current Score is: {total_scores} ({percent_score}%){colour_end}{colour_violet_bg}Press any key to continue ...{colour_end}")
@@ -923,7 +929,7 @@ def Question_Answer():
                 total_scores += Question_Three()
 
                 #Calculate Percentage
-                percent_score = ((total_scores / max_Score) * 100)
+                percent_score = int(((total_scores / max_Score) * 100))
 
                 print()
                 input(f"{colour_yellow}Current Score is: {total_scores} ({percent_score}%){colour_end}{colour_violet_bg}Press any key to continue ...{colour_end}")
@@ -936,7 +942,7 @@ def Question_Answer():
                 total_scores += Question_Four()
 
                 #Calculate Percentage
-                percent_score = ((total_scores / max_Score) * 100)
+                percent_score = int(((total_scores / max_Score) * 100))
 
                 print()
                 input(f"{colour_yellow}Current Score is: {total_scores} ({percent_score}%){colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
@@ -949,7 +955,7 @@ def Question_Answer():
                 total_scores += Question_Five()
 
                 #Calculate Percentage
-                percent_score = ((total_scores / max_Score) * 100)
+                percent_score = int(((total_scores / max_Score) * 100))
 
 
                 print()
@@ -963,7 +969,7 @@ def Question_Answer():
                 total_scores += Question_Six()
 
                 #Calculate Percentage
-                percent_score = ((total_scores / max_Score) * 100)
+                percent_score = int(((total_scores / max_Score) * 100))
 
                 print()
                 input(f"{colour_yellow}Current Score is: {total_scores} ({percent_score}%){colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
@@ -976,8 +982,8 @@ def Question_Answer():
                 total_scores += Question_Seven()
 
                 #Calculate Percentage
-                percent_score = ((total_scores / max_Score) * 100)
-                
+                percent_score = int(((total_scores / max_Score) * 100))
+
                 print()
                 input(f"{colour_yellow}Current Score is: {total_scores} ({percent_score}%){colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
 
@@ -986,9 +992,13 @@ def Question_Answer():
                 print(list_of_questions[question])
 
                 #Call Answer Eight
-                Question_Eight()
+                total_scores += Question_Eight()
+
+                #Calculate Percentage
+                percent_score = int(((total_scores / max_Score) * 100))
+
                 print()
-                input(f"{colour_violet_bg}Press any key to continue ...{colour_end}")
+                input(f"{colour_yellow}Current Score is: {(total_scores)} ({percent_score}%){colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
 
             elif (question == "q_nine_key"):
 
