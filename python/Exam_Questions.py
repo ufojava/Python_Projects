@@ -631,7 +631,7 @@ def Question_Eight():
         print(f"{colour_green}{get_input[0]} is Correct{colour_end}")
 
         #Add one point to question 8 score
-        question_eight_score += 1
+        question_eight_score += 1.5
 
         #Pause program
         print()
@@ -653,9 +653,11 @@ def Question_Eight():
         print(f"{colour_green}{get_input[1]} is correct{colour_end}")
 
         #Add one point to the question 8 score
-        question_eight_score += 1
+        question_eight_score += 1.5
 
-        return question_eight_score
+        convert_question_eight_score = int(question_eight_score)
+
+        return convert_question_eight_score
 
     else:
 
@@ -681,6 +683,9 @@ def Question_Nine():
 
     aggregate_student_ages = 0
 
+    #Question Score
+    question_nine_score = 0
+
     while True:
 
         #Take input from student
@@ -691,8 +696,9 @@ def Question_Nine():
 
             Exam_Header("9")
 
-            print(f"{colour_blue_bg}Goal is to get the ages of 3 students, send the total of the ages to the company accounts department{colour_end}")
-            print(f"{colour_blue_bg}Enter three student ages range{colour_end} {colour_yellow}(17 and 65){colour_end}{colour_blue_bg} and send the total to accounts{colour_end}")
+            print(f"{colour_blue_bg}Goal is to get the{colour_end} {colour_yellow}ages of 3 students{colour_end}, {colour_blue_bg}send the total of the ages to the company accounts department{colour_end}")
+            print()
+            print(f"{colour_blue_bg}Enter {colour_end}{colour_yellow}three student{colour_end} {colour_blue_bg}ages range{colour_end} {colour_yellow}(17 and 65){colour_end}{colour_blue_bg} and send the total to accounts{colour_end}")
             print()
 
             input_student_ages = input(f"{student}")
@@ -745,13 +751,18 @@ def Question_Nine():
                 Exam_Header("9")
                 print()
                 print(f"{colour_green}Correct. Your return value input was{colour_end} {colour_yellow}{converted_return_value}{colour_end} {colour_green}and aggregate student ages was{colour_end}{colour_yellow} {aggregate_student_ages}{colour_end}")
-                print()
+
+                #Add and return score
+                question_nine_score += 3
+                return question_nine_score
             
             else:
 
                 Exam_Header("9")
                 print()
                 print(f"{colour_red}Incorrect!! Your return value{colour_end}{colour_yellow} {converted_return_value}{colour_end}{colour_red} did not match the total of the re students ages of{colour_end}{colour_yellow} {aggregate_student_ages}{colour_end}")
+
+                return question_nine_score
         break
 
 
@@ -759,11 +770,16 @@ def Question_Nine():
 
 def Question_Ten():
 
+
+    #Question Score
+    question_ten_score = 0
+
     Exam_Header("10")
 
     print(f'''
-    {colour_blue_bg}Variable_one = 20{colour_end}
-    {colour_blue_bg}Using the division assignment operator to divide variable_one by 5, what is the return data type{colour_end}
+    {colour_yellow}Variable_one = 20{colour_end}
+
+    {colour_blue_bg}Using the division assignment operator to{colour_end} {colour_yellow}divide variable_one by 5{colour_end}, {colour_blue_bg}what is the return data type{colour_end}
     Answer is:
 
     a. str) b. int) c. float) d. bool) e. none of the above)
@@ -794,10 +810,33 @@ def Question_Ten():
         Exam_Header("10")
         print(f"{colour_green}{student_answer} is correct. The division assigment operator always returns a float data type{colour_end}")
 
+        #Add 3 marks to score
+        question_ten_score += 3
+        return question_ten_score
+
     else:
 
         Exam_Header("10")
         print(f"{colour_red}{student_answer} is incorrect. The division assigment operator always returns a float data type{colour_end}")
+
+        #Return score
+        return question_ten_score
+
+
+def Student_Result(in_score,in_percent_score):
+
+    Exam_Header("Student Exam Result")
+
+
+    print(f'''You have completed the examinations !!!
+    
+    Results as follows:
+
+    You scored {in_score} out of maximum score of 30
+    
+    Your percentage score is {in_percent_score}
+    
+    ''')
 
 
 
@@ -876,11 +915,12 @@ def Question_Answer():
         {colour_blue_bg}Variable_one = 20{colour_end}
         {colour_blue_bg}Using the division assignment operator to divide variable_one by 5, what is the return data type{colour_end}
         '''
+    
 
         #List of all questions
         list_of_questions = {"q_one_key": q_one,"q_two_key":q_two,"q_three_key":q_three,
         "q_four_key":q_four,"q_five_key":q_five,"q_six_key":q_six,"q_seven_key":q_seven,"q_eight_key":q_eight,
-        "q_nine_key":q_nine,"q_ten_key":q_ten}
+        "q_nine_key":q_nine,"q_ten_key":q_ten,"student_result_key":"student_result"}
 
 
         #Loop through random questions
@@ -1004,21 +1044,40 @@ def Question_Answer():
 
                 print(list_of_questions[question])
 
-                #Call Answer Nine
-                Question_Nine()
+                #Call Answer Nine and to total score
+                total_scores += Question_Nine()
+
+                #Calculate Percentage
+                percent_score = int(((total_scores / max_Score) * 100))
+
                 print()
-                input(f"{colour_violet_bg}Press any key to continue ...{colour_end}")
+                input(f"{colour_yellow}Current Score is: {(total_scores)} ({percent_score}%){colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
 
             elif (question == "q_ten_key"):
 
                 print(list_of_questions[question])
 
                 #Call Answer Ten
-                Question_Ten()
-                print()
-                input(f"{colour_violet_bg}Press any key to continue ...{colour_end}")
+                total_scores += Question_Ten()
 
-    
+                #Calculate Percentage
+                percent_score = int(((total_scores / max_Score) * 100))
+
+                print()
+                input(f"{colour_yellow}Current Score is: {(total_scores)} ({percent_score}%){colour_end} {colour_violet_bg}Press any key to continue ...{colour_end}")
+
+            elif (question == "student_result_key"):
+
+                #Calculate Percentage
+                percent_score = int(((total_scores / max_Score) * 100))
+
+                #Results
+                Student_Result(total_scores,percent_score)
+
+                
+
+
+        
 
     Questions()
 
