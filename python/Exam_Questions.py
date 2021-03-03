@@ -508,7 +508,7 @@ def Question_Seven():
     Exam_Header("7")
 
     #Solve the Arithmetical problems:
-    print(f"{colour_blue_bg}1. Using variable assignment {colour_end}{colour_yellow}add 5{colour_end} {colour_blue_bg}to an existing variable. Answer should be{colour_end} {colour_yellow}10{colour_end} ")
+    print(f"{colour_blue_bg}1. Using variable assignment {colour_end}{colour_yellow}add 5{colour_end} {colour_blue_bg}to an existing variable{colour_end} {colour_yellow} with value 5{colour_end}. {colour_blue_bg}Answer should be{colour_end} {colour_yellow}10{colour_end} ")
     print()
 
     try:
@@ -551,7 +551,7 @@ def Question_Seven():
     #Call Title
     Exam_Header("7")
 
-    print(f"{colour_blue_bg}Using assignment{colour_end}{colour_yellow} multiply 10{colour_end}{colour_blue_bg} and you answer should be{colour_end} {colour_yellow}190:{colour_end} ")
+    print(f"{colour_blue_bg}Using assignment{colour_end}{colour_yellow} multiply by 10{colour_end}{colour_blue_bg} an existing variable with value{colour_end} {colour_yellow} 19{colour_end} {colour_blue_bg}and you answer should be{colour_end} {colour_yellow}190:{colour_end} ")
     print()
 
     try:
@@ -698,7 +698,7 @@ def Question_Nine():
 
             print(f"{colour_blue_bg}Goal is to get the{colour_end} {colour_yellow}ages of 3 students{colour_end}, {colour_blue_bg}send the total of the ages to the company accounts department{colour_end}")
             print()
-            print(f"{colour_blue_bg}Enter {colour_end}{colour_yellow}three student{colour_end} {colour_blue_bg}ages range{colour_end} {colour_yellow}(17 and 65){colour_end}{colour_blue_bg} and send the total to accounts{colour_end}")
+            print(f"{colour_blue_bg}Enter {colour_end}{colour_yellow}three student{colour_end} {colour_blue_bg}ages between{colour_end} {colour_yellow}(17 and 65){colour_end}{colour_blue_bg} and send the total to accounts{colour_end}")
             print()
 
             input_student_ages = input(f"{student}")
@@ -823,12 +823,56 @@ def Question_Ten():
         return question_ten_score
 
 
-def Student_Result(in_score,in_percent_score):
+def Student_Result(in_score,in_percent_score,in_student_name):
+
+    #Import Library
+    
+    #Library to save file
+    import csv
+    import os
+
+    create_file_name = f"{in_student_name}.txt"
+
+
+    #Student details
+    student_result_details = [in_student_name,in_score,in_percent_score]
+
+    #Check for file
+    chk_student_file_exist = os.path.isfile(create_file_name)
+
+    if not (chk_student_file_exist):
+
+
+        #Section to create and write student name,score and percentsge
+        with open(create_file_name, "w",newline="") as student_result:
+
+            #Create writer
+            file_writer = csv.writer(student_result,delimiter=",")
+
+            file_writer.writerow(student_result_details)
+        
+        #Close file
+        student_result.close()
+
+    else:
+
+        #Section to append and write student name,score and percentsge
+        with open(create_file_name, "a",newline="") as student_result:
+
+            #Create writer
+            file_writer = csv.writer(student_result,delimiter=",")
+
+            file_writer.writerow(student_result_details)
+        
+        #Close file
+        student_result.close()
+
+
 
     Exam_Header("Student Exam Result")
 
+    print(f'''{in_student_name} you have completed the examinations !!!
 
-    print(f'''You have completed the examinations !!!
     
     Results as follows:
 
@@ -837,16 +881,6 @@ def Student_Result(in_score,in_percent_score):
     Your percentage score is {in_percent_score}
     
     ''')
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1071,8 +1105,12 @@ def Question_Answer():
                 #Calculate Percentage
                 percent_score = int(((total_scores / max_Score) * 100))
 
+                Exam_Header("Results")
+                #Student to enter name
+                student_name = input("Enter your firstname: ")
+
                 #Results
-                Student_Result(total_scores,percent_score)
+                Student_Result(str(total_scores),str(percent_score),student_name)
 
                 
 

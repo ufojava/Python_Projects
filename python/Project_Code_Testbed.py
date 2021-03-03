@@ -598,7 +598,7 @@ def Question_Two():
         #return question_two_score
 
 #Question_Two()
-
+'''
 def Test_Input():
 
     #Test for Integeer entry
@@ -625,14 +625,75 @@ def Retrun_Score():
     sum_num = num_one + num_two
     return sum_num
 
+'''
 
-current_score = 0
-total_score = 0
+def Student_Result(in_score,in_percent_score,in_student_name):
 
-total_number = Retrun_Score()
+    #Import Library
+    
+    #Library to save file
+    import csv
+    import os
 
-current_score += total_number
-print(current_score)
+    create_file_name = f"{in_student_name}.txt"
+
+
+    #Student details
+    student_result_details = [in_student_name,in_score,in_percent_score]
+
+    #Check for file
+    chk_student_file_exist = os.path.isfile(create_file_name)
+
+    if not (chk_student_file_exist):
+
+
+        #Section to create and write student name,score and percentsge
+        with open(create_file_name, "w", newline="") as student_result:
+
+            #Create writer
+            file_writer = csv.writer(student_result,delimiter=",")
+
+            #Write File
+            file_writer.writerow(student_result_details)
+        
+        #Close file
+        student_result.close()
+
+    else:
+
+        #Section to append and write student name,score and percentsge
+        with open(create_file_name, "a", newline="") as student_result:
+
+            #Create writer
+            file_writer = csv.writer(student_result,delimiter=",")
+
+            file_writer.writerow(student_result_details)
+        
+        #Close file
+        student_result.close()
+
+
+
+    #Exam_Header("Student Exam Result")
+
+    print(f'''{in_student_name} you have completed the examinations !!!
+
+    
+    Results as follows:
+
+    You scored {in_score} out of maximum score of 30
+    
+    Your percentage score is {in_percent_score}
+    
+    ''')
+
+my_name = input("Enter your name: ")
+enter_score = input("Enter score: ")
+enter_percent = input("Enter percent: ")
+
+Student_Result(enter_score,enter_percent,my_name)
+
+
 
 
 
