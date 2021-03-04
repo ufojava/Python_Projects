@@ -504,88 +504,73 @@ def Question_Seven():
     #Question severn score
     question_seven_score = 0
 
+
     #Call Title
     Exam_Header("7")
 
-    #Solve the Arithmetical problems:
+    #Solve the Add problems:
     print(f"{colour_blue_bg}1. Using variable assignment {colour_end}{colour_yellow}add 5{colour_end} {colour_blue_bg}to an existing variable{colour_end} {colour_yellow} with value 5{colour_end}. {colour_blue_bg}Answer should be{colour_end} {colour_yellow}10{colour_end} ")
     print()
 
-    try:
-
-        in_add_assign, in_add_int = input(f"{colour_yellow}Input Add assignment and number:{colour_end} ").split()
-
-        add_variable = 5
-
-        if ( in_add_assign == "+="):
-
-            add_variable += int(in_add_int)
-
-            #Check total which should equal 10
-            if (add_variable == 10):
-
-                #Call Title
-                Exam_Header("7")
-            
-                print(f"{colour_green}Correct Add Assignment: {add_variable}{colour_end}")
-
-                #Add to one point to score
-                question_seven_score += 1.5
-
-                #Pause program
-                print()
-                input(f"{colour_violet_bg}Press enter to continue..{colour_end}")
-
-            else:
-
-                #Call Title
-                Exam_Header("7")
-
-                print(f"{colour_red}{add_variable} is incorrect{colour_end}")
-
-                print()
-                input(f"{colour_violet_bg}Press enter to continue..{colour_end}")
-    except:
-        pass
-    
-    #Call Title
-    Exam_Header("7")
-
-    print(f"{colour_blue_bg}Using assignment{colour_end}{colour_yellow} multiply by 10{colour_end}{colour_blue_bg} an existing variable with value{colour_end} {colour_yellow} 19{colour_end} {colour_blue_bg}and you answer should be{colour_end} {colour_yellow}190:{colour_end} ")
+    #Solve the Multiply problems:
+    print(f"{colour_blue_bg}1. Using variable assignment {colour_end}{colour_yellow}multiply by 10{colour_end} {colour_blue_bg}to an existing variable with{colour_end} {colour_yellow} with value 19{colour_end}. {colour_blue_bg}Answer should be{colour_end} {colour_yellow}190{colour_end} ")
     print()
 
-    try:
+   
+    #Add Assignment
+    in_add_assign, in_add_int = input(f"{colour_yellow}Input Add assignment and number:{colour_end} ").split()
+
+    #Multiply Assignment
+    in_multiply_assign, in_multiply_int = input(f"{colour_yellow}Input Multiply assignment and number:{colour_end} ").split()
+
+    #Variables
+    add_variable = 5
+    multiply_assignment = 19
+
     
-        in_multiply_assign, in_multiply_int = input(f"{colour_yellow}input Multiply assigment and number:{colour_end} ").split()
 
-        #Multiply Variable
-        multiply_variable = 19
+    #Check input
+    if ((in_add_assign == "+=" and in_add_int.isdigit()) and (in_multiply_assign == "*=" and in_multiply_int.isdigit())):
+       
+        #Convert string digit input
+        convert_in_add_int = int(in_add_int)
+        #Convert string digit input
+        convert_in_multiply_int = int(in_multiply_int)
 
-        if ( in_multiply_assign == "*="):
-
-            multiply_variable *= int(in_multiply_int)
-
-            if (multiply_variable == 190):
-
-                #Call Title
-                Exam_Header("7")
-
-                print(f"{colour_green}Correct multiply assigment: {multiply_variable}{colour_end}")
-
-                #Add one point to the seven score
-                question_seven_score += 1.5
-                return int(question_seven_score)
+        #Assign new add value
+        add_variable += convert_in_add_int
+        #Assign new add value
+        multiply_assignment *= convert_in_multiply_int
+        
+        if(add_variable == 10 and multiply_assignment == 190):
 
 
-            else:
-                
-                #Call Title
-                Exam_Header("7")
+            question_seven_score += 3
 
-                print(f"{colour_red}{in_multiply_assign} is incorrect{colour_end}")
-                return int(question_seven_score)
-    except:
-        pass
+            print(f"{colour_green}{add_variable} and {multiply_assignment} are the correct answers{colour_end}")
+
+
+            return question_seven_score
+
+        else:
+
+            Exam_Header("7")
+
+            print(f"{colour_red}Incorrect Answer{colour_end}")
+
+            return question_seven_score
+
+            
+    
+    else:
+
+        Exam_Header("7")
+
+        print(f"{colour_red}Incorrect Operator or Integer input{colour_end}")
+
+        return question_seven_score
+
+
 
     
 
@@ -867,20 +852,99 @@ def Student_Result(in_score,in_percent_score,in_student_name):
         #Close file
         student_result.close()
 
-
-
-    Exam_Header("Student Exam Result")
-
-    print(f'''{in_student_name} you have completed the examinations !!!
-
     
-    Results as follows:
+    #Exam classification
 
-    You scored {in_score} out of maximum score of 30
-    
-    Your percentage score is {in_percent_score}
-    
-    ''')
+    #Convert Percentage socre to integer
+    get_percent_score = int(in_percent_score)
+
+    #Variables
+    exam_result_excellent = "A1 - Excellent Understanding of Coding Fundamentals"
+    exam_result_v_good = "A2 - You have a very good knowledge coding fundamentals"
+    exam_result_good = "A3 - You have an understnading of coding fundamentals"
+    exam_result_pass = "Congratulations!! You have passed"
+    exam_result_failed = "Sorry, you did not pass the examination"
+
+    #Categorise the results
+    if (get_percent_score >= 80 ):
+
+        Exam_Header("Student Exam Result")
+
+        print(f'''{in_student_name} you have completed the examination !!!
+
+        Results as follows:
+
+        You scored {in_score} out of maximum score of 30
+        
+        Your percentage score is {in_percent_score}%
+
+        {colour_yellow}{exam_result_excellent}{colour_end}
+        
+        ''')
+
+    elif (get_percent_score >= 75 and get_percent_score <= 79):
+
+        Exam_Header("Student Exam Result")
+
+        print(f'''{in_student_name} you have completed the examination !!!
+
+        Results as follows:
+
+        You scored {in_score} out of maximum score of 30
+        
+        Your percentage score is {in_percent_score}%
+
+        {colour_yellow}{exam_result_v_good}{colour_end}
+        
+        ''')
+
+    elif (get_percent_score >= 55 and get_percent_score <= 78):
+
+        Exam_Header("Student Exam Result")
+
+        print(f'''{in_student_name} you have completed the examination !!!
+
+        Results as follows:
+
+        You scored {in_score} out of maximum score of 30
+        
+        Your percentage score is {in_percent_score}%
+
+        {colour_yellow}{exam_result_good}{colour_end}
+        
+        ''')
+
+    elif (get_percent_score >= 40 and get_percent_score <= 54):
+
+        Exam_Header("Student Exam Result")
+
+        print(f'''{in_student_name} you have completed the examination !!!
+
+        Results as follows:
+
+        You scored {in_score} out of maximum score of 30
+        
+        Your percentage score is {in_percent_score}%
+
+        {colour_yellow}{exam_result_pass}{colour_end}
+        
+        ''')
+
+    else:
+
+        Exam_Header("Student Exam Result")
+
+        print(f'''{in_student_name} you have completed the examination !!!
+
+        Results as follows:
+
+        You scored {in_score} out of maximum score of 30
+        
+        Your percentage score is {in_percent_score}%
+
+        {colour_yellow}{exam_result_failed}{colour_end}
+        
+        ''')
 
 
 
