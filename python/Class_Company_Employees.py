@@ -146,5 +146,103 @@ def Test_Save_Object():
 
 
 
-Test_Save_Object()
+#Test_Save_Object()
+
+import json
+
+from json import JSONEncoder
+
+class Family_Details:
+
+    def __init__(self,in_firstname,in_lastname,in_age,in_gender):
+
+        #Initialise variables
+        self.in_firstname = in_firstname
+        self.in_lastname = in_lastname
+        self.in_age = in_age
+        self.in_gender = in_gender
+
+
+class Family_Details_JSON_Encoder(JSONEncoder):
+
+    def default(self,my_object):
+        return my_object.__dict__
+
+
+
+family_menber_objects = []
+
+
+
+#print(fam_list)
+
+
+family_members = ["Ufuoma","Ovie","Igho","Bami"]
+
+for member in family_members:
+
+    os.system("clear")
+    get_first_name = input("Enter your first name: ")
+    os.system("clear")
+    get_last_name = input("Enter your last name: ")
+    os.system("clear")
+    get_age = input("Enter your age: ")
+    convert_age = int(get_age)
+    os.system("clear")
+    get_gender = input("Enter your gender: ")
+    os.system("clear")
+
+
+        
+
+    member =  Family_Details(get_first_name,get_last_name,convert_age,get_gender)
+
+    #dd the encoded oupu to the empty array
+
+    print(Family_Details_JSON_Encoder().encode(member))
+
+    encoded_json_object = Family_Details_JSON_Encoder().encode(member)
+
+    family_menber_objects.append(encoded_json_object)
+
+os.system("clear")
+
+print(family_menber_objects)
+
+'''
+    convert_member_to_json = json.dumps(member)
+
+    print(convert_member_to_json)
+'''
+
+    #Append to the family member list
+    #family_menber_objects.append(member)
+
+
+#Convert list items to JSON
+
+#convert_family_members_objects_to_json = json.dumps(family_menber_objects)
+
+
+#print(convert_family_members_objects_to_json)
+    
+
+
+'''
+
+#List members in the family member
+
+for member in family_menber_objects:
+
+    print(member.in_firstname, member.in_lastname, member.in_age, member.in_gender)
+
+'''
+
+
+
+
+
+
+
+        
 
