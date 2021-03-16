@@ -9,6 +9,7 @@ Department: HOme Office
 
 #Import Libraried
 import os
+import sys
 import json
 from json import JSONEncoder
 
@@ -18,6 +19,9 @@ colour_red = "\33[31m"
 colour_green = "\33[32m"
 colour_yellow = "\33[33m"
 colour_blue = "\33[34m"
+
+#Json file name
+file_name = "comp_details.json"
 
 
 #Class for staff details
@@ -50,6 +54,21 @@ def Clear_Screen():
     {colour_green}********* STAFF DETAILS *********{coulour_end}
 
     ''')
+
+
+#Function to save json fomat file
+def Save_Json_file(in_file,comp_obj):
+
+    #Call encoder
+    get_encoder = Encode_From_Python().encode(comp_obj)
+
+
+    #Save encodeed object to json file
+    with open (in_file, "w") as jsonFile:
+
+
+        jsonFile.write(get_encoder)
+
 
 
 #List to hold temporarily hold staff details
@@ -88,20 +107,37 @@ for entry_count in range(3):
     #Encode to JSON for Loads or Dumps
     encode_list_object = Encode_From_Python().encode(temp_staff_json_object)
 
-    print(encode_list_object)
-
-'''
-for obj in temp_staff_json_object:
-
-    print(obj.in_firstname, obj.in_lastname, obj.in_gender, obj.in_department,obj.in_year_of_service)
-
-'''  
-
-#Save encodeed object to json file
-with open ("comp_details.json", "w") as jsonFile:
 
 
-    jsonFile.write(encode_list_object)
+Clear_Screen()
+#To save of print object 
+save_comp_detail = input(f"{colour_blue}Save: s, Print: p, Exit: any key: {coulour_end} ")
+
+if (save_comp_detail == "s" or save_comp_detail == "S"):
+
+    Clear_Screen()
+    #Call save function
+    Save_Json_file(file_name, temp_staff_json_object)
+    print(f"{colour_green}Object has been saved to file{coulour_end}")
+    
+
+elif (save_comp_detail == "p" or save_comp_detail == "P"):
+
+    Clear_Screen()
+
+    for obj in temp_staff_json_object:
+
+        print(obj.in_firstname, obj.in_lastname, obj.in_gender, obj.in_department,obj.in_year_of_service)
+
+else:
+
+    Clear_Screen()
+    print(f"{colour_red}Program has exited !!!{coulour_end}")
+    sys.exit()
+
+
+
+
 
 
 
