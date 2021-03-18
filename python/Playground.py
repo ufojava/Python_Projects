@@ -5,29 +5,16 @@ Descripton: Code testbed / playground
 '''
 
 
-class Computer_Assets:
+#Calculate age
 
-    def __init__(self,manufacturer,model,location):
+from datetime import date
 
-        self.manufacturer = manufacturer
-        self.model = model
-        self.location = location
+birth_date = date(1965,3,25)
 
+today_date = date.today()
 
-#Input computer assets
-in_manufacturer = input("Input asset manufacturer: ").capitalize()
+days_in_year = 365.2425
 
-print()
-in_model = input("Input asset model: ").upper()
+age = int((today_date - birth_date).days / days_in_year)
 
-print()
-in_location = input("Input asset location: ").capitalize()
-
-
-#Feed input into class
-computer_object = Computer_Assets(in_manufacturer, in_model, in_location)
-
-#Print assets
-print()
-print(computer_object.manufacturer, computer_object.model,computer_object.location)
-
+print(age)
