@@ -26,6 +26,7 @@ colour_blue = "\33[34m"
 
 player_details_list = [] #List to hold user identity details
 player_age_limit = 18
+played_numbers = []
 
 #Function to clear screen
 def Clear_Screen():
@@ -110,8 +111,56 @@ def Get_Player_Details():
     #Return staff details
     return temp_player_details
 
+#Function to play numbers
+def Play_Numbers():
+
+    #Player Number List
+    player_numbers = []
+
+    #Player question input list
+    player_number_questions = ["First","Second","Third","Fourth","Fifth","Sixth"]
+
+    for question_number in player_number_questions:
+
+        Clear_Screen()
+        print(f"{colour_green}********** Input your playing numbers ***************{colour_end}")
+        print()
+
+        get_player_number = input(f"{colour_yellow}Input {question_number} number:{colour_end} ")
+
+        #Check the input is digit
+        while not (get_player_number.isdigit()):
+
+            get_player_number = input(f"{colour_red}Invalid input!!! Input must be a number. Input {question_number} number:{colour_end} ")
+            
+        #Convert input into an integer
+        convert_player_input = int(get_player_number)
+
+        #Check number input
+        while not (convert_player_input >= 1 and convert_player_input <= 60):
+
+            player_input = input("Invalid number range. Enter number between 1 and 60: ")
+
+            convert_player_input = int(player_input)
 
 
+        #Append number to player number list
+        player_numbers.append(convert_player_input)
+
+    #Return player numbers
+    return player_numbers
+
+
+
+
+
+
+
+
+
+
+
+#********** MAIN PROGRAM STARTS HERE ****************
 
 #Get player input data
 player_details_list = Get_Player_Details()
@@ -134,6 +183,12 @@ if (get_player_age >= player_age_limit):
     print(player_object.player_firstname,player_object.player_lastname,player_object.player_dob_dd,player_object.player_dob_mm,player_object.player_dob_yyyy)
     print()
     input(f"{colour_blue}Press any key to continue...{colour_end}")
+
+    #Play numbers
+    played_numbers = Play_Numbers()
+
+    #Test played numbers
+    print(played_numbers)
 
 
 else:
