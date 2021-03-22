@@ -7,14 +7,31 @@ Descripton: Code testbed / playground
 
 #Calculate age
 
-from datetime import date
+#Get computer random numbers
+def Computer_Numbers():
 
-birth_date = date(1965,3,25)
+    
 
-today_date = date.today()
+    #Import library
+    from numpy import random,sort
 
-days_in_year = 365.2425
+    get_computer_numbers = sort(random.randint(60, size=(6)))
 
-age = int((today_date - birth_date).days / days_in_year)
+    for number in get_computer_numbers:
 
-print(age)
+        print(type(number))
+
+    return
+
+   
+
+
+    
+
+
+
+
+computer_play = Computer_Numbers()
+
+
+print(computer_play)

@@ -14,6 +14,7 @@ Written By: Ufuoma Okoro
 import os
 import sys
 from datetime import date
+from numpy import sort
 
 #Set colour pallet
 colour_end = "\33[0m"
@@ -114,6 +115,7 @@ def Get_Player_Details():
 #Function to play numbers
 def Play_Numbers():
 
+
     #Player Number List
     player_numbers = []
 
@@ -123,10 +125,20 @@ def Play_Numbers():
     for question_number in player_number_questions:
 
         Clear_Screen()
-        print(f"{colour_green}********** Input your playing numbers ***************{colour_end}")
+        print(f"{colour_green}********** Your Numbers ***************{colour_end}")
+        print()
+        print(f'''
+            1. Enter 1 number between 1 and 60 and press enter
+            2. you will be allowed to enter 6 numbers
+
+        ''')
+        #Display numbers
+        print(f"{colour_red}Numbers played: {player_numbers}{colour_end}")
         print()
 
-        get_player_number = input(f"{colour_yellow}Input {question_number} number:{colour_end} ")
+        get_player_number = input(f"{colour_blue}Input {question_number} number:{colour_end} ")
+
+        
 
         #Check the input is digit
         while not (get_player_number.isdigit()):
@@ -146,9 +158,27 @@ def Play_Numbers():
 
         #Append number to player number list
         player_numbers.append(convert_player_input)
+        
 
     #Return player numbers
     return player_numbers
+
+
+#Get computer random numbers
+def Computer_Numbers():
+
+
+    #Import library
+    import random
+   
+    #Generate random number
+    generate_numbers = random.sample(range(60),6)
+
+    return generate_numbers
+
+
+
+
 
 
 
@@ -187,8 +217,20 @@ if (get_player_age >= player_age_limit):
     #Play numbers
     played_numbers = Play_Numbers()
 
-    #Test played numbers
-    print(played_numbers)
+    #Get computer numbers
+    computer_numbers = Computer_Numbers()
+
+    #Create player and computer sets
+    player_numbers_set = set(played_numbers)
+    computer_numbers_set = set(computer_numbers)
+
+    Clear_Screen()
+    #Display played numbers
+    print("********* Numbers Played **********")
+    print()
+    print(f"Player:   {sort(played_numbers)}")
+    print()
+    print(f"Computer: {sort(computer_numbers)}")
 
 
 else:
