@@ -7,31 +7,23 @@ Descripton: Code testbed / playground
 
 #Calculate age
 
-#Get computer random numbers
-def Computer_Numbers():
+computer_numbers = {10,12,25,44,50,59}
+player_numbers = {9,10,44,58,2,5}
 
-    
+#Get match between player and computer
+def Get_Number_Match(in_computer_number,in_player_number):
 
-    #Import library
-    from numpy import random,sort
+    player_name = "Ufuoma Okoro"
 
-    get_computer_numbers = sort(random.randint(60, size=(6)))
+    get_match = set.intersection(in_computer_number,in_player_number)
 
-    for number in get_computer_numbers:
+    count_match = len(get_match)
 
-        print(type(number))
+    return player_name, count_match
 
-    return
 
+
+play_results = Get_Number_Match(computer_numbers, player_numbers)
+
+print(play_results[0],play_results[1])
    
-
-
-    
-
-
-
-
-computer_play = Computer_Numbers()
-
-
-print(computer_play)

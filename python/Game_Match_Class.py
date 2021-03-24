@@ -177,12 +177,35 @@ def Computer_Numbers():
     return generate_numbers
 
 
+#Class to get all components and display results
+class Play_Match:
 
+    def __init__(self,in_player_firstname,in_player_lastname,in_player_numbers,in_computer_numbers):
 
+        self.in_player_firstname = in_player_firstname
+        self.in_player_lastname = in_player_lastname
+        self.in_player_numbers = in_player_numbers
+        self.in_computer_numbers = in_computer_numbers
 
+    
+    #Function to match and 
+    def Find_Match(self):
 
+        get_computer_number_list = self.in_computer_numbers
+        get_player_number_list = self.in_player_numbers
 
+        #Create sets from list
+        computer_number_set = set(get_computer_number_list)
+        player_number_set = set(get_player_number_list)
 
+        #Match number sets
+        match_number_set = set.intersection(computer_number_set,player_number_set)
+
+        #Count matching numbers
+        count_matches = len(match_number_set)
+
+        #Return multiple values
+        return match_number_set, count_matches
 
 
 
@@ -220,17 +243,24 @@ if (get_player_age >= player_age_limit):
     #Get computer numbers
     computer_numbers = Computer_Numbers()
 
-    #Create player and computer sets
-    player_numbers_set = set(played_numbers)
-    computer_numbers_set = set(computer_numbers)
+    #Match numbers between player and computer
+    match_number = Play_Match(player_object.player_firstname, player_object.player_lastname, played_numbers, computer_numbers)
 
     Clear_Screen()
     #Display played numbers
-    print("********* Numbers Played **********")
+    print(f'''{colour_yellow}********* Match Game Results **********
+    
+    {colour_end}''')
+    print(f"Player: {match_number.in_player_firstname} {match_number.in_player_lastname}")
     print()
     print(f"Player:   {sort(played_numbers)}")
     print()
     print(f"Computer: {sort(computer_numbers)}")
+    print()
+
+    #Match game results
+    print(f"{colour_green}Matched Number(s): {match_number.Find_Match()[0]}, Total Matche(s): {match_number.Find_Match()[1]}{colour_end}")
+    print()
 
 
 else:
