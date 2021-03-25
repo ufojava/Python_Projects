@@ -86,6 +86,8 @@ def Get_Player_Details():
 
     for input_questions in input_description:
         Clear_Screen()
+        print(f'''{colour_green}************ Number Match Game *************{colour_end}''')
+        print()
 
         input_player_details = input(f"{colour_yellow}{input_questions}{colour_end}")
 
@@ -208,6 +210,40 @@ class Play_Match:
         return match_number_set, count_matches
 
 
+#Fucntion to give prize money
+def Calculate_Prize_Money(in_match_count):
+
+
+    #Prize money
+    prize_jackpot = 100000.0
+    prize_btw_three_four = 5000.00
+    prize_btw_one_two = 20.00
+    prize_no_match = 0
+
+    #Number Matches
+    match_hit_jackpot = (in_match_count == 6)
+    match_hit_btw_three_four = (in_match_count >= 3 and in_match_count <= 4)
+    match_hit_btw_one_two = (in_match_count >= 1 and in_match_count <= 2)
+    match_hit_none = (in_match_count == 0)
+
+    #Allocate prize money
+    if (match_hit_jackpot):
+
+        return prize_jackpot
+
+    elif (match_hit_btw_three_four):
+
+        return prize_btw_three_four
+
+    elif (match_hit_btw_one_two):
+
+        return prize_btw_one_two
+
+    elif (match_hit_none):
+
+        return prize_no_match
+
+
 
 
 
@@ -259,8 +295,23 @@ if (get_player_age >= player_age_limit):
     print()
 
     #Match game results
-    print(f"{colour_green}Matched Number(s): {match_number.Find_Match()[0]}, Total Matche(s): {match_number.Find_Match()[1]}{colour_end}")
+    print(f"{colour_green}Matched Number(s):{colour_end} {colour_yellow}{match_number.Find_Match()[0]}{colour_end}, {colour_green}Total Matche(s):{colour_end} {colour_yellow}{match_number.Find_Match()[1]}{colour_end}")
     print()
+
+    print("****** Prize Money ********")
+    print()
+    player_prize_money = Calculate_Prize_Money(match_number.Find_Match()[1])
+
+    if (player_prize_money >= 1):
+
+        print(f"Congratulations you have been awarded: £{player_prize_money} prize money")
+        print()
+
+    else:
+
+       print(f"Unfortunately you have been awarded: £{player_prize_money} prize money")
+       print() 
+
 
 
 else:
