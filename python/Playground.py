@@ -4,26 +4,28 @@ Descripton: Code testbed / playground
 
 '''
 
+#Create timer
 
-#Calculate age
-
-computer_numbers = {10,12,25,44,50,59}
-player_numbers = {9,10,44,58,2,5}
-
-#Get match between player and computer
-def Get_Number_Match(in_computer_number,in_player_number):
-
-    player_name = "Ufuoma Okoro"
-
-    get_match = set.intersection(in_computer_number,in_player_number)
-
-    count_match = len(get_match)
-
-    return player_name, count_match
+import time, random
+import os
 
 
 
-play_results = Get_Number_Match(computer_numbers, player_numbers)
+roll_dice = [0, 1, 3, 6]
 
-print(play_results[0],play_results[1])
+dice_rolled = random.choice(roll_dice)
+
+os.system("clear")
+print(f"You rolled dice: {dice_rolled}")
+
+
+
+
+
+
+
+
+
+
+
    
