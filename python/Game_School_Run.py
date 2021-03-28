@@ -86,17 +86,202 @@ class Roll_Dice:
         return player_roll_dice
 
 
+
+
+
+
 #Process player details
 process_player_input = Player_Name(get_player_input[0].capitalize(), get_player_input[1].capitalize())
 
-
-#print(process_player_input.player_firstname, process_player_input.player_lastname)
-
+#Process player roll dice
 process_player_roll_dice = Roll_Dice(process_player_input.player_firstname,process_player_input.player_lastname)
 
-#Get player name and rolled dice
-print()
-print(process_player_roll_dice.player_firstname,process_player_roll_dice.player_lastname,process_player_roll_dice.Roll())
+
+#Function to play game
+def School_Run():
+
+    #Variables
+    
+    
+    educaiton_university = 4
+    player_bank = []
+
+    #Function for secondary education
+    def Secondary_Education():
+
+        #Variable
+        education_secondary = 6
+        secondary_player_bank = []
+
+        print()
+        for secondary in range(education_secondary):
+            os.system("clear")
+
+            print(process_player_roll_dice.player_firstname, process_player_roll_dice.player_lastname)
+
+            my_dice_roll = process_player_roll_dice.Roll()
+            print()
+            print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
+            print()
+
+            input("Secondary - Press any key to continue...")
+        
+
+
+    #Function for Primary education
+    def Primary_Education():
+
+        #Variable
+        education_primary = 6
+        primary_player_bank = []
+
+        print()
+        for primary in range(education_primary):
+            os.system("clear")
+            print(process_player_roll_dice.player_firstname, process_player_roll_dice.player_lastname)
+
+            my_dice_roll = process_player_roll_dice.Roll()
+            print()
+            print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
+            print()
+
+            input("Primary - Press any key to continue...")
+
+            if (my_dice_roll == 3):
+
+                #Check if the bank count equals 2
+                if (len(primary_player_bank) == 2):
+
+                    print(f"Congratulations!! You have 2 3 dice rolled in bank so you automatilcally advance to next education level ")
+
+
+                    #Ask player if they wish to bank 
+                    bank_question = input("3 allows you to bank or move one step y /n: ")
+
+                    if( bank_question == "y" or bank_question == "Y"):
+
+                        #Bank
+                        print('''You have chosen to bank your dice roll 3
+                        You need 2 of dice rolled 3 to make an express pass to the primary education
+                        
+                        ''')
+                        primary_player_bank.append(my_dice_roll)
+                        print(f"You currently have {len(bank_question)} of 3 dice roll in the bank")
+
+                    else:
+                        print()
+                        print(f"{colour_green}You have chosen not to bank so you move one step{colour_end}")
+
+            
+            elif (my_dice_roll == 6):
+
+                print("Congratulations!!! You have rolled 6 so you advance to the next education level")
+                print()
+                input("Primary - Press any key to progress...")
+
+                #Call Secondary funtion
+                Secondary_Education()
+
+                #Breaks out of the Nursary loop
+                break
+
+            elif (my_dice_roll == 0):
+
+                print("Sorry you rolled 0, so you will remain where you are")
+
+            elif (my_dice_roll == 1):
+
+                print()
+                print("Well done!! You have passed your exams, you move one step to Nursary year 2")
+
+
+
+
+    #Function for Nursary education
+    def Nursary_Education():
+
+        #Variables
+        education_nursary = 3
+        nursary_player_bank = []
+
+        print()
+        for nursary in range(education_nursary):
+
+            os.system("clear")
+            print(process_player_roll_dice.player_firstname, process_player_roll_dice.player_lastname)
+
+            #My dice roll
+            my_dice_roll = process_player_roll_dice.Roll()
+            print()
+            print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
+            print()
+
+            if (my_dice_roll == 3):
+
+                #Check if the bank count equals 2
+                if (len(nursary_player_bank) == 2):
+
+                    print(f"Congratulations!! You have 2 3 dice rolled in bank so you automatilcally advance to next education level ")
+
+
+                    #Ask player if they wish to bank 
+                    bank_question = input("3 allows you to bank or move one step y /n: ")
+
+                    if( bank_question == "y" or bank_question == "Y"):
+
+                        #Bank
+                        print('''You have chosen to bank your dice roll 3
+                        You need 2 of dice rolled 3 to make an express pass to the primary education
+                        
+                        ''')
+                        nursary_player_bank.append(my_dice_roll)
+                        print(f"You currently have {len(bank_question)} of 3 dice roll in the bank")
+
+                    else:
+                        print()
+                        print(f"{colour_green}You have chosen not to bank so you move one step{colour_end}")
+
+            
+            elif (my_dice_roll == 6):
+
+                print("Congratulations!!! You have rolled 6 so you advance to the next education level")
+                print()
+                input("Primary - Press any key to progress...")
+
+                #Call primary function
+                Primary_Education()
+
+                #Breaks out of the Nursary loop
+                break
+
+            elif (my_dice_roll == 0):
+
+                print("Sorry you rolled 0, so you will remain where you are")
+
+            elif (my_dice_roll == 1):
+
+                print()
+                print("Well done!! You have passed your exams, you move one step to Nursary year 2")
+
+
+
+            print()
+            input("Nursary - press any key to continue...")
+
+
+    #Education start at Nusary
+    Nursary_Education()
+        
+
+        
+        
+
+
+
+print(process_player_roll_dice.player_lastname, process_player_roll_dice.player_lastname,process_player_roll_dice.Roll())
+
+School_Run()
+
 
 
 
