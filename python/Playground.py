@@ -9,6 +9,9 @@ Descripton: Code testbed / playground
 import time, random
 import os
 
+emoji_smile = "\U0001F4AA"
+print(emoji_smile)
+
 
 
 

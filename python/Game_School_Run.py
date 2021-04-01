@@ -35,6 +35,14 @@ colour_blue = "\33[34m"
 
 def Player_Details_Input():
 
+    #Clear screen
+    os.system("clear")
+
+    print(f'''
+    {colour_green}**************** SCHOOL RUN ***************{colour_end}
+
+    ''')
+
     while True:
 
         try:
@@ -100,68 +108,66 @@ process_player_roll_dice = Roll_Dice(process_player_input.player_firstname,proce
 #Function to play game
 def School_Run():
 
-    #Variables
-    
-    
-    educaiton_university = 4
-    player_bank = []
 
-    #Function for secondary education
-    def Secondary_Education():
+
+
+    #Function University education
+    def University_Education(in_secondary_score):
 
         #Variable
-        education_secondary = 6
-        secondary_player_bank = []
+        power_arm_university = "\U0001F4AA"
+        educaiton_university = 4
+        university_player_bank = []
+        university_year = []
+        university_score = 0
+        university_year_counter = 0
+        secondary_result = in_secondary_score
 
         print()
-        for secondary in range(education_secondary):
+        for university in range(educaiton_university):
+
+            #Add 1 to counter
+            university_year_counter += 1
             os.system("clear")
 
-            print(process_player_roll_dice.player_firstname, process_player_roll_dice.player_lastname)
+            print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Cumilative Secondary Score: {secondary_result}{colour_end}")
+
+            print()
+            print(f"{colour_green}University:{colour_end} {colour_yellow}{university_year}{colour_end}")
 
             my_dice_roll = process_player_roll_dice.Roll()
             print()
-            print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
-            print()
 
-            input("Secondary - Press any key to continue...")
-        
-
-
-    #Function for Primary education
-    def Primary_Education():
-
-        #Variable
-        education_primary = 6
-        primary_player_bank = []
-        primary_year = ["*"]
-
-        print()
-        for primary in range(education_primary):
-            os.system("clear")
-            print(process_player_roll_dice.player_firstname, process_player_roll_dice.player_lastname)
-            print()
-            print(f"{colour_red}Primary:{colour_end} {colour_yellow}{primary_year}{colour_end}")
-
-            my_dice_roll = process_player_roll_dice.Roll()
-            print()
-            print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
-            print()
-
-            input("Primary - Press any key to continue...")
+            input("University - Press any key to continue...")
 
             if (my_dice_roll == 3):
 
                 #Check if the bank count equals 2
-                if (len(primary_player_bank) == 2):
+                if (len(university_player_bank) == 2):
 
-                    print(f"Congratulations!! You have 2 3 dice rolled in bank so you automatilcally advance to next education level ")
+                    #Reset year count
+                    university_year = []
+                    for add_arm in range(3):
+                        university_year.append(power_arm_university)
+
+                    #Clear Screen
+                    os.system("clear")
+
+                    print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Cumilative Secondary Score: {secondary_result}{colour_end}")
                     print()
-                    input("Press any key to continue...")
 
-                    #Call function to Secondary education
-                    Secondary_Education()
-                    break
+                    print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
+                    print()
+                    print(f"{colour_green}University:{colour_end} {colour_yellow}{university_year}{colour_end}")
+                    print()
+
+                    print(f"Congratulations!! You have rolled 3 twice, so you advance to the next level")
+
+                    input("Press any key to continue...")
+                    
+                    #Exam Score
+                    university_score = 30
+                    cumilative_university_score = university_score + secondary_result
 
 
                 #Ask player if they wish to bank 
@@ -169,30 +175,252 @@ def School_Run():
 
                 if( bank_question == "y" or bank_question == "Y"):
 
-                    #Bank
-                    print('''You have chosen to bank your dice roll 3
-                    You need 2 of dice rolled 3 to make an express pass to the primary education
+                    #Reset year count
+                    university_year = []
+
+                    #Add three power arms to the nursary
+                    for add_arm in range(3):
+                        university_year.append(power_arm_university)
+
+                    university_player_bank.append(my_dice_roll)
+                    input(f"You currently have {len(bank_question)} in the bank. Press any key to continue...")
+
+                    #Clear Screen
+                    os.system("clear")
+
+                    print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Cumilative Secondary Score: {secondary_result}{colour_end}")
+                    print()
+                    print(f"{colour_green}University:{colour_end} {colour_yellow}{university_year}{colour_end}")
+                    print()
+        
                     
-                    ''')
-                    primary_player_bank.append(my_dice_roll)
-                    print(f"You currently have {len(bank_question)} of 3 dice roll in the bank")
+                    
 
                 else:
+                    #Add single power arm to year
+                    university_year.append(power_arm_university)
+
+                    #Clear Screen
+                    os.system("clear")
+
+                    print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Cumilative Secondary Score: {secondary_result}{colour_end}")
+                    print()
+                    print(f"{colour_green}University:{colour_end} {colour_yellow}{university_year}{colour_end}")
                     print()
                     print(f"{colour_green}You have chosen not to bank so you move one step{colour_end}")
 
-                    #Add one star
-                    primary_year.append("*")
+                    
 
             
             elif (my_dice_roll == 6):
 
+                #Reset year count
+                university_year = []
+                
+                #Add six power arm to year
+                for add_arm in range(6):
+
+                    university_year.append(power_arm_secondary)
+
+                #Clear Screen
+                os.system("clear")
+
+                print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Cumilative Secondary Score: {secondary_result}{colour_end}")
+                print()
+                print(f"{colour_green}University:{colour_end} {colour_yellow}{university_year}{colour_end}")
+                print()
+                print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
+                print()
                 print("Congratulations!!! You have rolled 6 so you advance to the next education level")
                 print()
-                input("Primary - Press any key to progress...")
+                input("University - Press any key to progress...")
 
-                #Call Secondary funtion
-                Secondary_Education()
+
+                #Exam Score
+                university_score = 60
+                cumilative_university_score = university_score + secondary_result
+                
+
+            elif (my_dice_roll == 0):
+
+                print("Sorry you rolled 0, so you will remain where you are")
+
+            elif (my_dice_roll == 1):
+
+                university_year.append(power_arm_university)
+
+                os.system("clear")
+                print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Cumilative Secondary Score: {secondary_result}{colour_end}")
+                print()
+                print(f"{colour_green}University:{colour_end} {colour_yellow}{university_year}{colour_end}")
+                print()
+                print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
+
+                print()
+                print("Well done!! You have passed your exams, you move one step")
+                
+
+ 
+
+            print()
+            input("University - press any key to continue...")
+
+            #Progress to University to education if 3 stars attained
+            if (len(university_year) >= 4 and university_year_counter == 4):
+
+                #Exam Score
+                university_score = 10
+                cumilative_university_score = university_score + secondary_result
+            
+            else:
+
+                print()
+                print("Your education ends here")
+
+        
+
+    #Function for secondary education
+    def Secondary_Education(in_primary_score):
+
+        #Variable
+        power_arm_secondary = "\U0001F4AA"
+        education_secondary = 6
+        secondary_player_bank = []
+        secondary_year = []
+        secondary_year_counter = 0
+        secondary_score = 0
+        primary_result = in_primary_score
+
+        print()
+        for secondary in range(education_secondary):
+
+            #Add 1 to counter
+            secondary_year_counter += 1
+            os.system("clear")
+
+            print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Cumilative Primary Score: {primary_result}{colour_end}")
+
+            print()
+            print(f"{colour_blue}Secondary:{colour_end} {colour_yellow}{secondary_year}{colour_end}")
+
+            my_dice_roll = process_player_roll_dice.Roll()
+            print()
+
+            if (my_dice_roll == 3):
+
+                #Check if the bank count equals 2
+                if (len(secondary_player_bank) == 2):
+
+                    #Reset year count
+                    secondary_year = []
+                    for add_arm in range(3):
+                        secondary_year.append(power_arm_secondary)
+
+                    #Clear Screen
+                    os.system("clear")
+
+                    print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Cumilative Primary Score: {primary_result}{colour_end}")
+                    print()
+
+                    print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
+                    print()
+                    print(f"{colour_blue}Secondary:{colour_end} {colour_yellow}{secondary_year}{colour_end}")
+                    print()
+                    print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
+                    print()
+
+                    print(f"Congratulations!! You have rolled 3 twice, so you advance to the next level")
+
+                    input("Press any key to continue...")
+                    
+                    #Exam Score
+                    secondary_score = 30
+                    cumilative_secondary_score = secondary_score + primary_result
+                    
+                    #Call Function University Education
+                    University_Education(cumilative_secondary_score)
+
+                    #Brake loop
+                    break
+
+                print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
+                print()
+                #Ask player if they wish to bank 
+                bank_question = input("3 allows you to bank or move one step y /n: ")
+                print()
+
+                if( bank_question == "y" or bank_question == "Y"):
+
+                    #Reset year count
+                    secondary_year = []
+
+                    #Add three power arms to the nursary
+                    for add_arm in range(3):
+                        secondary_year.append(power_arm_secondary)
+
+                    secondary_player_bank.append(my_dice_roll)
+                    input(f"You currently have {len(bank_question)} in the bank. Press any key to continue...")
+
+                    '''
+                    #Clear Screen
+                    os.system("clear")
+
+                    print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Cumilative Primary Score: {primary_result}{colour_end}")
+                    print()
+                    print(f"{colour_blue}Secondary:{colour_end} {colour_yellow}{secondary_year}{colour_end}")
+                    print()
+                    '''
+        
+                    
+                    
+
+                else:
+                    #Add single power arm to year
+                    secondary_year.append(power_arm_secondary)
+
+                    #Clear Screen
+                    os.system("clear")
+
+                    print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Cumilative Primary Score: {primary_result}{colour_end}")
+                    print()
+                    print(f"{colour_blue}Secondary:{colour_end} {colour_yellow}{secondary_year}{colour_end}")
+                    print()
+                    print(f"{colour_green}You have chosen not to bank so you move one step{colour_end}")
+
+                    
+
+            
+            elif (my_dice_roll == 6):
+
+                #Reset year count
+                secondary_year = []
+                
+                #Add six power arm to year
+                for add_arm in range(6):
+
+                    secondary_year.append(power_arm_secondary)
+
+                #Clear Screen
+                os.system("clear")
+
+                print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Cumilative Primary Score: {primary_result}{colour_end}")
+                print()
+                print(f"{colour_blue}Secondary:{colour_end} {colour_yellow}{secondary_year}{colour_end}")
+                print()
+                print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
+                print()
+
+                print("Congratulations!!! You have rolled 6 so you advance to the next education level")
+                print()
+                input("Secondary - Press any key to progress...")
+
+
+                #Exam Score
+                secondary_score = 60
+                cumilative_secondary_score = secondary_score + primary_result
+                
+                #Call Function University Education
+                University_Education(cumilative_secondary_score)
 
                 #Breaks out of the Nursary loop
                 break
@@ -203,24 +431,209 @@ def School_Run():
 
             elif (my_dice_roll == 1):
 
+                secondary_year.append(power_arm_secondary)
+
+                os.system("clear")
+                print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Cumilative Primary Score: {primary_result}{colour_end}")
                 print()
-                print("Well done!! You have passed your exams, you move one step to Nursary year 2")
+                print(f"{colour_blue}Secondary:{colour_end} {colour_yellow}{secondary_year}{colour_end}")
+                print()
+                print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
+                print()
+                print("Well done!! You have passed your exams, you move one step")
+                
 
-                #Add star
-                primary_year.append("*")
-        
-            #Press any key to continue
-            input("Primary - Press any key to continue...")
 
-            #check if student has 6 stars
-            if (len(primary_year) == 6):
 
-                input("Congratulations!!! you have completed primary education. Press any key to continue to Secondary education: ")
+            print()
+            input("Secondary - press any key to continue...")
 
-                Secondary_Education()
+            #Progress to University to education if 3 stars attained
+            if (len(secondary_year) >= 6 and secondary_year_counter == 6):
+
+                #Exam Score
+                secondary_score = 10
+                cumilative_secondary_score = secondary_score + primary_result
+                
+                #Call Function University Education
+                University_Education(cumilative_secondary_score)
 
                 #Break loop
                 break
+            
+            else:
+
+                print()
+                print("Your education ends here")
+        
+
+
+    #Function for Primary education
+    def Primary_Education(in_nusary_result):
+
+        #Variable
+        power_arm_primary = "\U0001F4AA"
+        education_primary = 6
+        primary_player_bank = []
+        primary_year = []
+        nursary_result = in_nusary_result
+        primary_score = 0
+        primary_year_counter = 0
+
+        print()
+        for primary in range(education_primary):
+
+            #Add to counter
+            primary_year_counter += 1
+            os.system("clear")
+            print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Nusrary Exam Result: {nursary_result}{colour_end}")
+            print()
+            print(f"{colour_red}Primary:{colour_end} {colour_yellow}{primary_year}{colour_end}")
+
+            my_dice_roll = process_player_roll_dice.Roll()
+            
+
+            #input("Primary - Press any key to continue...")
+
+            if (my_dice_roll == 3):
+
+                #Check if the bank count equals 2
+                if (len(primary_player_bank) == 2):
+
+                    #Reset year count
+                    primary_year = []
+                    for add_arm in range(3):
+                        primary_year.append(power_arm_primary)
+
+                    #Clear Screen
+                    os.system("clear")
+
+                    print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Nusrary Exam Result: {nursary_result}{colour_end}")
+                    print()
+
+                    print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
+                    print()
+                    print(f"{colour_blue}Primary:{colour_end} {colour_yellow}{primary_year}{colour_end}")
+                    print()
+                    print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
+                    print()
+
+                    print(f"Congratulations!! Congratulations!! You have rolled 3 twice, so you advance to the next level")
+
+                    input("Press any key to continue...")
+                    #Call funciton to primary education
+
+                    #Exam Score
+                    primary_score = 30
+                    cumilative_primary_score = primary_score + nursary_result
+                    Secondary_Education(cumilative_primary_score)
+
+                    #Brake loop
+                    break
+                print()
+                print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
+                print()
+                #Ask player if they wish to bank 
+                bank_question = input("3 allows you to bank or move one step y /n: ")
+
+                if( bank_question == "y" or bank_question == "Y"):
+
+                    #Reset year count
+                    primary_year = []
+
+                    #Add three power arms to the nursary
+                    for add_arm in range(3):
+                        primary_year.append(power_arm_primary)
+
+                    primary_player_bank.append(my_dice_roll)
+                    print()
+                    input(f"You currently have {len(bank_question)} in the bank. Press any key to continue...")
+                
+
+                else:
+                    #Add single power arm to year
+                    primary_year.append(power_arm_primary)
+
+                    #Clear Screen
+                    os.system("clear")
+
+                    print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Nusrary Exam Result: {nursary_result}{colour_end}")
+                    print()
+                    print(f"{colour_blue}Primary:{colour_end} {colour_yellow}{primary_year}{colour_end}")
+                    print()
+                    print(f"{colour_green}You have chosen not to bank so you move one step{colour_end}")
+
+                    
+
+            
+            elif (my_dice_roll == 6):
+
+                #Reset year count
+                primary_year = []
+                
+                #Add six power arm to year
+                for add_arm in range(6):
+
+                    primary_year.append(power_arm_primary)
+
+                #Clear Screen
+                os.system("clear")
+
+                print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Nusrary Exam Result: {nursary_result}{colour_end}")
+                print()
+                print(f"{colour_blue}Primary:{colour_end} {colour_yellow}{primary_year}{colour_end}")
+                print()
+                print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
+                print()
+                print("Congratulations!!! You have rolled 6 so you advance to the next education level")
+                print()
+                input("Primary - Press any key to progress...")
+
+
+                #Exam Score
+                primary_score = 60
+                cumilative_primary_score = primary_score + nursary_result
+                Secondary_Education(cumilative_primary_score)
+
+                #Breaks out of the Nursary loop
+                break
+
+            elif (my_dice_roll == 0):
+
+                print()
+                print("Sorry you rolled 0, so you will remain where you are")
+
+            elif (my_dice_roll == 1):
+
+                primary_year.append(power_arm_primary)
+
+                os.system("clear")
+                print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Nusrary Exam Result: {nursary_result}{colour_end}")
+                print()
+                print(f"{colour_blue}Primary:{colour_end} {colour_yellow}{primary_year}{colour_end}")
+                print()
+                print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
+                print()
+                print("Well done!! You have passed your exams, you move one step")
+                
+
+
+
+            print()
+            input("Primary - press any key to continue...")
+
+            #Progress to primary to education if 3 stars attained
+            if (primary_year_counter == 6 and len(primary_year) >= 6):
+
+                #Exam Score
+                primary_score = 10
+                cumilative_primary_score = primary_score + nursary_result
+                Secondary_Education(cumilative_primary_score)
+            
+            else:
+
+                print()
+                print("Your education ends here")
 
 
 
@@ -229,9 +642,13 @@ def School_Run():
     def Nursary_Education():
 
         #Variables
+        power_arm_nursary = "\U0001F4AA"
         education_nursary = 3
         nursary_player_bank = []
-        nursary_year = ["*"]
+        nursary_year = []
+        nursary_year_counter = 0
+
+        nursary_exam_score = 0
 
         print()
         for nursary in range(education_nursary):
@@ -244,50 +661,122 @@ def School_Run():
             #My dice roll
             my_dice_roll = process_player_roll_dice.Roll()
             print()
-            print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
-            print()
+
+            #Counter years
+            nursary_year_counter += 1
 
             if (my_dice_roll == 3):
 
                 #Check if the bank count equals 2
                 if (len(nursary_player_bank) == 2):
 
-                    print(f"Congratulations!! You have 2 3 dice rolled in bank so you automatilcally advance to next education level ")
+                    #Reset year count
+                    nursary_year = []
+                    for add_arm in range(3):
+                        nursary_year.append(power_arm_nursary)
+
+                    #Clear Screen
+                    os.system("clear")
+
+                    print(process_player_roll_dice.player_firstname, process_player_roll_dice.player_lastname)
+                    print()
+
+                    print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
+                    print()
+                    print(f"{colour_blue}Nursary:{colour_end} {colour_yellow}{nursary_year}{colour_end}")
+                    print()
+                    print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
+                    print()
+
+                    print(f"Congratulations!! Congratulations!! You have rolled 3 twice, so you advance to the next level")
 
                     input("Press any key to continue...")
+
+                    #Exam score
+                    nursary_exam_score = 30
                     #Call funciton to primary education
-                    Primary_Education()
+                    Primary_Education(nursary_exam_score)
 
                     #Brake loop
                     break
 
-
+                
+                
+                print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
+                print()
                 #Ask player if they wish to bank 
                 bank_question = input("3 allows you to bank or move one step y /n: ")
+                print()
 
                 if( bank_question == "y" or bank_question == "Y"):
 
-                    #Bank
-                    print('''You have chosen to bank your dice roll 3. You need 2 of dice rolled 3 to make an express pass to the primary education
-                    
-                    ''')
+                    #Reset year count
+                    nursary_year = []
+
+                    #Add three power arms to the nursary
+                    for add_arm in range(3):
+                        nursary_year.append(power_arm_nursary)
+
                     nursary_player_bank.append(my_dice_roll)
-                    print(f"You currently have {len(bank_question)} of 3 dice roll in the bank")
+                    input(f"You currently have {len(bank_question)} in the bank. Press any key to continue...")
+                    '''
+                    #Clear Screen
+                    os.system("clear")
+
+                    print(process_player_roll_dice.player_firstname, process_player_roll_dice.player_lastname)
+                    print()
+                    print(f"{colour_blue}Nursary:{colour_end} {colour_yellow}{nursary_year}{colour_end}")
+                    print()
+                    '''
+                    
+                    
 
                 else:
+                    #Add single power arm to year
+                    nursary_year.append(power_arm_nursary)
+
+                    #Clear Screen
+                    os.system("clear")
+
+                    print(process_player_roll_dice.player_firstname, process_player_roll_dice.player_lastname)
+                    print()
+                    print(f"{colour_blue}Nursary:{colour_end} {colour_yellow}{nursary_year}{colour_end}")
                     print()
                     print(f"{colour_green}You have chosen not to bank so you move one step{colour_end}")
-                    nursary_year.append("*")
+
+                    
 
             
             elif (my_dice_roll == 6):
 
+                #Reset year count
+                nursary_year = []
+
+                #Add six power arm to year
+                for add_arm in range(6):
+
+                    nursary_year.append(power_arm_nursary)
+
+                #Clear Screen
+                os.system("clear")
+
+                print(process_player_roll_dice.player_firstname, process_player_roll_dice.player_lastname)
+                print()
+                print(f"{colour_blue}Nursary:{colour_end} {colour_yellow}{nursary_year}{colour_end}")
+                print()
+
                 print("Congratulations!!! You have rolled 6 so you advance to the next education level")
                 print()
-                input("Primary - Press any key to progress...")
+                print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
+                print()
+                input("Nursary - Press any key to progress...")
+
+                #Exam Score
+                nursary_exam_score = 60
+
 
                 #Call primary function
-                Primary_Education()
+                Primary_Education(nursary_exam_score)
 
                 #Breaks out of the Nursary loop
                 break
@@ -298,9 +787,17 @@ def School_Run():
 
             elif (my_dice_roll == 1):
 
+                nursary_year.append(power_arm_nursary)
+
+                os.system("clear")
+                print(process_player_roll_dice.player_firstname, process_player_roll_dice.player_lastname)
+                print()
+                print(f"{colour_blue}Nursary:{colour_end} {colour_yellow}{nursary_year}{colour_end}")
+                print()
+                print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
                 print()
                 print("Well done!! You have passed your exams, you move one step to Nursary year 2")
-                nursary_year.append("*")
+                
 
 
 
@@ -308,9 +805,15 @@ def School_Run():
             input("Nursary - press any key to continue...")
 
             #Progress to primary to education if 3 stars attained
-            if (len(nursary_year) == 3):
+            if (nursary_year_counter == 3 and len(nursary_year) >= 3):
 
-                Primary_Education()
+                #Exam Score
+                nursary_exam_score = 10
+
+                Primary_Education(nursary_exam_score)
+
+                #break loop 
+                break
             
             else:
 
