@@ -118,10 +118,15 @@ def School_Run():
         power_arm_university = "\U0001F4AA"
         educaiton_university = 4
         university_player_bank = []
+        university_year_target = []
         university_year = []
         university_score = 0
         university_year_counter = 0
         secondary_result = in_secondary_score
+
+        #Build University Target
+        for target in range(educaiton_university):
+            university_year_target.append(power_arm_university)
 
         print()
         for university in range(educaiton_university):
@@ -132,6 +137,8 @@ def School_Run():
 
             print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Cumilative Secondary Score: {secondary_result}{colour_end}")
 
+            print()
+            print(f"{colour_green}Target:    {colour_end} {colour_yellow}{university_year_target}{colour_end}")
             print()
             print(f"{colour_green}University:{colour_end} {colour_yellow}{university_year}{colour_end}")
 
@@ -158,7 +165,11 @@ def School_Run():
 
                     print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
                     print()
+                    print(f"{colour_green}Target:    {colour_end} {colour_yellow}{university_year_target}{colour_end}")
+                    print()
                     print(f"{colour_green}University:{colour_end} {colour_yellow}{university_year}{colour_end}")
+                    print()
+                    print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
                     print()
 
                     print(f"Congratulations!! You have rolled 3 twice, so you advance to the next level")
@@ -183,14 +194,18 @@ def School_Run():
                         university_year.append(power_arm_university)
 
                     university_player_bank.append(my_dice_roll)
-                    input(f"You currently have {len(bank_question)} in the bank. Press any key to continue...")
+                    input(f"You currently have {len(university_player_bank)} in the bank. Press any key to continue...")
 
                     #Clear Screen
                     os.system("clear")
 
                     print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Cumilative Secondary Score: {secondary_result}{colour_end}")
                     print()
+                    print(f"{colour_green}Target:    {colour_end} {colour_yellow}{university_year_target}{colour_end}")
+                    print()
                     print(f"{colour_green}University:{colour_end} {colour_yellow}{university_year}{colour_end}")
+                    print()
+                    print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
                     print()
         
                     
@@ -204,6 +219,8 @@ def School_Run():
                     os.system("clear")
 
                     print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Cumilative Secondary Score: {secondary_result}{colour_end}")
+                    print()
+                    print(f"{colour_green}Target:    {colour_end} {colour_yellow}{university_year_target}{colour_end}")
                     print()
                     print(f"{colour_green}University:{colour_end} {colour_yellow}{university_year}{colour_end}")
                     print()
@@ -220,12 +237,14 @@ def School_Run():
                 #Add six power arm to year
                 for add_arm in range(6):
 
-                    university_year.append(power_arm_secondary)
+                    university_year.append(power_arm_university)
 
                 #Clear Screen
                 os.system("clear")
 
                 print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Cumilative Secondary Score: {secondary_result}{colour_end}")
+                print()
+                print(f"{colour_green}Target:    {colour_end} {colour_yellow}{university_year_target}{colour_end}")
                 print()
                 print(f"{colour_green}University:{colour_end} {colour_yellow}{university_year}{colour_end}")
                 print()
@@ -251,6 +270,8 @@ def School_Run():
 
                 os.system("clear")
                 print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Cumilative Secondary Score: {secondary_result}{colour_end}")
+                print()
+                print(f"{colour_green}Target:    {colour_end} {colour_yellow}{university_year_target}{colour_end}")
                 print()
                 print(f"{colour_green}University:{colour_end} {colour_yellow}{university_year}{colour_end}")
                 print()
@@ -286,10 +307,15 @@ def School_Run():
         power_arm_secondary = "\U0001F4AA"
         education_secondary = 6
         secondary_player_bank = []
+        secondary_year_target = []
         secondary_year = []
         secondary_year_counter = 0
         secondary_score = 0
         primary_result = in_primary_score
+
+        #Build target
+        for target in range(education_secondary):
+            secondary_year_target.append(power_arm_secondary)
 
         print()
         for secondary in range(education_secondary):
@@ -299,7 +325,8 @@ def School_Run():
             os.system("clear")
 
             print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Cumilative Primary Score: {primary_result}{colour_end}")
-
+            print()
+            print(f"{colour_blue}Target: {colour_end} {colour_yellow}{secondary_year_target}{colour_end}")
             print()
             print(f"{colour_blue}Secondary:{colour_end} {colour_yellow}{secondary_year}{colour_end}")
 
@@ -323,6 +350,8 @@ def School_Run():
                     print()
 
                     print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
+                    print()
+                    print(f"{colour_blue}Target: {colour_end} {colour_yellow}{secondary_year_target}{colour_end}")
                     print()
                     print(f"{colour_blue}Secondary:{colour_end} {colour_yellow}{secondary_year}{colour_end}")
                     print()
@@ -359,19 +388,8 @@ def School_Run():
                         secondary_year.append(power_arm_secondary)
 
                     secondary_player_bank.append(my_dice_roll)
-                    input(f"You currently have {len(bank_question)} in the bank. Press any key to continue...")
-
-                    '''
-                    #Clear Screen
-                    os.system("clear")
-
-                    print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Cumilative Primary Score: {primary_result}{colour_end}")
-                    print()
-                    print(f"{colour_blue}Secondary:{colour_end} {colour_yellow}{secondary_year}{colour_end}")
-                    print()
-                    '''
-        
-                    
+                    input(f"You currently have {len(secondary_player_bank)} in the bank. Press any key to continue...")
+            
                     
 
                 else:
@@ -382,6 +400,8 @@ def School_Run():
                     os.system("clear")
 
                     print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Cumilative Primary Score: {primary_result}{colour_end}")
+                    print()
+                    print(f"{colour_blue}Target: {colour_end} {colour_yellow}{secondary_year_target}{colour_end}")
                     print()
                     print(f"{colour_blue}Secondary:{colour_end} {colour_yellow}{secondary_year}{colour_end}")
                     print()
@@ -404,6 +424,8 @@ def School_Run():
                 os.system("clear")
 
                 print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Cumilative Primary Score: {primary_result}{colour_end}")
+                print()
+                print(f"{colour_blue}Target: {colour_end} {colour_yellow}{secondary_year_target}{colour_end}")
                 print()
                 print(f"{colour_blue}Secondary:{colour_end} {colour_yellow}{secondary_year}{colour_end}")
                 print()
@@ -435,6 +457,8 @@ def School_Run():
 
                 os.system("clear")
                 print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Cumilative Primary Score: {primary_result}{colour_end}")
+                print()
+                print(f"{colour_blue}Target: {colour_end} {colour_yellow}{secondary_year_target}{colour_end}")
                 print()
                 print(f"{colour_blue}Secondary:{colour_end} {colour_yellow}{secondary_year}{colour_end}")
                 print()
@@ -475,10 +499,17 @@ def School_Run():
         power_arm_primary = "\U0001F4AA"
         education_primary = 6
         primary_player_bank = []
+        primary_year_target = []
         primary_year = []
         nursary_result = in_nusary_result
         primary_score = 0
         primary_year_counter = 0
+
+        #Build primary target
+        for target in range(education_primary):
+
+            primary_year_target.append(power_arm_primary)
+
 
         print()
         for primary in range(education_primary):
@@ -487,6 +518,8 @@ def School_Run():
             primary_year_counter += 1
             os.system("clear")
             print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Nusrary Exam Result: {nursary_result}{colour_end}")
+            print()
+            print(f"{colour_red}Target: {colour_end} {colour_yellow}{primary_year_target}{colour_end}")
             print()
             print(f"{colour_red}Primary:{colour_end} {colour_yellow}{primary_year}{colour_end}")
 
@@ -512,6 +545,8 @@ def School_Run():
                     print()
 
                     print(f"{colour_green}You rolled dice number: {my_dice_roll}{colour_end}")
+                    print()
+                    print(f"{colour_red}Target: {colour_end} {colour_yellow}{primary_year_target}{colour_end}")
                     print()
                     print(f"{colour_blue}Primary:{colour_end} {colour_yellow}{primary_year}{colour_end}")
                     print()
@@ -547,7 +582,7 @@ def School_Run():
 
                     primary_player_bank.append(my_dice_roll)
                     print()
-                    input(f"You currently have {len(bank_question)} in the bank. Press any key to continue...")
+                    input(f"You currently have {len(primary_player_bank)} in the bank. Press any key to continue...")
                 
 
                 else:
@@ -558,6 +593,8 @@ def School_Run():
                     os.system("clear")
 
                     print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Nusrary Exam Result: {nursary_result}{colour_end}")
+                    print()
+                    print(f"{colour_red}Target: {colour_end} {colour_yellow}{primary_year_target}{colour_end}")
                     print()
                     print(f"{colour_blue}Primary:{colour_end} {colour_yellow}{primary_year}{colour_end}")
                     print()
@@ -580,6 +617,8 @@ def School_Run():
                 os.system("clear")
 
                 print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Nusrary Exam Result: {nursary_result}{colour_end}")
+                print()
+                print(f"{colour_red}Target: {colour_end} {colour_yellow}{primary_year_target}{colour_end}")
                 print()
                 print(f"{colour_blue}Primary:{colour_end} {colour_yellow}{primary_year}{colour_end}")
                 print()
@@ -609,6 +648,8 @@ def School_Run():
 
                 os.system("clear")
                 print(f"{process_player_roll_dice.player_firstname} {process_player_roll_dice.player_lastname} {colour_yellow}Nusrary Exam Result: {nursary_result}{colour_end}")
+                print()
+                print(f"{colour_red}Target: {colour_end} {colour_yellow}{primary_year_target}{colour_end}")
                 print()
                 print(f"{colour_blue}Primary:{colour_end} {colour_yellow}{primary_year}{colour_end}")
                 print()
@@ -646,7 +687,12 @@ def School_Run():
         education_nursary = 3
         nursary_player_bank = []
         nursary_year = []
+        nursary_year_target = []
         nursary_year_counter = 0
+
+        #Build nursary target
+        for target in range(education_nursary):
+            nursary_year_target.append(power_arm_nursary)
 
         nursary_exam_score = 0
 
@@ -655,6 +701,8 @@ def School_Run():
 
             os.system("clear")
             print(process_player_roll_dice.player_firstname, process_player_roll_dice.player_lastname)
+            print()
+            print(f"{colour_blue}Target: {colour_end} {colour_yellow}{nursary_year_target}{colour_end}")
             print()
             print(f"{colour_blue}Nursary:{colour_end} {colour_yellow}{nursary_year}{colour_end}")
 
@@ -718,16 +766,7 @@ def School_Run():
                         nursary_year.append(power_arm_nursary)
 
                     nursary_player_bank.append(my_dice_roll)
-                    input(f"You currently have {len(bank_question)} in the bank. Press any key to continue...")
-                    '''
-                    #Clear Screen
-                    os.system("clear")
-
-                    print(process_player_roll_dice.player_firstname, process_player_roll_dice.player_lastname)
-                    print()
-                    print(f"{colour_blue}Nursary:{colour_end} {colour_yellow}{nursary_year}{colour_end}")
-                    print()
-                    '''
+                    input(f"You currently have {len(nursary_player_bank)} in the bank. Press any key to continue...")
                     
                     
 
@@ -739,6 +778,9 @@ def School_Run():
                     os.system("clear")
 
                     print(process_player_roll_dice.player_firstname, process_player_roll_dice.player_lastname)
+                    print()
+                    print()
+                    print(f"{colour_blue}Target: {colour_end} {colour_yellow}{nursary_year_target}{colour_end}")
                     print()
                     print(f"{colour_blue}Nursary:{colour_end} {colour_yellow}{nursary_year}{colour_end}")
                     print()
@@ -761,6 +803,9 @@ def School_Run():
                 os.system("clear")
 
                 print(process_player_roll_dice.player_firstname, process_player_roll_dice.player_lastname)
+                print()
+                print()
+                print(f"{colour_blue}Target: {colour_end} {colour_yellow}{nursary_year_target}{colour_end}")
                 print()
                 print(f"{colour_blue}Nursary:{colour_end} {colour_yellow}{nursary_year}{colour_end}")
                 print()
@@ -791,6 +836,9 @@ def School_Run():
 
                 os.system("clear")
                 print(process_player_roll_dice.player_firstname, process_player_roll_dice.player_lastname)
+                print()
+                print()
+                print(f"{colour_blue}Target: {colour_end} {colour_yellow}{nursary_year_target}{colour_end}")
                 print()
                 print(f"{colour_blue}Nursary:{colour_end} {colour_yellow}{nursary_year}{colour_end}")
                 print()
