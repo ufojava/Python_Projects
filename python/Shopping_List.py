@@ -39,18 +39,26 @@ def Get_Product_List():
 
         1. Print complete list
         2. Print Specific product
+        3. Check Product Code
         
         ''')
 
 
        
 
-        menu_option = input("Select an option: ")
+        while True:
 
-        while not (menu_option == "1" or menu_option == "2"):
             menu_option = input("Select an option: ")
-            
-    
+
+            #Test Option
+            try:
+
+                if (menu_option == "1" or menu_option == "2" or menu_option == "3"):
+
+                    break
+            except:
+                pass
+
             
         if (menu_option == "1"):
 
@@ -75,6 +83,46 @@ def Get_Product_List():
 
                     products.append(row)
             print(products)
+
+
+        elif (menu_option == "3"):
+
+            #Variable
+            #Populate list
+            for row in data_reader:
+
+                #Build product list
+                products.append(row)
+        
+
+            shopping_list = []
+            shopping_items_qty = 0
+            product_code_exist = False
+
+            while True:
+
+                try:
+
+                    #Get the number of items
+                    get_shopping_list_qty = int(input("Enter number to items you wish to purchase: "))
+                    break
+                    
+                except:
+                    pass
+
+            #Enter product code
+            print()
+            get_product_code = input("Enter product code: ")
+            print()
+
+            #Input produce code
+            for product in products:
+                if (get_product_code  == product["Code"]):
+                    product_code_exist = True
+
+            print(product_code_exist)
+
+
 
         
     
@@ -107,6 +155,13 @@ class Create_Order:
         #Get stock list and specific order
         get_stock = Get_Product_List()
 
+
+        
+
+
+
+
+
       
 
 
@@ -121,12 +176,23 @@ print(f"{process_orders.firstname} {process_orders.lastname}")
 print('''
 ********* Main Menu *******
 1. Run Product Stock Check Program
-2. Order Product
+2. Exit program
 
 ''')
 
+while True:
 
-run_program = input("Enter menu option: ")
+    run_program = input("Enter menu option: ")
+
+    try:
+
+        if (run_program == "1" or run_program == "2"):
+            break
+    
+    except:
+        pass
+
+
 
 if (run_program == "1"):
 
@@ -134,13 +200,8 @@ if (run_program == "1"):
 
 elif (run_program == "2"):
 
-    print("Under contruction !!!!")
-
-else:
-
     print("Progam will exit")
     sys.exit()
-
 
 
       

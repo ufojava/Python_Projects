@@ -4,25 +4,48 @@ Descripton: Code testbed / playground
 
 '''
 
-#Create timer
-
-import time, random
-import os
+import random
 
 
+#Various ways to loop
+def Player_Input():
 
-def Multiple_Return():
+        #Take in player input, Number and operator
 
-    my_name = "Okoro"
-    my_age = 56
-    my_town = "Ughelli"
+        while True:
 
-    return my_name, my_age, my_town
+            try:
+                player_number = int(input("Input a number between 1 and 99: "))
+
+                if (player_number > 0 and player_number < 100):
+
+                    break
+            
+            except:
 
 
-get_details = Multiple_Return()
+                pass
 
-print(Multiple_Return()[0])
+#Player_Input()
+
+#Produce random number between 2 numbers
+def Computer_Random():
+
+
+   get_Computer_Number = random.randint(1, 99)
+
+   print(f"The Computer numner is {get_Computer_Number}")
+
+
+
+Computer_Random()
+
+
+    
+
+
+
+
 
 
 
