@@ -33,7 +33,14 @@ play_count = 10
 #Class to include function that will produce an object for saving
 class Predict:
 
+    os.system("clear")
+    print(f'''
+
+    ***** THE PREDICT GAME *****
+
+    The Goal!!!! Can you guess if the computer's number will be higher or lower than your number
     
+    ''')
 
     def __init__(self,firstname,lastname):
 
@@ -51,17 +58,30 @@ class Predict:
         get_firstname = self.firstname
         get_lastname = self.lastname
 
+        #Guess input controls
+        guess_number_count = 0
+        guess_number_description = [f"{self.firstname}, this is your first guess",f"{self.firstname}, this is your second guess",f"{self.firstname}, this is your third guess"]
+
         #Variables
         player_correct_guess = 0
 
         #Take in player input, Number and operator
 
-        for play in range(maximum_play_count):
+        
+            
+            
+        for play_number in range(maximum_play_count):
 
             while True:
+                
+                os.system("clear")
+                print("Time to input your number !!! ")
+                print()
+                
 
                 try:
-                    player_number = int(input("Input a number between 1 and 3: "))
+
+                    player_number = int(input(f"{self.firstname} input a number between 1 and 3: "))
 
                     #Check if number is between 1 and 99
                     if (player_number > 0 and player_number < 4):
@@ -75,6 +95,8 @@ class Predict:
             #Select geuss option
             print(f'''
 
+            {guess_number_description[guess_number_count]}
+
             {colour_green}1. Computer number will be greater than your number?{colour_end}
 
             {colour_yellow}2. Computer number will be lower than your number?{colour_end}
@@ -86,10 +108,12 @@ class Predict:
             while True:
 
                 try:
-                    player_guess_option = input("Input your guess option: ")
+                    player_guess_option = input(f"{self.firstname} input your guess option: ")
 
                     #Check input
                     if (player_guess_option == "1" or player_guess_option == "2" or player_guess_option == "3"):
+
+                        guess_number_count += 1
 
                         break
                 except:
@@ -109,10 +133,10 @@ class Predict:
             predict_lower = (get_computer_number < player_number)
 
             #Return messages
-            higher_message = f"You have guessed correctly - HIGHER. Computer: {get_computer_number} Your number: {player_number}"
-            equal_message = f"You have predicted correctly - EQUAL. Computer: {get_computer_number} Your number: {player_number}"
-            lower_message = f"You have predicted correctly - LOWER Computer: {get_computer_number} Your number: {player_number}"
-            incorrect_guess_message = f"Sorry, you have guessed incorrectly Computer: {get_computer_number} Your number: {player_number}"
+            higher_message = f"{self.firstname}, you have guessed correctly - HIGHER. Computer: {get_computer_number} Your number: {player_number}"
+            equal_message = f"{self.firstname}, you have predicted correctly - EQUAL. Computer: {get_computer_number} Your number: {player_number}"
+            lower_message = f"{self.firstname}, you have predicted correctly - LOWER Computer: {get_computer_number} Your number: {player_number}"
+            incorrect_guess_message = f"Sorry {self.firstname}, you have guessed incorrectly Computer: {get_computer_number} Your number: {player_number}"
 
 
             #Check guess option
@@ -121,25 +145,49 @@ class Predict:
                 #Add 1 to player score
                 player_correct_guess += 1
 
-                print(f"{higher_message}")
+                os.system("clear")
+                print(f"{self.firstname} your option was {player_guess_option}")
+
+                print()
+                print(f"{colour_green}{higher_message}{colour_end}")
+                print()
+                input("Press Enter key to continue ...")
             
             elif (player_guess_option == "2" and predict_lower):
 
                 #Add 1 to player score
                 player_correct_guess += 1
 
-                print(f"{lower_message}")
+                os.system("clear")
+                print(f"{self.firstname} your option was {player_guess_option}")
+
+                print()
+                print(f"{colour_green}{lower_message}{colour_end}")
+                print()
+                input("Press Enter key to continue ...")
 
             elif (player_guess_option == "3" and predict_equals):
 
                 #Add 1 to player score
                 player_correct_guess += 1
 
-                print(f"{equal_message}")
+                os.system("clear")
+                print(f"{self.firstname} your option was {player_guess_option}")
+
+                print()
+                print(f"{colour_green}{equal_message}{colour_green}")
+                print()
+                input("Press Enter key to continue ...")
 
             else:
 
-                print(f"{incorrect_guess_message}")
+                os.system("clear")
+                print(f"{self.firstname} your option was {player_guess_option}")
+
+                print()
+                print(f"{colour_red}{incorrect_guess_message}{colour_end}")
+                print()
+                input("Press any key to continue ...")
 
         #End of the Play For Loop
 
@@ -152,7 +200,7 @@ class Predict:
 
 
 #Call Class to play game
-get_player_game = Predict(input("Input your firstname: "), input("Input your lastname: "))
+get_player_game = Predict(input("Input your firstname: ").capitalize(), input("Input your lastname: ").capitalize())
 
 
 #Get the player attributes from game play
