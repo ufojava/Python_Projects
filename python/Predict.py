@@ -7,7 +7,7 @@ Description: Game to predict if a computer will randomly present you with a high
 4. Correct Score 10
 5. Incorrect score 0
 6. Percent progress
-7. Number correct
+7. Create obeject with class to collect all the inormation
 8. Output stats to csv which will hold the leader board
 
 Side Note: Iwill be using a class to execute this program
@@ -64,6 +64,7 @@ class Predict:
 
         #Variables
         player_correct_guess = 0
+        percentage_correct = 0
 
         #Take in player input, Number and operator
 
@@ -145,11 +146,14 @@ class Predict:
                 #Add 1 to player score
                 player_correct_guess += 1
 
+                #Calculate percentage correct
+                percentage_correct = int(player_correct_guess / maximum_play_count * 100)
+
                 os.system("clear")
                 print(f"{self.firstname} your option was {player_guess_option}")
 
                 print()
-                print(f"{colour_green}{higher_message}{colour_end}")
+                print(f"{colour_green}{higher_message}{colour_end}. {colour_yellow}{percentage_correct}% Correct{colour_end}")
                 print()
                 input("Press Enter key to continue ...")
             
@@ -158,11 +162,14 @@ class Predict:
                 #Add 1 to player score
                 player_correct_guess += 1
 
+                #Calculate percentage correct
+                percentage_correct = int(player_correct_guess / maximum_play_count * 100)
+
                 os.system("clear")
                 print(f"{self.firstname} your option was {player_guess_option}")
 
                 print()
-                print(f"{colour_green}{lower_message}{colour_end}")
+                print(f"{colour_green}{lower_message}{colour_end}. {colour_yellow}{percentage_correct}% Correct{colour_end}")
                 print()
                 input("Press Enter key to continue ...")
 
@@ -171,11 +178,14 @@ class Predict:
                 #Add 1 to player score
                 player_correct_guess += 1
 
+                #Calculate percentage correct
+                percentage_correct = int(player_correct_guess / maximum_play_count * 100)
+
                 os.system("clear")
                 print(f"{self.firstname} your option was {player_guess_option}")
 
                 print()
-                print(f"{colour_green}{equal_message}{colour_green}")
+                print(f"{colour_green}{equal_message}{colour_green}. {colour_yellow}{percentage_correct}% Correct{colour_end}")
                 print()
                 input("Press Enter key to continue ...")
 
@@ -185,13 +195,13 @@ class Predict:
                 print(f"{self.firstname} your option was {player_guess_option}")
 
                 print()
-                print(f"{colour_red}{incorrect_guess_message}{colour_end}")
+                print(f"{colour_red}{incorrect_guess_message}{colour_end}. {colour_yellow}{percentage_correct}% Correct{colour_end}")
                 print()
                 input("Press any key to continue ...")
 
         #End of the Play For Loop
 
-        return get_firstname,get_lastname,player_correct_guess
+        return get_firstname,get_lastname,player_correct_guess,percentage_correct
 
 
 
@@ -229,6 +239,6 @@ class Collect_Player_Scores:
 
 
 #Print attributes     
-print(get_play_attributes[0],get_play_attributes[1],get_play_attributes[2])
+print(get_play_attributes[0],get_play_attributes[1],get_play_attributes[2],get_play_attributes[3])
         
 
