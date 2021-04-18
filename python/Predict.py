@@ -7,8 +7,9 @@ Description: Game to predict if a computer will randomly present you with a high
 4. Correct Score 10
 5. Incorrect score 0
 6. Percent progress
-7. Create obeject with class to collect all the inormation
-8. Output stats to csv which will hold the leader board
+7. Compute player score
+8. Create loop for player to play again
+9. Output stats to csv which will hold the leader board
 
 Side Note: Iwill be using a class to execute this program
 
@@ -26,7 +27,6 @@ colour_yellow = "\33[33m"
 colour_blue = "\33[34m"
 
 #Variable
-player_scores = []
 play_count = 10
 
 
@@ -65,6 +65,7 @@ class Predict:
         #Variables
         player_correct_guess = 0
         percentage_correct = 0
+        player_score = 0
 
         #Take in player input, Number and operator
 
@@ -146,6 +147,28 @@ class Predict:
                 #Add 1 to player score
                 player_correct_guess += 1
 
+
+                #Compute player score
+                if (play_number == 0 and player_score == 0):
+
+                    player_score += 50
+
+                elif (play_number == 1 and player_score == 0):
+
+                    player_score += 50
+
+                elif (play_number == 1 and player_score == 50):
+
+                    player_score += 150
+
+                elif (play_number == 2 and player_score == 200):
+
+                    player_score += 200
+
+                elif ((play_number == 2 and player_score == 0) or (play_number == 2 and player_score == 50)):
+
+                    player_score += 50
+
                 #Calculate percentage correct
                 percentage_correct = int(player_correct_guess / maximum_play_count * 100)
 
@@ -153,7 +176,7 @@ class Predict:
                 print(f"{self.firstname} your option was {player_guess_option}")
 
                 print()
-                print(f"{colour_green}{higher_message}{colour_end}. {colour_yellow}{percentage_correct}% Correct{colour_end}")
+                print(f"{colour_green}{higher_message}{colour_end}. {colour_yellow}{percentage_correct}% Correct{colour_end} {colour_blue}Score: {player_score}{colour_end}")
                 print()
                 input("Press Enter key to continue ...")
             
@@ -162,6 +185,27 @@ class Predict:
                 #Add 1 to player score
                 player_correct_guess += 1
 
+                #Compute player score
+                if (play_number == 0 and player_score == 0):
+
+                    player_score += 50
+
+                elif (play_number == 1 and player_score == 0):
+
+                    player_score += 50
+
+                elif (play_number == 1 and player_score == 50):
+
+                    player_score += 150
+
+                elif (play_number == 2 and player_score == 200):
+
+                    player_score += 200
+
+                elif ((play_number == 2 and player_score == 0) or (play_number == 2 and player_score == 50)):
+
+                    player_score += 50
+
                 #Calculate percentage correct
                 percentage_correct = int(player_correct_guess / maximum_play_count * 100)
 
@@ -169,7 +213,7 @@ class Predict:
                 print(f"{self.firstname} your option was {player_guess_option}")
 
                 print()
-                print(f"{colour_green}{lower_message}{colour_end}. {colour_yellow}{percentage_correct}% Correct{colour_end}")
+                print(f"{colour_green}{lower_message}{colour_end}. {colour_yellow}{percentage_correct}% Correct{colour_end} {colour_blue}Score: {player_score}{colour_end}")
                 print()
                 input("Press Enter key to continue ...")
 
@@ -178,6 +222,27 @@ class Predict:
                 #Add 1 to player score
                 player_correct_guess += 1
 
+                #Compute player score
+                if (play_number == 0 and player_score == 0):
+
+                    player_score += 50
+
+                elif (play_number == 1 and player_score == 0):
+
+                    player_score += 50
+
+                elif (play_number == 1 and player_score == 50):
+
+                    player_score += 150
+
+                elif (play_number == 2 and player_score == 200):
+
+                    player_score += 200
+
+                elif ((play_number == 2 and player_score == 0) or (play_number == 2 and player_score == 50)):
+
+                    player_score += 50
+
                 #Calculate percentage correct
                 percentage_correct = int(player_correct_guess / maximum_play_count * 100)
 
@@ -185,7 +250,7 @@ class Predict:
                 print(f"{self.firstname} your option was {player_guess_option}")
 
                 print()
-                print(f"{colour_green}{equal_message}{colour_green}. {colour_yellow}{percentage_correct}% Correct{colour_end}")
+                print(f"{colour_green}{equal_message}{colour_green}. {colour_yellow}{percentage_correct}% Correct{colour_end} {colour_blue}Score: {player_score}{colour_end}")
                 print()
                 input("Press Enter key to continue ...")
 
@@ -195,50 +260,60 @@ class Predict:
                 print(f"{self.firstname} your option was {player_guess_option}")
 
                 print()
-                print(f"{colour_red}{incorrect_guess_message}{colour_end}. {colour_yellow}{percentage_correct}% Correct{colour_end}")
+                print(f"{colour_red}{incorrect_guess_message}{colour_end}. {colour_yellow}{percentage_correct}% Correct{colour_end} {colour_blue}Score: {player_score}{colour_end} ")
                 print()
-                input("Press any key to continue ...")
+                input("Press Enter key to continue ...")
 
         #End of the Play For Loop
 
-        return get_firstname,get_lastname,player_correct_guess,percentage_correct
+        return get_firstname,get_lastname,player_correct_guess,percentage_correct,player_score
 
 
 
 
-    
+#******* MANIN PROGRAM STARTS HERE ***********
 
+#
+run_program = "y"
 
-#Call Class to play game
-get_player_game = Predict(input("Input your firstname: ").capitalize(), input("Input your lastname: ").capitalize())
-
-
-#Get the player attributes from game play
-get_play_attributes = get_player_game.Game_Play()
+while (run_program == "y" or run_program == "Y"):
 
 
 
-
-#Collect all the data for record history
-class Collect_Player_Scores:
-
-    def __init__(self,in_firstname,in_lastname,correct_guess_count):
-
-        self.in_firstname = in_firstname
-        self.in_lastname = in_lastname
-        self.correct_guess_count = correct_guess_count
-
-    def Work_Results(self):
+    #Call Class to play game
+    get_player_game = Predict(input("Input your firstname: ").capitalize(), input("Input your lastname: ").capitalize())
 
 
-        #Variables
-        get_correct_guess_count = self.correct_guess_count
-        maximum_play = 10
-        correct_score = 10
-        incorrect_score = 0
+    #Get the player attributes from game play
+    get_play_attributes = get_player_game.Game_Play()
 
+    #Clear Screen
+    os.system("clear")
+    print("Your results:")
+    print()
 
-#Print attributes     
-print(get_play_attributes[0],get_play_attributes[1],get_play_attributes[2],get_play_attributes[3])
+    #Print attributes     
+    print(get_play_attributes[0],get_play_attributes[1],get_play_attributes[2],get_play_attributes[3],get_play_attributes[4])
+    print()
+
+    while True:
+
+        try:
+
+            #Get input to exit or play 
+            play_again = input("Do you wish to play again? y/n: ")
+
+            if (play_again == "y" or play_again == "Y" or play_again == "n" or play_again == "N"):
+
+                #Update run program
+                run_program = play_again
+
+                input("Press Enter to continue...")
+
+                break
+        except:
+
+            pass
+
         
 
