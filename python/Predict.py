@@ -26,6 +26,10 @@ colour_green = "\33[32m"
 colour_yellow = "\33[33m"
 colour_blue = "\33[34m"
 
+#Background Colours
+colour_violet_bg = "\33[45m"
+colour_blue_bg = "\33[44m"
+
 #Variable
 play_count = 10
 
@@ -77,13 +81,13 @@ class Predict:
             while True:
                 
                 os.system("clear")
-                print("Time to input your number !!! ")
+                print(f"{colour_blue_bg}Time to input your number !!!{colour_end}")
                 print()
                 
 
                 try:
 
-                    player_number = int(input(f"{self.firstname} input a number between 1 and 3: "))
+                    player_number = int(input(f"{self.firstname} input a number between {colour_yellow}1{colour_end} and {colour_yellow}3{colour_end}: "))
 
                     #Check if number is between 1 and 99
                     if (player_number > 0 and player_number < 4):
@@ -110,7 +114,7 @@ class Predict:
             while True:
 
                 try:
-                    player_guess_option = input(f"{self.firstname} input your guess option: ")
+                    player_guess_option = input(f"{colour_blue_bg}{self.firstname}{colour_end} input your guess option: ")
 
                     #Check input
                     if (player_guess_option == "1" or player_guess_option == "2" or player_guess_option == "3"):
@@ -135,10 +139,10 @@ class Predict:
             predict_lower = (get_computer_number < player_number)
 
             #Return messages
-            higher_message = f"{self.firstname}, you have guessed correctly - HIGHER. Computer: {get_computer_number} Your number: {player_number}"
-            equal_message = f"{self.firstname}, you have predicted correctly - EQUAL. Computer: {get_computer_number} Your number: {player_number}"
-            lower_message = f"{self.firstname}, you have predicted correctly - LOWER Computer: {get_computer_number} Your number: {player_number}"
-            incorrect_guess_message = f"Sorry {self.firstname}, you have guessed incorrectly Computer: {get_computer_number} Your number: {player_number}"
+            higher_message = f"{self.firstname}, you have guessed {colour_yellow}correctly{colour_end} - {colour_yellow}HIGHER{colour_end}. Computer: {colour_yellow}{get_computer_number}{colour_end} Your number: {colour_yellow}{player_number}{colour_end}"
+            equal_message = f"{self.firstname}, you have predicted {colour_yellow}correctly{colour_end} - {colour_yellow}EQUAL{colour_end}. Computer: {colour_yellow}{get_computer_number}{colour_end} Your number: {colour_yellow}{player_number}{colour_end}"
+            lower_message = f"{self.firstname}, you have predicted {colour_yellow}correctly{colour_end} - {colour_yellow}LOWER{colour_end} Computer: {colour_yellow}{get_computer_number}{colour_end} Your number: {colour_yellow}{player_number}{colour_end}"
+            incorrect_guess_message = f"Sorry {self.firstname}, {colour_red}you have guessed{colour_end} {colour_yellow}incorrectly{colour_end} Computer: {colour_yellow}{get_computer_number}{colour_end} Your number: {colour_yellow}{player_number}{colour_end}"
 
 
             #Check guess option
@@ -176,9 +180,9 @@ class Predict:
                 print(f"{self.firstname} your option was {player_guess_option}")
 
                 print()
-                print(f"{colour_green}{higher_message}{colour_end}. {colour_yellow}{percentage_correct}% Correct{colour_end} {colour_blue}Score: {player_score}{colour_end}")
+                print(f"{higher_message}. {colour_yellow}{percentage_correct}% Correct{colour_end} {colour_blue}Score: {player_score}{colour_end}")
                 print()
-                input("Press Enter key to continue ...")
+                input(f"{colour_violet_bg}Press Enter key to continue ...{colour_end}")
             
             elif (player_guess_option == "2" and predict_lower):
 
@@ -213,9 +217,9 @@ class Predict:
                 print(f"{self.firstname} your option was {player_guess_option}")
 
                 print()
-                print(f"{colour_green}{lower_message}{colour_end}. {colour_yellow}{percentage_correct}% Correct{colour_end} {colour_blue}Score: {player_score}{colour_end}")
+                print(f"{lower_message}. {colour_yellow}{percentage_correct}% Correct{colour_end} {colour_blue}Score: {player_score}{colour_end}")
                 print()
-                input("Press Enter key to continue ...")
+                input(f"{colour_violet_bg}Press Enter key to continue ...{colour_end}")
 
             elif (player_guess_option == "3" and predict_equals):
 
@@ -250,9 +254,9 @@ class Predict:
                 print(f"{self.firstname} your option was {player_guess_option}")
 
                 print()
-                print(f"{colour_green}{equal_message}{colour_green}. {colour_yellow}{percentage_correct}% Correct{colour_end} {colour_blue}Score: {player_score}{colour_end}")
+                print(f"{equal_message}. {colour_yellow}{percentage_correct}% Correct{colour_end} {colour_blue}Score: {player_score}{colour_end}")
                 print()
-                input("Press Enter key to continue ...")
+                input(f"{colour_violet_bg}Press Enter key to continue ...{colour_end}")
 
             else:
 
@@ -260,9 +264,9 @@ class Predict:
                 print(f"{self.firstname} your option was {player_guess_option}")
 
                 print()
-                print(f"{colour_red}{incorrect_guess_message}{colour_end}. {colour_yellow}{percentage_correct}% Correct{colour_end} {colour_blue}Score: {player_score}{colour_end} ")
+                print(f"{incorrect_guess_message}. {colour_yellow}{percentage_correct}% Correct{colour_end} {colour_blue}Score: {player_score}{colour_end} ")
                 print()
-                input("Press Enter key to continue ...")
+                input(f"{colour_violet_bg}Press Enter key to continue ...{colour_end}")
 
         #End of the Play For Loop
 
@@ -290,11 +294,19 @@ while (run_program == "y" or run_program == "Y"):
     #Clear Screen
     os.system("clear")
     print("Your results:")
-    print()
 
     #Print attributes     
-    print(get_play_attributes[0],get_play_attributes[1],get_play_attributes[2],get_play_attributes[3],get_play_attributes[4])
-    print()
+    print(f'''
+    
+    {colour_blue_bg}{get_play_attributes[0]} {get_play_attributes[1]}:{colour_end}
+    
+    Correct Guess:      {colour_yellow}{get_play_attributes[2]} questions{colour_end} {colour_red}[3]{colour_end} 
+    
+    Percentage Correct: {colour_yellow}{get_play_attributes[3]}%{colour_end} {colour_red}[100%]{colour_end}
+    
+    Score:              {colour_yellow}{get_play_attributes[4]}{colour_end} {colour_red}points [400]{colour_end}
+    
+    ''')
 
     while True:
 
@@ -307,8 +319,9 @@ while (run_program == "y" or run_program == "Y"):
 
                 #Update run program
                 run_program = play_again
-
-                input("Press Enter to continue...")
+                print()
+                input(f"{colour_violet_bg}Press Enter to continue...{colour_end}")
+                os.system("clear")
 
                 break
         except:
