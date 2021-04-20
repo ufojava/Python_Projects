@@ -25,6 +25,8 @@ colour_red = "\33[31m"
 colour_green = "\33[32m"
 colour_yellow = "\33[33m"
 colour_blue = "\33[34m"
+colour_beige = "\33[36m"
+colour_violet = "\033[35m"
 
 #Background Colours
 colour_violet_bg = "\33[45m"
@@ -40,7 +42,7 @@ class Predict:
     os.system("clear")
     print(f'''
 
-    ***** THE PREDICT GAME *****
+    {colour_yellow}***** THE PREDICT GAME *****{colour_end}
 
     The Goal!!!! Can you guess if the computer's number will be higher or lower than your number
     
@@ -293,6 +295,52 @@ while (run_program == "y" or run_program == "Y"):
 
     #Clear Screen
     os.system("clear")
+
+
+
+    def Set_Result_Colour(in_score):
+
+        #Variable Score Zero
+        guess_zero = f"{colour_red}[3]{colour_end}"
+        percetage_zero = f"{colour_red}[100%]{colour_end}"
+        score_zero = f"{colour_red}[400]{colour_end}"
+
+        #Variable Score One
+        guess_one = f"{colour_beige}[3]{colour_end}"
+        percetage_one = f"{colour_beige}[100%]{colour_end}"
+        score_one = f"{colour_beige}[400]{colour_end}"
+
+        #Variable Score Two
+        guess_two = f"{colour_violet}[3]{colour_end}"
+        percetage_two = f"{colour_violet}[100%]{colour_end}"
+        score_two = f"{colour_violet}[400]{colour_end}"
+
+        #Variable Score Three
+        guess_three = f"{colour_green}[3]{colour_end}"
+        percetage_three = f"{colour_green}[100%]{colour_end}"
+        score_three = f"{colour_green}[400]{colour_end}"
+
+
+        #Return result colour
+        if (in_score == 0):
+
+            return guess_zero,percetage_zero,score_zero
+
+        elif (in_score == 1):
+
+            return guess_one,percetage_one,score_one
+
+        elif (in_score == 2):
+
+            return guess_two,percetage_two,score_two
+
+        elif (in_score == 3):
+
+            return guess_three,percetage_three,score_three
+
+
+
+
     print("Your results:")
 
     #Print attributes     
@@ -300,11 +348,11 @@ while (run_program == "y" or run_program == "Y"):
     
     {colour_blue_bg}{get_play_attributes[0]} {get_play_attributes[1]}:{colour_end}
     
-    Correct Guess:      {colour_yellow}{get_play_attributes[2]} questions{colour_end} {colour_red}[3]{colour_end} 
+    Correct Guess:      {colour_yellow}{get_play_attributes[2]} questions{colour_end} {Set_Result_Colour(get_play_attributes[2])[0]} 
     
-    Percentage Correct: {colour_yellow}{get_play_attributes[3]}%{colour_end} {colour_red}[100%]{colour_end}
+    Percentage Correct: {colour_yellow}{get_play_attributes[3]}%{colour_end} {Set_Result_Colour(get_play_attributes[2])[1]}
     
-    Score:              {colour_yellow}{get_play_attributes[4]}{colour_end} {colour_red}points [400]{colour_end}
+    Score:              {colour_yellow}{get_play_attributes[4]}{colour_end} {Set_Result_Colour(get_play_attributes[2])[2]}
     
     ''')
 
