@@ -4,6 +4,7 @@ Descripton: Code testbed / playground
 
 '''
 
+'''
 import random
 
 
@@ -32,6 +33,8 @@ def Player_Input():
 def Computer_Random():
 
 
+
+
    get_Computer_Number = random.randint(1, 99)
 
    print(f"The Computer numner is {get_Computer_Number}")
@@ -39,6 +42,46 @@ def Computer_Random():
 
 
 Computer_Random()
+
+
+'''
+
+#Add a class object to a list
+
+result_list = []
+import os
+
+from datetime import date
+
+todays_date = date.today()
+
+class Get_Result:
+
+    def __init__(self,in_firstname,in_lastname,in_percentage,in_score,in_date):
+
+        self.in_firstname = in_firstname
+        self.in_lastname = in_lastname
+        self.in_percentage = in_percentage
+        self.in_score = in_score
+        self.in_date = in_date
+
+
+
+
+for result in range(2):
+
+    result_list.append(Get_Result(input("Enter firstname: "),input("Enter lastname: "),input("Enter percentage: "),input("Enter socre: "),todays_date))
+
+
+os.system("clear")
+    
+for result in result_list:
+
+   
+
+    print(result.in_firstname,result.in_lastname,result.in_percentage,result.in_score,result.in_date)
+
+
 
 
     

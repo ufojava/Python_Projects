@@ -11,7 +11,7 @@ Description: Game to predict if a computer will randomly present you with a high
 8. Create loop for player to play again
 9. Output stats to csv which will hold the leader board
 
-Side Note: Iwill be using a class to execute this program
+Side Note: I will be using a class to execute this program
 
 '''
 
@@ -275,19 +275,37 @@ class Predict:
         return get_firstname,get_lastname,player_correct_guess,percentage_correct,player_score
 
 
+#Class to export results
+class Export_Results:
+
+
+    #Initialise all inputs
+    def __init__(self,res_firstname,res_lastname,res_percentage,res_score):
+
+        self.res_firstname = res_firstname
+        self.res_lastname = res_lastname
+        self.res_percentage = res_percentage
+        self.res_score = res_score
+
+
+
+
+
+
 
 
 #******* MANIN PROGRAM STARTS HERE ***********
 
-#
+#Collate results
+play_results = []
+
 run_program = "y"
+
+#Take player name
+get_player_game = Predict(input("Input your firstname: ").capitalize(), input("Input your lastname: ").capitalize())
 
 while (run_program == "y" or run_program == "Y"):
 
-
-
-    #Call Class to play game
-    get_player_game = Predict(input("Input your firstname: ").capitalize(), input("Input your lastname: ").capitalize())
 
 
     #Get the player attributes from game play
@@ -343,6 +361,10 @@ while (run_program == "y" or run_program == "Y"):
 
     print("Your results:")
 
+    #Add play results to list
+    
+
+
     #Print attributes     
     print(f'''
     
@@ -355,6 +377,21 @@ while (run_program == "y" or run_program == "Y"):
     Score:              {colour_yellow}{get_play_attributes[4]}{colour_end} {Set_Result_Colour(get_play_attributes[2])[2]}
     
     ''')
+
+    
+
+    collate_player_result = Export_Results(get_play_attributes[0], get_play_attributes[1], get_play_attributes[3], get_play_attributes[4])
+
+    #Append to player list
+    play_results.append(collate_player_result)
+
+    #Test result
+    for result in play_results:
+
+        print(result.res_firstname,result.res_lastname,result.res_percentage,result.res_score)
+
+    #Pause
+    input("Press Enter to continue")
 
     while True:
 
