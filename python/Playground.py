@@ -50,11 +50,14 @@ Computer_Random()
 
 result_list = []
 import os
+import os.path
+import json
 
-from datetime import date
+import datetime
 
-todays_date = date.today()
+todays_date_time = datetime.datetime.now()
 
+'''
 class Get_Result:
 
     def __init__(self,in_firstname,in_lastname,in_percentage,in_score,in_date):
@@ -70,7 +73,7 @@ class Get_Result:
 
 for result in range(2):
 
-    result_list.append(Get_Result(input("Enter firstname: "),input("Enter lastname: "),input("Enter percentage: "),input("Enter socre: "),todays_date))
+    result_list.append(Get_Result(input("Enter firstname: "),input("Enter lastname: "),input("Enter percentage: "),input("Enter socre: "),todays_date_time))
 
 
 os.system("clear")
@@ -80,6 +83,19 @@ for result in result_list:
    
 
     print(result.in_firstname,result.in_lastname,result.in_percentage,result.in_score,result.in_date)
+
+'''
+
+
+if os.path.isfile("my_test_file.txt"):
+
+    print("File exist")
+
+else:
+
+    print("File does not exist")
+
+
 
 
 

@@ -18,6 +18,7 @@ Side Note: I will be using a class to execute this program
 #Import libraries
 import os
 import csv
+import datetime
 
 #Colour pallete
 colour_end = "\33[0m"
@@ -280,12 +281,64 @@ class Export_Results:
 
 
     #Initialise all inputs
-    def __init__(self,res_firstname,res_lastname,res_percentage,res_score):
+    def __init__(self,res_firstname,res_lastname,res_percentage,res_score,res_date):
 
         self.res_firstname = res_firstname
         self.res_lastname = res_lastname
         self.res_percentage = res_percentage
         self.res_score = res_score
+        self.res_date = res_date
+
+
+    #Save file to csv file
+    def Save_Result(self):
+
+        #Import library
+        
+        file_exist = os.path.isfile("predict.csv")
+
+
+
+        get_firstname = self.res_firstname
+        get_lastname = self.res_lastname
+        get_percentage = self.res_percentage
+        get_score = self.res_score
+        get_date = self.res_date
+
+        result_list = [get_firstname,get_lastname,get_percentage,get_score,get_date]
+
+        #Check if file exist
+        if (file_exist):
+
+
+            #Create new file 
+            with open("predict.csv", "a+", newline="") as saved_results:
+
+                #Define writer
+                result_writer = csv.writer(saved_results, delimiter=",")
+
+                #Write data to csv file
+                #result_writer.writeheader() #Write header
+                result_writer.writerow(result_list)
+
+            saved_results.close()
+
+        else:
+
+            #Appned to file
+            with open("predict.csv", "w", newline="") as saved_results:
+
+                #Define writer
+                result_header = ["Firstname","Lastname","Percentage","Score","Date"]
+                result_writer = csv.writer(saved_results, delimiter=",")
+
+                result_writer.writerow(result_header) #Write header
+                result_writer.writerow(result_list)
+
+            saved_results.close()
+
+
+
 
 
 
@@ -362,14 +415,18 @@ while (run_program == "y" or run_program == "Y"):
     print("Your results:")
 
     #Add play results to list
+
+    #Get updated time
+    today_date_time = datetime.datetime.now()
+    date_time_format = today_date_time.strftime("%H:%M")
     
 
 
     #Print attributes     
     print(f'''
     
-    {colour_blue_bg}{get_play_attributes[0]} {get_play_attributes[1]}:{colour_end}
-    
+    {colour_blue_bg}{get_play_attributes[0]} {get_play_attributes[1]}. Time: {date_time_format}{colour_end}
+
     Correct Guess:      {colour_yellow}{get_play_attributes[2]} questions{colour_end} {Set_Result_Colour(get_play_attributes[2])[0]} 
     
     Percentage Correct: {colour_yellow}{get_play_attributes[3]}%{colour_end} {Set_Result_Colour(get_play_attributes[2])[1]}
@@ -380,18 +437,18 @@ while (run_program == "y" or run_program == "Y"):
 
     
 
-    collate_player_result = Export_Results(get_play_attributes[0], get_play_attributes[1], get_play_attributes[3], get_play_attributes[4])
+    collate_player_result = Export_Results(get_play_attributes[0], get_play_attributes[1], get_play_attributes[3], get_play_attributes[4],date_time_format)
 
     #Append to player list
     play_results.append(collate_player_result)
 
+    collate_player_result.Save_Result()
+
     #Test result
     for result in play_results:
 
-        print(result.res_firstname,result.res_lastname,result.res_percentage,result.res_score)
+        print(result.res_firstname,result.res_lastname,result.res_percentage,result.res_score,result.res_date)
 
-    #Pause
-    input("Press Enter to continue")
 
     while True:
 
