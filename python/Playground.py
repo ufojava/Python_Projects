@@ -84,7 +84,7 @@ for result in result_list:
 
     print(result.in_firstname,result.in_lastname,result.in_percentage,result.in_score,result.in_date)
 
-'''
+
 
 
 if os.path.isfile("my_test_file.txt"):
@@ -94,6 +94,18 @@ if os.path.isfile("my_test_file.txt"):
 else:
 
     print("File does not exist")
+
+'''
+
+
+
+today_date_time = datetime.datetime.now()
+
+fmt_date_time =  today_date_time.strftime("%d/%m/%y")
+
+print(fmt_date_time)
+
+
 
 
 
