@@ -477,58 +477,99 @@ def See_Leader_Board():
     if (game_file_store):
 
         print("File exist")
+
+        with open("predict.csv","r",newline="") as game_data:
+
+            data_reader = csv.reader(game_data)
+
+            #Clear Screen
+            os.system("clear")
+
+            print(f"{colour_yellow}******** Hsitorical Game Data *********{colour_end}")
+            print()
+
+            for result in data_reader:
+
+                print(result)
+        
+            print()
+            input("Press Enter key to continue...")
+
+            #Close file
+            game_data.close()
+
+            #Call Main mneu
+            Main_Menu()
+        
+        
     else:
 
-        print("file does not exist")
+        print()
+        input(f"{colour_red}No historic data available !!!. Press Enter key for main menu{colour_end}")
+
+        #Call Main Menu
+        Main_Menu()
 
 
 
 
 #Call Main Program
 
-print(f'''
 
-{colour_yellow}***** THE PREDICT GAME *****{colour_end}
+#Main Menu Function
+def Main_Menu():
 
-The Goal!!!! Can you guess if the computer's number will be higher or lower than your number
-
-
-MENU
-
-1. Check Leader Board
-
-2. Play Game
-
-3. Exit
-
-''')
-
-while True:
-
-    try:
+    #Clear screen
+    os.system("clear")
 
 
-        input_option = input("Make an option: ")
+    print(f'''
 
-        if (input_option == "1" or input_option == "2" or input_option == "3"):
+    {colour_yellow}***** THE PREDICT GAME *****{colour_end}
 
-            break
-    
-    except:
+    The Goal!!!! Can you guess if the computer's number will be higher or lower than your number
 
-        pass
 
-if (input_option == "1"):
+    MENU
 
-    See_Leader_Board()
+    1. Check Leader Board
 
-elif (input_option == "2"):
+    2. Play Game
 
-    Play_Predict()
+    3. Exit
 
-elif (input_option == "3"):
+    ''')
 
-    sys.exit()
+    while True:
+
+        try:
+
+
+            input_option = input("Make an option: ")
+
+            if (input_option == "1" or input_option == "2" or input_option == "3"):
+
+                break
+        
+        except:
+
+            pass
+
+    if (input_option == "1"):
+
+        See_Leader_Board()
+
+    elif (input_option == "2"):
+
+        Play_Predict()
+
+    elif (input_option == "3"):
+
+        sys.exit()
+
+
+#Call menu
+Main_Menu()
 
 
 
