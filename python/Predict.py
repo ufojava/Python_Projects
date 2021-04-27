@@ -471,6 +471,10 @@ def See_Leader_Board():
 
     #Import Library
     import os
+
+    #Import csv file
+    file_name = "predict.csv"
+    data_frame = pd.read_csv(file_name)
     
 
     #Game File Store
@@ -479,72 +483,70 @@ def See_Leader_Board():
     #Check for file store
     if (game_file_store):
 
-        print("File exist")
 
-        with open("predict.csv","r",newline="") as game_data:
 
-            data_reader = csv.reader(game_data)
+        #Option to perform filtered search of all data
+        print('''
 
-            #Option to perform filtered search of all data
-            print('''
+        Historical Data Sub Menu
+        1. Historical data by player name
+        2. All Historical Data
 
-            Historical Data Sub Menu
-            1. Historical data by player name
-            2. All Historical Data
+        ''')
+
+        #Ensure the input is 1 or 2
+        while True:
+
+            try:
+
+                in_option = input("Input option: ")
+                if (in_option == "1" or in_option == "2"):
+                    break
+            except:
+                pass
+
+        
+        #Plyaer chooses option 1
+        if (in_option == "1"):
+
+            leaderboard_search = input("Input your first or your lastname: ")
+
+            #Pass through Pandas library (Search first or last names)
+            search_filter_firstname = data_frame.loc[(data_frame["Firstname"] == leaderboard_search) | (data_frame["Lastname"] == leaderboard_search)]
+
+            
+            #Clear screen
+            os.system("clear")
+            print(f'''
+
+            {colour_yellow}*********** SEARCH RESULTS ************{colour_end}
 
             ''')
 
-            #Ensure the input is 1 or 2
-            while True:
-
-                try:
-
-                    in_option = input("Input option: ")
-                    if (in_option == "1" or in_option == "2"):
-                        break
-                except:
-                    pass
-
-            
-            #Plyaer chooses option 1
-            if (in_option == "1"):
-
-                leaderboard_search = input("Input your first or your lastname: ")
-
-                #Loop through data
-                for filtered_search in data_reader:
-
-                    #Clear screen
-                    os.system("clear")
-
-                    if (filtered_search[1] == leaderboard_search or filtered_search[2] == leaderboard_search):
-
-                        print(filtered_search)
-
-                        input("Press Enter to continue...")
-
-            #Player chooses option 2
-            elif (in_option == "2"):
+            print(search_filter_firstname)
 
 
-                #Clear Screen
-                os.system("clear")
+            input("Press Enter to continue...")
 
-                print(f"{colour_yellow}******** Hsitorical Game Data *********{colour_end}")
-                print()
+        #Player chooses option 2
+        elif (in_option == "2"):
 
-                for result in data_reader:
 
-                    print(result)
-            
-                print()
-                input("Press Enter key to continue...")
+            #Clear Screen
+            os.system("clear")
 
-            #Close file
-            game_data.close()
+            print(f"{colour_yellow}******** Hsitorical Game Data *********{colour_end}")
+            print()
 
-            #Call Main mneu
-            Main_Menu()
+            print(data_frame)
+        
+            print()
+            input("Press Enter key to continue...")
+
+    
+
+        #Call Main mneu
+        Main_Menu()
         
         
     else:

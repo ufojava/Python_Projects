@@ -52,6 +52,7 @@ result_list = []
 import os
 import os.path
 import json
+import pandas as pd
 
 import datetime
 
@@ -99,14 +100,11 @@ else:
 
 
 
-today_date_time = datetime.datetime.now()
+#Import csv file
 
-fmt_date_time =  today_date_time.strftime("%d/%m/%y")
+data_frame = pd.read_csv("predict.csv")
 
-print(fmt_date_time)
-
-
-
+print(data_frame)
 
 
 
