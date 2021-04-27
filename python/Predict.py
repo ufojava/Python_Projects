@@ -20,6 +20,8 @@ import os
 import csv
 import datetime
 import sys
+import pandas as pd
+
 
 #Colour pallete
 colour_end = "\33[0m"
@@ -469,6 +471,7 @@ def See_Leader_Board():
 
     #Import Library
     import os
+    
 
     #Game File Store
     game_file_store = os.path.isfile("predict.csv") 
@@ -482,18 +485,60 @@ def See_Leader_Board():
 
             data_reader = csv.reader(game_data)
 
-            #Clear Screen
-            os.system("clear")
+            #Option to perform filtered search of all data
+            print('''
 
-            print(f"{colour_yellow}******** Hsitorical Game Data *********{colour_end}")
-            print()
+            Historical Data Sub Menu
+            1. Historical data by player name
+            2. All Historical Data
 
-            for result in data_reader:
+            ''')
 
-                print(result)
-        
-            print()
-            input("Press Enter key to continue...")
+            #Ensure the input is 1 or 2
+            while True:
+
+                try:
+
+                    in_option = input("Input option: ")
+                    if (in_option == "1" or in_option == "2"):
+                        break
+                except:
+                    pass
+
+            
+            #Plyaer chooses option 1
+            if (in_option == "1"):
+
+                leaderboard_search = input("Input your first or your lastname: ")
+
+                #Loop through data
+                for filtered_search in data_reader:
+
+                    #Clear screen
+                    os.system("clear")
+
+                    if (filtered_search[1] == leaderboard_search or filtered_search[2] == leaderboard_search):
+
+                        print(filtered_search)
+
+                        input("Press Enter to continue...")
+
+            #Player chooses option 2
+            elif (in_option == "2"):
+
+
+                #Clear Screen
+                os.system("clear")
+
+                print(f"{colour_yellow}******** Hsitorical Game Data *********{colour_end}")
+                print()
+
+                for result in data_reader:
+
+                    print(result)
+            
+                print()
+                input("Press Enter key to continue...")
 
             #Close file
             game_data.close()
