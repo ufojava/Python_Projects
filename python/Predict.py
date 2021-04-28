@@ -7,9 +7,10 @@ Description: Game to predict if a computer will randomly present you with a high
 4. Correct Score 10
 5. Incorrect score 0
 6. Percent progress
-7. Compute player score
+7. Computer player score
 8. Create loop for player to play again
 9. Output stats to csv which will hold the leader board
+10. Get highest score players
 
 Side Note: I will be using a class to execute this program
 
@@ -491,6 +492,7 @@ def See_Leader_Board():
         Historical Data Sub Menu
         1. Historical data by player name
         2. All Historical Data
+        3. Highest score player(s)
 
         ''')
 
@@ -500,7 +502,7 @@ def See_Leader_Board():
             try:
 
                 in_option = input("Input option: ")
-                if (in_option == "1" or in_option == "2"):
+                if (in_option == "1" or in_option == "2" or in_option == "3"):
                     break
             except:
                 pass
@@ -509,7 +511,7 @@ def See_Leader_Board():
         #Plyaer chooses option 1
         if (in_option == "1"):
 
-            leaderboard_search = input("Input your first or your lastname: ")
+            leaderboard_search = input("Input your first or your lastname: ").capitalize()
 
             #Pass through Pandas library (Search first or last names)
             search_filter_firstname = data_frame.loc[(data_frame["Firstname"] == leaderboard_search) | (data_frame["Lastname"] == leaderboard_search)]
@@ -542,6 +544,13 @@ def See_Leader_Board():
         
             print()
             input("Press Enter key to continue...")
+
+        elif (in_option == "3"):
+
+            os.system("clear")
+            input("Place Holder!!!! Press enter to continue")
+
+            
 
     
 

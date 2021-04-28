@@ -102,9 +102,28 @@ else:
 
 #Import csv file
 
+input_name = input("Enter your first or last name: ")
+
 data_frame = pd.read_csv("predict.csv")
 
-print(data_frame)
+
+filtered_data = data_frame.loc[(data_frame["Firstname"] == input_name) | (data_frame["Lastname"] == input_name)]
+
+#filtered_data = data_frame.loc[[0,1,2],:]
+
+#filtered_data = data_frame.loc[0:2,:]
+
+#filtered_data = data_frame.loc[:,["Percentage","Date"]]
+
+#filtered_data = data_frame.loc[0:2,"Lastname":"Date"]
+
+#Create a boolean condition
+
+get_limited_columns = filtered_data.loc[:,["Percentage","Date"]]
+
+print(get_limited_columns)
+
+
 
 
 
