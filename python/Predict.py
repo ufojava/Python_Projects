@@ -462,9 +462,17 @@ def Play_Predict():
                     os.system("clear")
 
                     break
+
             except:
 
                 pass
+
+    #Call main menu
+    Main_Menu()
+
+    
+
+    
 
 
 #Check leaderboard
@@ -493,6 +501,7 @@ def See_Leader_Board():
         1. Historical data by player name
         2. All Historical Data
         3. Highest score player(s)
+        4. Delete historical data
 
         ''')
 
@@ -502,7 +511,7 @@ def See_Leader_Board():
             try:
 
                 in_option = input("Input option: ")
-                if (in_option == "1" or in_option == "2" or in_option == "3"):
+                if (in_option == "1" or in_option == "2" or in_option == "3" or in_option == "4"):
                     break
             except:
                 pass
@@ -548,9 +557,26 @@ def See_Leader_Board():
         elif (in_option == "3"):
 
             os.system("clear")
-            input("Place Holder!!!! Press enter to continue")
 
+            score_col = data_frame["Score"]
+            max_value = score_col.max()
+
+            print(f'''
             
+            {colour_yellow}f*********** LEADERBOARD RESULTS ***********{colour_end}
+
+            ''')
+
+            leader_board_results = data_frame.loc[data_frame["Score"] == max_value]
+            print(leader_board_results)
+            print()
+            input(f"{colour_blue_bg}Leaderboard!!!! Press enter to continue{colour_end}")
+
+        
+        elif (in_option == "4"):
+
+            os.system("clear")
+            input("Place holder for delete historical data")
 
     
 

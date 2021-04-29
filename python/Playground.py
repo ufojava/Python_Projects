@@ -102,12 +102,16 @@ else:
 
 #Import csv file
 
-input_name = input("Enter your first or last name: ")
+#input_name = input("Enter your first or last name: ")
 
 data_frame = pd.read_csv("predict.csv")
 
+score_col = data_frame["Score"]
+max_value = score_col.max()
 
-filtered_data = data_frame.loc[(data_frame["Firstname"] == input_name) | (data_frame["Lastname"] == input_name)]
+
+#filtered_data = data_frame.loc[((data_frame["Firstname"] == input_name) | (data_frame["Lastname"] == input_name) & max_value)]
+filtered_data = data_frame.loc[(data_frame["Score"] == max_value)]
 
 #filtered_data = data_frame.loc[[0,1,2],:]
 
@@ -121,7 +125,9 @@ filtered_data = data_frame.loc[(data_frame["Firstname"] == input_name) | (data_f
 
 get_limited_columns = filtered_data.loc[:,["Percentage","Date"]]
 
-print(get_limited_columns)
+print(filtered_data)
+
+
 
 
 
