@@ -493,11 +493,13 @@ def See_Leader_Board():
     if (game_file_store):
 
 
-
+        #Clear Screen
+        os.system("clear")
         #Option to perform filtered search of all data
-        print('''
+        print(f'''
 
-        Historical Data Sub Menu
+        {colour_yellow}******* LEADERBOARD MENU ***********{colour_end}
+
         1. Historical data by player name
         2. All Historical Data
         3. Highest score player(s)
@@ -519,7 +521,7 @@ def See_Leader_Board():
         
         #Plyaer chooses option 1
         if (in_option == "1"):
-
+            print()
             leaderboard_search = input("Input your first or your lastname: ").capitalize()
 
             #Pass through Pandas library (Search first or last names)
@@ -536,8 +538,8 @@ def See_Leader_Board():
 
             print(search_filter_firstname)
 
-
-            input("Press Enter to continue...")
+            print()
+            input(f"{colour_blue_bg}Press Enter key to continue{colour_end}")
 
         #Player chooses option 2
         elif (in_option == "2"):
@@ -546,13 +548,13 @@ def See_Leader_Board():
             #Clear Screen
             os.system("clear")
 
-            print(f"{colour_yellow}******** Hsitorical Game Data *********{colour_end}")
+            print(f"{colour_yellow}******** ALL LEADERBOARD RECORDS *********{colour_end}")
             print()
 
             print(data_frame)
         
             print()
-            input("Press Enter key to continue...")
+            input(f"{colour_blue_bg}Press Enter key to continue{colour_end}")
 
         elif (in_option == "3"):
 
@@ -570,13 +572,61 @@ def See_Leader_Board():
             leader_board_results = data_frame.loc[data_frame["Score"] == max_value]
             print(leader_board_results)
             print()
-            input(f"{colour_blue_bg}Leaderboard!!!! Press enter to continue{colour_end}")
+            input(f"{colour_blue_bg}Press Enter key to continue{colour_end}")
 
         
         elif (in_option == "4"):
 
             os.system("clear")
-            input("Place holder for delete historical data")
+            print(f'''
+
+            {colour_red}Warning!!! You are choosing to delete the leaderboard data{colour_end}
+            ''')
+
+            input("Press Enter key to continue..")
+
+            #File name
+            leaderbaord_file_name = "predict.csv"
+
+            #Check if exist
+            check_exist = os.path.exists(leaderbaord_file_name)
+
+            if (check_exist):
+                os.system("clear")
+
+                while True:
+
+                    try:
+
+                        delete_data = input(f"{colour_red}Leaderboard data is about to be deleted!!! Do you want to continue:{colour_end} ")
+
+                        if (delete_data == "y" or delete_data == "Y" or delete_data == "n" or delete_data == "N"):
+
+                            break
+
+                    except:
+
+                        pass
+                
+                #Execute delete process or stop deletetion
+
+                #Test deletion input pass
+                input("Deletion test passed!!!")
+
+
+                print()
+                input("Press Enter key to continue")
+            
+            else:
+                os.system("clear")
+
+                print("File does not exist")
+                print()
+                input("Press Enter key to continue")
+
+        
+
+
 
     
 
@@ -607,7 +657,7 @@ def Main_Menu():
 
     print(f'''
 
-    {colour_yellow}***** THE PREDICT GAME *****{colour_end}
+    {colour_yellow}***** THE HIGHER LOWER GAME *****{colour_end}
 
     The Goal!!!! Can you guess if the computer's number will be higher or lower than your number
 
@@ -646,6 +696,13 @@ def Main_Menu():
         Play_Predict()
 
     elif (input_option == "3"):
+
+        #Clear Screen
+        os.system("clear")
+        print(f'''
+
+        {colour_green}****** Bye for now ******{colour_end}
+        ''')
 
         sys.exit()
 
