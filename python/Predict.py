@@ -483,7 +483,7 @@ def See_Leader_Board():
 
     #Import csv file
     file_name = "predict.csv"
-    data_frame = pd.read_csv(file_name)
+    
     
 
     #Game File Store
@@ -492,155 +492,179 @@ def See_Leader_Board():
     #Check for file store
     if (game_file_store):
 
+        exit_sub_menu = "n"
+        data_frame = pd.read_csv(file_name)
 
-        #Clear Screen
-        os.system("clear")
-        #Option to perform filtered search of all data
-        print(f'''
 
-        {colour_yellow}******* LEADERBOARD MENU ***********{colour_end}
+        #While repeat sequence
+        while (exit_sub_menu == "n"):
 
-        1. Historical data by player name
-        2. All Historical Data
-        3. Highest score player(s)
-        4. Delete historical data
-
-        ''')
-
-        #Ensure the input is 1 or 2
-        while True:
-
-            try:
-
-                in_option = input("Input option: ")
-                if (in_option == "1" or in_option == "2" or in_option == "3" or in_option == "4"):
-                    break
-            except:
-                pass
-
-        
-        #Plyaer chooses option 1
-        if (in_option == "1"):
-            print()
-            leaderboard_search = input("Input your first or your lastname: ").capitalize()
-
-            #Pass through Pandas library (Search first or last names)
-            search_filter_firstname = data_frame.loc[(data_frame["Firstname"] == leaderboard_search) | (data_frame["Lastname"] == leaderboard_search)]
-
-            
-            #Clear screen
-            os.system("clear")
-            print(f'''
-
-            {colour_yellow}*********** SEARCH RESULTS ************{colour_end}
-
-            ''')
-
-            print(search_filter_firstname)
-
-            print()
-            input(f"{colour_blue_bg}Press Enter key to continue{colour_end}")
-
-        #Player chooses option 2
-        elif (in_option == "2"):
 
 
             #Clear Screen
             os.system("clear")
-
-            print(f"{colour_yellow}******** ALL LEADERBOARD RECORDS *********{colour_end}")
-            print()
-
-            print(data_frame)
-        
-            print()
-            input(f"{colour_blue_bg}Press Enter key to continue{colour_end}")
-
-        elif (in_option == "3"):
-
-            os.system("clear")
-
-            score_col = data_frame["Score"]
-            max_value = score_col.max()
-
+            #Option to perform filtered search of all data
             print(f'''
+
+            {colour_yellow}******* LEADERBOARD MENU ***********{colour_end}
+
+            1. Historical data by player name
+            2. All Historical Data
+            3. Highest score player(s)
+            4. Delete historical data
+            5. Main Menu
+
+            ''')
+
+            #Ensure the input is 1 or 2
+            while True:
+
+                try:
+
+                    in_option = input("Input option: ")
+                    if (in_option == "1" or in_option == "2" or in_option == "3" or in_option == "4" or in_option == "5"):
+                        break
+                except:
+                    pass
+
             
-            {colour_yellow}f*********** LEADERBOARD RESULTS ***********{colour_end}
+            #Plyaer chooses option 1
+            if (in_option == "1"):
+                print()
+                leaderboard_search = input("Input your first or your lastname: ").capitalize()
 
-            ''')
+                #Pass through Pandas library (Search first or last names)
+                search_filter_firstname = data_frame.loc[(data_frame["Firstname"] == leaderboard_search) | (data_frame["Lastname"] == leaderboard_search)]
 
-            leader_board_results = data_frame.loc[data_frame["Score"] == max_value]
-            print(leader_board_results)
-            print()
-            input(f"{colour_blue_bg}Press Enter key to continue{colour_end}")
-
-        
-        elif (in_option == "4"):
-
-            os.system("clear")
-            print(f'''
-
-            {colour_red}Warning!!! You are choosing to delete the leaderboard data{colour_end}
-            ''')
-
-            input("Press Enter key to continue..")
-
-            #File name
-            leaderbaord_file_name = "predict.csv"
-
-            #Check if exist
-            check_exist = os.path.exists(leaderbaord_file_name)
-
-            if (check_exist):
-                os.system("clear")
-
-                while True:
-
-                    try:
-
-                        delete_data = input(f"{colour_red}Leaderboard data is about to be deleted!!! Do you want to continue:{colour_end} ")
-
-                        if (delete_data == "y" or delete_data == "Y" or delete_data == "n" or delete_data == "N"):
-
-                            break
-
-                    except:
-
-                        pass
                 
-                #Execute delete process or stop deletetion
+                #Clear screen
+                os.system("clear")
+                print(f'''
 
-                #Test deletion input pass
-                input("Deletion test passed!!!")
+                {colour_yellow}*********** SEARCH RESULTS ************{colour_end}
 
+                ''')
+
+                print(search_filter_firstname)
 
                 print()
-                input("Press Enter key to continue")
-            
-            else:
+                input(f"{colour_blue_bg}Press Enter key to continue{colour_end}")
+
+            #Player chooses option 2
+            elif (in_option == "2"):
+
+
+                #Clear Screen
                 os.system("clear")
 
-                print("File does not exist")
+                print(f"{colour_yellow}******** ALL LEADERBOARD RECORDS *********{colour_end}")
                 print()
-                input("Press Enter key to continue")
 
-        
+                print(data_frame)
+            
+                print()
+                input(f"{colour_blue_bg}Press Enter key to continue{colour_end}")
 
 
+            elif (in_option == "3"):
 
+                os.system("clear")
+
+                score_col = data_frame["Score"]
+                max_value = score_col.max()
+
+                print(f'''
+                
+                {colour_yellow}f*********** LEADERBOARD RESULTS ***********{colour_end}
+
+                ''')
+
+                leader_board_results = data_frame.loc[data_frame["Score"] == max_value]
+                print(leader_board_results)
+                print()
+                input(f"{colour_blue_bg}Press Enter key to continue{colour_end}")
+
+            
+            elif (in_option == "4"):
+
+                os.system("clear")
+                print(f'''
+
+                {colour_red}Warning!!! You are choosing to delete the leaderboard data{colour_end}
+                ''')
+
+                input("Press Enter key to continue..")
+
+                #File name
+                leaderbaord_file_name = "predict.csv"
+
+                #Check if exist
+                check_exist = os.path.exists(leaderbaord_file_name)
+
+                if (check_exist):
+                    os.system("clear")
+
+                    while True:
+
+                        try:
+
+                            delete_data = input(f"{colour_red}Leaderboard data is about to be deleted!!! Do you want to continue:{colour_end} ")
+
+                            if (delete_data == "y" or delete_data == "Y" or delete_data == "n" or delete_data == "N"):
+
+                                break
+
+                        except:
+
+                            pass
+                    
+                    #Execute delete process or stop deletetion
+
+                    #Test deletion input pass
+                    input("Deletion test passed!!!")
+
+
+                    print()
+                    input("Press Enter key to continue")
+                
+                else:
+                    os.system("clear")
+
+                    print("File does not exist")
+                    print()
+                    input("Press Enter key to continue")
+
+            elif (in_option == "5"):
+
+                #CAll Main menu
+                Main_Menu()
+
+            
+            #Check to ensure the input is either n /y
+            while True:
+
+                try:
+
+                    print()
+                    exit_sub_menu = input(f"{colour_yellow}Do you wish to exit leaderboard? y/n:{colour_end} ")
+                    print()
+
+                    if (exit_sub_menu == "n" or exit_sub_menu == "N" or exit_sub_menu == "y" or exit_sub_menu == "Y"):
+
+                        break
+                except:
+
+                    pass 
     
-
-        #Call Main mneu
-        Main_Menu()
-        
+    
         
     else:
 
         print()
         input(f"{colour_red}No historic data available !!!. Press Enter key for main menu{colour_end}")
 
-        #Call Main Menu
-        Main_Menu()
+    #Call Main Menu
+    Main_Menu()
 
 
 
