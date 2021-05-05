@@ -40,11 +40,27 @@ colour_blue_bg = "\33[44m"
 #Variable
 play_count = 10
 
+#Fucntion to clear screen for Mac, Windows and Linux
+def Clear_Screen():
+
+    import os
+
+    #Check for operating system
+    if (os.name == "nt"):
+
+        #Clear Windows Terminal
+        os.system("cls")
+    else:
+
+        #Clear Mac and Linux Terminal
+        os.system("clear")
+
 
 #Class to include function that will produce an object for saving
 class Predict:
 
-    os.system("clear")
+    #Clear Screen
+    Clear_Screen()
     
 
     def __init__(self,firstname,lastname):
@@ -82,7 +98,9 @@ class Predict:
 
             while True:
                 
-                os.system("clear")
+                #Clear Screen
+                Clear_Screen()
+
                 print(f"{colour_blue_bg}Time to input your number !!!{colour_end}")
                 print()
                 
@@ -178,7 +196,9 @@ class Predict:
                 #Calculate percentage correct
                 percentage_correct = int(player_correct_guess / maximum_play_count * 100)
 
-                os.system("clear")
+                #Clear Screen
+                Clear_Screen()
+
                 print(f"{self.firstname} your option was {player_guess_option}")
 
                 print()
@@ -215,7 +235,9 @@ class Predict:
                 #Calculate percentage correct
                 percentage_correct = int(player_correct_guess / maximum_play_count * 100)
 
-                os.system("clear")
+                #Clear Screen
+                Clear_Screen()
+
                 print(f"{self.firstname} your option was {player_guess_option}")
 
                 print()
@@ -252,7 +274,9 @@ class Predict:
                 #Calculate percentage correct
                 percentage_correct = int(player_correct_guess / maximum_play_count * 100)
 
-                os.system("clear")
+                #Clear Screen
+                Clear_Screen()
+
                 print(f"{self.firstname} your option was {player_guess_option}")
 
                 print()
@@ -261,8 +285,10 @@ class Predict:
                 input(f"{colour_violet_bg}Press Enter key to continue ...{colour_end}")
 
             else:
+                
+                #Clear Screen
+                Clear_Screen()
 
-                os.system("clear")
                 print(f"{self.firstname} your option was {player_guess_option}")
 
                 print()
@@ -350,6 +376,21 @@ def Play_Predict():
 
     run_program = "y"
 
+    #Clear Screen
+    Clear_Screen()
+
+    print(f'''
+    
+    {colour_yellow}******* Welcome to the Higher Lower guessing game *********{colour_end}
+
+    1. Input your firstname
+    2. Input your lastname
+    3. Enter your number between 1 and 3
+    4. You have 3 attempts to guess higher or lower between yours and the computers numbers
+
+    ''')
+
+
     #Take player name
     get_player_game = Predict(input("Input your firstname: ").capitalize(), input("Input your lastname: ").capitalize())
 
@@ -361,7 +402,7 @@ def Play_Predict():
         get_play_attributes = get_player_game.Game_Play()
 
         #Clear Screen
-        os.system("clear")
+        Clear_Screen()
 
 
 
@@ -451,7 +492,8 @@ def Play_Predict():
             try:
 
                 #Get input to exit or play 
-                play_again = input("Do you wish to play again? y/n: ")
+                print()
+                play_again = input(f"{colour_yellow}Do you wish to play again? y/n:{colour_end} ")
 
                 if (play_again == "y" or play_again == "Y" or play_again == "n" or play_again == "N"):
 
@@ -459,7 +501,9 @@ def Play_Predict():
                     run_program = play_again
                     print()
                     input(f"{colour_violet_bg}Press Enter to continue...{colour_end}")
-                    os.system("clear")
+
+                    #Clear Screen
+                    Clear_Screen()
 
                     break
 
@@ -502,7 +546,8 @@ def See_Leader_Board():
 
 
             #Clear Screen
-            os.system("clear")
+            Clear_Screen()
+
             #Option to perform filtered search of all data
             print(f'''
 
@@ -538,7 +583,8 @@ def See_Leader_Board():
 
                 
                 #Clear screen
-                os.system("clear")
+                Clear_Screen()
+
                 print(f'''
 
                 {colour_yellow}*********** SEARCH RESULTS ************{colour_end}
@@ -555,7 +601,7 @@ def See_Leader_Board():
 
 
                 #Clear Screen
-                os.system("clear")
+                Clear_Screen()
 
                 print(f"{colour_yellow}******** ALL LEADERBOARD RECORDS *********{colour_end}")
                 print()
@@ -568,14 +614,15 @@ def See_Leader_Board():
 
             elif (in_option == "3"):
 
-                os.system("clear")
+                #Clear Screen
+                Clear_Screen()
 
                 score_col = data_frame["Score"]
                 max_value = score_col.max()
 
                 print(f'''
                 
-                {colour_yellow}f*********** LEADERBOARD RESULTS ***********{colour_end}
+                {colour_yellow}*********** LEADERBOARD RESULTS ***********{colour_end}
 
                 ''')
 
@@ -586,8 +633,10 @@ def See_Leader_Board():
 
             
             elif (in_option == "4"):
+                
+                #Clear Screen
+                Clear_Screen()
 
-                os.system("clear")
                 print(f'''
 
                 {colour_red}Warning!!! You are choosing to delete the leaderboard data{colour_end}
@@ -602,8 +651,12 @@ def See_Leader_Board():
                 check_exist = os.path.exists(leaderbaord_file_name)
 
                 if (check_exist):
-                    os.system("clear")
 
+                    #Clear Screen
+                    Clear_Screen()
+
+
+                    #Test player input 
                     while True:
 
                         try:
@@ -619,16 +672,45 @@ def See_Leader_Board():
                             pass
                     
                     #Execute delete process or stop deletetion
+                    if (delete_data == "y" or delete_data == "Y"):
 
-                    #Test deletion input pass
-                    input("Deletion test passed!!!")
+                        #Clear Screen
+                        Clear_Screen()
 
+                        print(f'''
+                        
+                        ********** LEADERBOARD DELETION PROCESS **********
 
-                    print()
-                    input("Press Enter key to continue")
+                        {colour_red}You are about to delete leaderboard file{colour_end}
+                        
+                        ''')
+
+                        #Deleting the file
+                        os.remove(leaderbaord_file_name)
+                        print()
+                        input(f"{colour_blue_bg}Leaderboard data deleted !!!! Press Enter key to continue{colour_end}")
+
+                    elif (delete_data == "n" or delete_data == "N"):
+
+                        #Clear Screen
+                        Clear_Screen()
+
+                        print(f'''
+                        
+                        ********** LEADERBOARD DELETION PROCESS **********
+
+                        {colour_green}You have chosen not to delete leaderboard file{colour_end}
+                        
+                        ''')
+
+                        print()
+                        input(f"{colour_blue_bg}You have chosen not to delete leaderboard data. Press Enter key to continue{colour_end}")
+
                 
                 else:
-                    os.system("clear")
+
+                    #Clear Screen
+                    Clear_Screen()
 
                     print("File does not exist")
                     print()
@@ -676,7 +758,7 @@ def See_Leader_Board():
 def Main_Menu():
 
     #Clear screen
-    os.system("clear")
+    Clear_Screen()
 
 
     print(f'''
@@ -722,7 +804,7 @@ def Main_Menu():
     elif (input_option == "3"):
 
         #Clear Screen
-        os.system("clear")
+        Clear_Screen()
         print(f'''
 
         {colour_green}****** Bye for now ******{colour_end}
