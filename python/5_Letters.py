@@ -146,21 +146,125 @@ class Play_Game:
 
         ''' )
 
-        print(random_word[random_letter_reveal[0]],random_word[random_letter_reveal[1]])
+        #Create Letter list
+        letter_list = [random_word[random_letter_reveal[2]],random_word[random_letter_reveal[3]],random_word[random_letter_reveal[4]]]
 
-        guess_first_letter = input("Enter your first letter: ").capitalize()
+        
 
-        if (guess_first_letter in random_word):
+        play_counter = 3
+        play_description_counter = 0
+        play_description = ["first","second","third"]
 
-            print(f"Correet guess: {guess_first_letter}")
+        #Format the colours to the default reveal letters
+        first_reveal_letter = f"{colour_green}{random_word[random_letter_reveal[0]]}{colour_end}"
+        second_reveal_letter = f"{colour_green}{random_word[random_letter_reveal[1]]}{colour_end}"
+
+        #Other letters that make up the word
+        third_reveal_letter = f"{colour_green}{random_word[random_letter_reveal[2]]}{colour_end}"
+        fourth_reveal_letter = f"{colour_green}{random_word[random_letter_reveal[3]]}{colour_end}"
+        fifth_reveal_letter = f"{colour_green}{random_word[random_letter_reveal[4]]}{colour_end}"
+
+
+        #Insert the values into a list
+        letters_reveals = [first_reveal_letter,second_reveal_letter]
+
+
+        
+
+
+        for play in range(play_counter):
+            
+            #Clear screen
+            Clear_Screen()
+            
+            #Part reveal word
+            print(" ".join(letters_reveals))
+
+
+            
+            #Test letter choice input
+            while True:
+
+                try:
+
+                    guess_letter = input(f"Enter your {play_description[play_description_counter]} guess: ").capitalize()
+
+                    if (guess_letter != ""):
+
+                        break
+                except:
+
+                    pass
+
+
+            if (guess_letter in random_word):
+
+                input(f"Correct guess: {guess_letter} Press Enter key to continue..")
+
+                for letter in letter_list:
+
+                    if (letter == guess_letter):
+                        
+                        print(letter_list)
+                        #Remove from list
+                        letter_list.remove(letter)
+                        print()
+                        print(letter_list)
+            
+                    
+                        #Colour the letter
+                        guessed_letter = f"{colour_green}{letter}{colour_end}"
+
+                        letters_reveals.append(guessed_letter)
+
+                        Clear_Screen()
+                        print(" ".join(letters_reveals))
+
+                        print()
+                        #Offer help should the player need it
+                        
+
+                        while True:
+
+                            #Error check the help needed input
+                            try:
+
+                                help_needed = input("Do you need a little help with the word? y/n: ")
+
+                                if (help_needed == "y" or help_needed == "Y" or help_needed == "n" or help_needed == "N"):
+
+                                    break
+                            except:
+
+                                pass
+                        
+                        if ((help_needed == "y" and play == 0) or (help_needed == "Y" and play == 0)):
+
+                            print(f"{colour_blue}{random_word[0:3]}{colour_end}")
+                            print()
+
+                            input("Press Enter to continue")
+
+                        else:
+
+                            print()
+                            input("You have had your clue!!! Press Enter to continue...")
+
+
+
+                #Update play description counter 
+                play_description_counter += 1
             
 
-        else:
+            else:
 
-            print(f"Incorrect guess: {guess_first_letter}")
+                input(f"Incorrect guess: {guessed_letter} Press Enter key to continue...")
+
+        #Guess second letter
+        Clear_Screen()
             
 
-        print(random_word)
+        print(f"{colour_green}[{random_word}]{colour_end}")
         print()
 
         input("Press Enter key to continue")
