@@ -18,6 +18,7 @@ import csv
 import pandas as pd
 import sys
 import datetime
+import time
 import random
 from pyfiglet import Figlet
 
@@ -35,6 +36,27 @@ colour_blue_bg = "\33[44m"
 
 #Initialize Figlet
 game_header = Figlet(font= "slant")
+
+#Initialize slow character print
+def Print_Slow(in_message):
+
+    #Variable to slow display of character
+    slow_display = os.sys.stdout
+
+    #Loop through the characters
+    for in_char in in_message:
+
+        #Display character
+        slow_display.write(in_char)
+
+        #Flush characters
+        slow_display.flush()
+
+        #Delay next character
+        time.sleep(0.1)
+
+
+
 
 
 
@@ -106,18 +128,22 @@ print(f'''
 {colour_yellow}
 {game_header.renderText("REVEAL")}
 {colour_end}
+''')
 
+Print_Slow(f'''
 {colour_green}How to play Reveal{colour_end}
 
 1. Two letters of a 5 letter word will be revealed
 2. You have four attemps to form the 5 letter word
 
-{colour_green}Help!!!{colour_end}
+{colour_green}Do you need help??{colour_end}
 
 3. If you have difficulty inputing a letter to form the 5 letter word, you could take your single partial reveal
 4. You could take the partial reveal at any point if not taken
 
-''' )
+''')
+
+
 input(f"{colour_violet_bg}Press Enter key to begin playing{colour_end}")
 
 Clear_Screen()
@@ -126,11 +152,15 @@ print(f'''
 {colour_yellow}
 {game_header.renderText("REVEAL")}
 {colour_end}
+''')
 
-{colour_green}Input your names:{colour_end}
+Print_Slow(f'''
+{colour_green}Input your names:{colour_end}\n
 
-1. Firstname
-2. Lastame
+1. Firstname\n
+2. Lastame\n
+
+
 ''')
 
 #Input player infomation
