@@ -19,6 +19,7 @@ import pandas as pd
 import sys
 import datetime
 import random
+from pyfiglet import Figlet
 
 
 #Create Colour pallete - Foreground
@@ -31,6 +32,10 @@ colour_blue = "\33[34m"
 #Create Colour pallete - Background
 colour_violet_bg = "\33[45m"
 colour_blue_bg = "\33[44m"
+
+#Initialize Figlet
+game_header = Figlet(font= "slant")
+
 
 
 #Function to laod Dictionary
@@ -98,7 +103,9 @@ class Player_Info:
 Clear_Screen()
 
 print(f'''
-{colour_yellow}********* REVEAL ************{colour_end}
+{colour_yellow}
+{game_header.renderText("REVEAL")}
+{colour_end}
 
 {colour_green}How to play Reveal{colour_end}
 
@@ -114,8 +121,11 @@ print(f'''
 input(f"{colour_violet_bg}Press Enter key to begin playing{colour_end}")
 
 Clear_Screen()
+
 print(f'''
-{colour_yellow}********* REVEAL ************{colour_end}
+{colour_yellow}
+{game_header.renderText("REVEAL")}
+{colour_end}
 
 {colour_green}Input your names:{colour_end}
 
@@ -148,8 +158,6 @@ class Play_Game:
         #Create random numbers to reveal word
         random_letter_reveal = random.sample(range(5), 5)
 
-        #Clear Screen
-        Clear_Screen()
 
         #Create Letter list
         letter_list = [random_word[random_letter_reveal[2]],random_word[random_letter_reveal[3]],random_word[random_letter_reveal[4]]]
@@ -181,13 +189,15 @@ class Play_Game:
         for play in range(play_counter):
             
             #Clear screen
-            Clear_Screen()
+            #Clear_Screen()
 
             if (play == 0):
 
 
                 print(f'''
-                {colour_yellow}********* REVEAL ************{colour_end}
+                {colour_yellow}
+                {game_header.renderText("REVEAL")}
+                {colour_end}
 
                 {colour_blue_bg}Hello {player_firstname}{colour_end}
                 
@@ -201,7 +211,9 @@ class Play_Game:
             else:
 
                 print(f'''
-                {colour_yellow}********* REVEAL ************{colour_end}
+                {colour_yellow}
+                {game_header.renderText("REVEAL")}
+                {colour_end}
 
                 {colour_blue_bg}{player_firstname}{colour_end}
                 
@@ -217,9 +229,12 @@ class Play_Game:
 
             #Clear Screen
             Clear_Screen()
-            #Part reveal word
+            
+            
             print(f'''
-            {colour_yellow}********* REVEAL ************{colour_end}
+            {colour_yellow}
+            {game_header.renderText("REVEAL")}
+            {colour_end}
             
             {colour_blue}{player_firstname}{colour_end}, below are the  two letters of the 5 letter word:
 
@@ -235,8 +250,8 @@ class Play_Game:
                 #Error check the help needed input
                 try:
                     Clear_Screen()
+                    print(f'''{colour_yellow}{game_header.renderText("REVEAL")}{colour_end}''')
                     print(f'''
-                    {colour_yellow}********* REVEAL ************{colour_end}
 
                     Below are the 2 letters from the random word. Any clues!!! 
                     You can get one time help at any point in the game.
@@ -283,9 +298,9 @@ class Play_Game:
                 try:
 
                     Clear_Screen()
+                    print(f'''{colour_yellow}{game_header.renderText("REVEAL")}{colour_end}''')
                     print(f'''
-                    {colour_yellow}********* REVEAL ************{colour_end}
-
+                    
                     Have a go !!!
                     
                     ''')
