@@ -20,8 +20,7 @@ import sys
 import datetime
 import time
 import random
-from pyfiglet import Figlet
-
+from pyfiglet import Figlet,figlet_format
 
 
 #Create Colour pallete - Foreground
@@ -37,6 +36,7 @@ colour_blue_bg = "\33[44m"
 
 #Initialize Figlet
 game_header = Figlet(font= "slant")
+game_body = Figlet()
 
 #Initialize slow character print
 def Print_Slow(in_message):
@@ -54,7 +54,7 @@ def Print_Slow(in_message):
         slow_display.flush()
 
         #Delay next character
-        time.sleep(0.1)
+        time.sleep(0.05)
 
 
 
@@ -129,20 +129,58 @@ print(f'''
 {colour_yellow}
 {game_header.renderText("REVEAL")}
 {colour_end}
-''')
-
-Print_Slow(f'''
-{colour_green}How to play Reveal{colour_end}
-
-1. Two letters of a 5 letter word will be revealed
-2. You have four attemps to form the 5 letter word
-
-{colour_green}Do you need help??{colour_end}
-
-3. If you have difficulty inputing a letter to form the 5 letter word, you could take your single partial reveal
-4. You could take the partial reveal at any point if not taken
 
 ''')
+print('''
+1. Quick start - No animation
+
+2. Normal start - With animation
+
+''')
+
+while True:
+
+    try:
+
+        display_rate =  input("Enter you option: ")
+
+        if( display_rate == "1" or display_rate == "2"):
+
+            break
+    
+    except:
+
+        pass
+
+if (display_rate == "1"):
+
+    print(f'''
+    {colour_green}How to play Reveal{colour_end}
+
+    1. Two letters of a 5 letter word will be revealed
+    2. You have four attemps to form the 5 letter word
+
+    {colour_green}Do you need help??{colour_end}
+
+    3. If you have difficulty inputing a letter to form the 5 letter word, you could take your single partial reveal
+    4. You could take the partial reveal at any point if not taken
+
+    ''')
+elif (display_rate == "2"):
+
+
+    Print_Slow(f'''
+    {colour_green}How to play Reveal{colour_end}
+
+    1. Two letters of a 5 letter word will be revealed
+    2. You have four attemps to form the 5 letter word
+
+    {colour_green}Do you need help??{colour_end}
+
+    3. If you have difficulty inputing a letter to form the 5 letter word, you could take your single partial reveal
+    4. You could take the partial reveal at any point if not taken
+
+    ''')
 
 
 input(f"{colour_violet_bg}Press Enter key to begin playing{colour_end}")
@@ -201,17 +239,21 @@ class Play_Game:
         help_counter = 0
 
         #Format the colours to the default reveal letters
-        first_reveal_letter = f"{colour_green}{random_word[random_letter_reveal[0]]}{colour_end}"
-        second_reveal_letter = f"{colour_green}{random_word[random_letter_reveal[1]]}{colour_end}"
+        first_reveal_letter = random_word[random_letter_reveal[0]]
+        second_reveal_letter = random_word[random_letter_reveal[1]]
+
+        
 
         #Other letters that make up the word
-        third_reveal_letter = f"{colour_green}{random_word[random_letter_reveal[2]]}{colour_end}"
-        fourth_reveal_letter = f"{colour_green}{random_word[random_letter_reveal[3]]}{colour_end}"
-        fifth_reveal_letter = f"{colour_green}{random_word[random_letter_reveal[4]]}{colour_end}"
+        third_reveal_letter = f"{random_word[random_letter_reveal[2]]}"
+        fourth_reveal_letter = f"{random_word[random_letter_reveal[3]]}"
+        fifth_reveal_letter = f"{random_word[random_letter_reveal[4]]}"
 
 
         #Insert the values into a list
         letters_reveals = [first_reveal_letter,second_reveal_letter]
+
+        both_letters = f"{first_reveal_letter} {second_reveal_letter}"
 
 
         
@@ -219,9 +261,10 @@ class Play_Game:
 
         for play in range(play_counter):
             
-            
 
+            #If statmente for different messages
             if (play == 0):
+
 
                 #Clear screen
                 Clear_Screen()
@@ -266,12 +309,13 @@ class Play_Game:
             #Clear Screen
             Clear_Screen()
             
+            
             print(f'''
             {colour_yellow}
             {game_header.renderText("REVEAL")}
             {colour_end}
             
-            {colour_blue}{player_firstname}{colour_end}, below are the  two letters of the 5 letter word:
+            {colour_blue_bg}{player_firstname}{colour_end}, below are the two letters of the 5 letter word:
 
             {colour_green}Remember your partial reveal help if you have not taken it..{colour_end}
 
@@ -279,6 +323,8 @@ class Play_Game:
 
             ''')
             print(" ".join(letters_reveals))
+         
+           
             print()
 
             #Get help
@@ -295,7 +341,10 @@ class Play_Game:
                     
                     ''')
 
-                    print(" ".join(letters_reveals))
+                   
+                    
+                    Print_Slow(f'''{colour_green}{figlet_format(both_letters)}{colour_end}''')
+                    
                     print()
 
                     help_needed = input(f"{colour_blue}{player_firstname}{colour_end} do you need a little help with the word? y/n: ")
@@ -312,7 +361,7 @@ class Play_Game:
 
                 temp_reveal_word = random_word[0:3]
 
-                print(f"{colour_blue}{temp_reveal_word}{colour_end}")
+                Print_Slow(f'''{colour_blue}{figlet_format(temp_reveal_word)}{colour_end}''')
                 print()
 
                 #Help is now spent
@@ -342,7 +391,7 @@ class Play_Game:
                     
                     ''')
 
-                    print(" ".join(letters_reveals))
+                    Print_Slow(f'''{colour_green}{figlet_format(both_letters)}{colour_end}''')
                     print()
                     
 
@@ -375,14 +424,8 @@ class Play_Game:
                     
                         #Colour the letter
                         guessed_letter = f"{colour_green}{letter}{colour_end}"
-
-                        letters_reveals.append(guessed_letter)
-
-                        Clear_Screen()
-                        print(" ".join(letters_reveals))
-
-                        print()
-                        #Offer help should the player need it
+                        both_letters += f" {guess_letter}"
+                        
                         
 
                 #Update play description counter 
