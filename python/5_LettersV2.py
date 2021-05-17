@@ -7,7 +7,7 @@ Description: 5 Letter word game
 4. Pick a random word from dictioaary
 5. List 2 letters from the 5 
 6. Each time the player gets a reveal 20 points is taken from the maximum 100 points
-7. Save player score
+
 
 '''
 
@@ -132,9 +132,9 @@ print(f'''
 
 ''')
 print('''
-1. Quick start - No animation
+1. Game introduction - No animation
 
-2. Normal start - With animation
+2. Game introduction - With animation
 
 ''')
 
@@ -147,6 +147,11 @@ while True:
         if( display_rate == "1" or display_rate == "2"):
 
             break
+
+        else:
+
+            #Inavlid input
+            input(f"{colour_red}Invalid input!!! Press Enter Key to continue{colour_end}")
     
     except:
 
@@ -233,9 +238,9 @@ class Play_Game:
 
         
 
-        play_counter = 3
+        play_counter = 5 #IF Staxtement condition to terminate upon a condition
         play_description_counter = 0
-        play_description = ["first","second","third","fourth"]
+        play_description = ["first","second","third","fourth","fifth"]
         help_counter = 0
 
         #Format the colours to the default reveal letters
@@ -251,15 +256,47 @@ class Play_Game:
 
 
         #Insert the values into a list
-        letters_reveals = [first_reveal_letter,second_reveal_letter]
+        #letters_reveals = [first_reveal_letter,second_reveal_letter]
 
         both_letters = f"{first_reveal_letter} {second_reveal_letter}"
+        total_guess_letter_length = 9 #Had to had hack due to additiona characters
+
+
+        #Variables for messages
+
+        play_message_one = "Have a go !!!"
+        play_message_two = "Continue to try and if you haven't consider the help"
+        play_message_three = "Are you doing well? Hope you are"
+        play_message_four = "This is penultimate try... Have you four letters this far?"
+        play_message_five = "Now your final try.... Good luck"
+        play_messages = ""
+
 
 
         
 
-
         for play in range(play_counter):
+
+
+            #Game ended
+            if (len(both_letters) == total_guess_letter_length):
+
+                Clear_Screen()
+                print(f'''{colour_yellow}{game_header.renderText("REVEAL")}{colour_end}''')
+                print(f'''
+
+                Congratulations!!! you have successfully completed the game and have score {colour_yellow}ENTER SCORE HERE{colour_end}
+
+                The random 5 letter word is:
+
+                ''')
+
+                Print_Slow(f"{colour_green}{figlet_format(random_word)}{colour_end}")
+
+                input(f"{colour_violet_bg}The game has ended!!! Press Enter key to exit{colour_end}")
+
+                os.sys.exit()
+
             
 
             #If statmente for different messages
@@ -302,6 +339,7 @@ class Play_Game:
 
 
                 ''' )
+               
             
             input(f"{colour_violet_bg}Press any key to continue...{colour_end}")
 
@@ -322,16 +360,12 @@ class Play_Game:
 
 
             ''')
-            print(" ".join(letters_reveals))
-         
-           
-            print()
 
             #Get help
             while not (help_counter > 0):
 
                 #Error check the help needed input
-                try:
+                
                     Clear_Screen()
                     print(f'''{colour_yellow}{game_header.renderText("REVEAL")}{colour_end}''')
                     print(f'''
@@ -347,15 +381,25 @@ class Play_Game:
                     
                     print()
 
-                    help_needed = input(f"{colour_blue}{player_firstname}{colour_end} do you need a little help with the word? y/n: ")
-                    print()
+                    try:
 
-                    if (help_needed == "y" or help_needed == "Y" or help_needed == "n" or help_needed == "N"):
+                        help_needed = input(f"{colour_blue}{player_firstname}{colour_end} do you need a little help with the word? y/n: ")
+                        print()
 
-                        break
-                except:
 
-                    pass
+                        if (help_needed == "y" or help_needed == "Y" or help_needed == "n" or help_needed == "N"):
+
+                            break
+
+                        else:
+
+                            #Error in input
+                            input(f"{colour_red}Inavlid input!!! press Enter Key to continue...{colour_end}")
+                    except:
+
+                        pass
+
+                
             
             if (help_needed == "y" or help_needed == "Y"):
 
@@ -381,13 +425,35 @@ class Play_Game:
             #Test letter choice input
             while True:
 
+                if (play == 0):
+
+                    play_messages = play_message_one
+
+                elif (play == 1):
+
+                    play_messages = play_message_two
+
+                elif (play == 2):
+
+                    play_messages = play_message_three
+
+                elif (play == 3):
+
+                    play_messages = play_message_four
+
+                elif (play == 4):
+
+                    play_messages = play_message_five
+
+                
+
                 try:
 
                     Clear_Screen()
                     print(f'''{colour_yellow}{game_header.renderText("REVEAL")}{colour_end}''')
                     print(f'''
                     
-                    Have a go !!!
+                    {play_messages}
                     
                     ''')
 
@@ -400,6 +466,11 @@ class Play_Game:
                     if (guess_letter != ""):
 
                         break
+
+                    else:
+
+                        #Null input 
+                        input(f"{colour_red}Null input cannot be entered!!! Press any key to continue{colour_end}")
                 except:
 
                     pass
@@ -443,12 +514,28 @@ class Play_Game:
 
         #Guess second letter
         Clear_Screen()
+
+        #Print header
+        print(f'''{colour_yellow}{game_header.renderText("REVEAL")}{colour_end}''')
+
+        print(f'''
+        
+        The game has ended and your score is: {colour_yellow}ENTER SCORE HERE{colour_end}   
+
+         ''')
             
 
-        print(f"{colour_green}[{random_word}]{colour_end}")
+        print(f"{colour_green}{figlet_format(random_word)}{colour_end}")
         print()
 
-        input("Press Enter key to continue")
+        input(f"{colour_violet_bg}Press Enter key to continue{colour_end}")
+
+        print(f''' 
+
+        {self.get_firstname} Bye for now !!!
+        
+        
+        ''')
 
     
         
