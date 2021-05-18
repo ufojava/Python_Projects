@@ -271,6 +271,12 @@ class Play_Game:
         play_message_five = "Now your final try.... Good luck"
         play_messages = ""
 
+        #Player Score
+        play_max_score = 400
+        play_min_score = 0
+        play_take_help = 50
+
+
 
 
         
@@ -403,10 +409,57 @@ class Play_Game:
             
             if (help_needed == "y" or help_needed == "Y"):
 
-                temp_reveal_word = random_word[0:3]
+                Clear_Screen()
+                print(f'''{colour_yellow}{game_header.renderText("REVEAL")}{colour_end}''')
 
-                Print_Slow(f'''{colour_blue}{figlet_format(temp_reveal_word)}{colour_end}''')
-                print()
+                print(f''' 
+
+                {colour_blue_bg}{player_firstname}{colour_end} you have 2 choices in the help menu
+
+                1. Reveal 3 of the 5 letter word - {colour_yellow}Cost 50 points{colour_end}
+
+                2. Reveal 4 of the 5 letter word - {colour_red}Cost 300 points{colour_end}
+                
+                ''')
+                
+                #Test input choice
+                while True:
+
+                    try:
+
+                        #Input help option
+                        get_help_option = input("Input your help option: ")
+
+                        if (get_help_option == "1" or get_help_option == "2"):
+
+                            break
+                        else:
+
+                            input(f"{colour_red}Invalid input!!! Press Enter Key to try again{colour_end}")
+
+                    except:
+
+                        pass
+                
+                #Evaluate the help option
+                if (get_help_option == "1"):
+
+
+                    #Reveal 3 letters of the random word
+                    temp_reveal_word = random_word[0:3]
+
+                    Print_Slow(f'''{colour_blue}{figlet_format(temp_reveal_word)}{colour_end}''')
+                    print()
+                
+                elif (get_help_option == "2"):
+
+                    #Reveal 4 letters of the random word
+                    temp_reveal_word = random_word[0:4]
+
+                    Print_Slow(f'''{colour_blue}{figlet_format(temp_reveal_word)}{colour_end}''')
+                    print()
+
+
 
                 #Help is now spent
                 help_counter += 1
