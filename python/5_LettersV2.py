@@ -162,6 +162,8 @@ if (display_rate == "1"):
     print(f'''
     {colour_green}How to play Reveal{colour_end}
 
+    {colour_yellow}You are awarded 400 points to begin game{colour_end}
+
     1. Two letters of a 5 letter word will be revealed
     2. You have four attemps to form the 5 letter word
 
@@ -176,6 +178,8 @@ elif (display_rate == "2"):
 
     Print_Slow(f'''
     {colour_green}How to play Reveal{colour_end}
+
+    {colour_yellow}You are awarded 400 points to begin game{colour_end}
 
     1. Two letters of a 5 letter word will be revealed
     2. You have four attemps to form the 5 letter word
@@ -242,6 +246,7 @@ class Play_Game:
         play_description_counter = 0
         play_description = ["first","second","third","fourth","fifth"]
         help_counter = 0
+        letter_counter = 2
 
         #Format the colours to the default reveal letters
         first_reveal_letter = random_word[random_letter_reveal[0]]
@@ -271,10 +276,24 @@ class Play_Game:
         play_message_five = "Now your final try.... Good luck"
         play_messages = ""
 
-        #Player Score
+        #Player Scores
+        game_start_score = 400
         play_max_score = 400
         play_min_score = 0
-        play_take_help = 50
+
+
+        #Take Help and incorrect letter
+        play_take_help_reveal_three_letters = 50
+        play_take_help_reveal_four_letters = 300
+        play_incorrect_guess = 20
+
+
+        #Score messages
+        player_excellent_message = "Excellent!!! Well done, you achieved the maximum score"
+        player_very_good_message = "Very good!!! You are a few points below the max score"
+        player_good_message = "Good!!! Average score. I am sure you will do better next time"
+        player_low_message = "You have completed the game!!! Better play next time"
+        player_game_message = " "
 
 
 
@@ -289,9 +308,25 @@ class Play_Game:
 
                 Clear_Screen()
                 print(f'''{colour_yellow}{game_header.renderText("REVEAL")}{colour_end}''')
+
+            
+                #Evaluate the score
+                if (play_max_score == game_start_score):
+                    player_game_message = player_excellent_message
+
+                elif (play_max_score >= 200 and play_max_score <= 399):
+                    player_game_message = player_very_good_message
+
+                elif (play_max_score >= 150 and play_max_score <= 199):
+                    player_game_message = player_good_message
+
+                elif (play_max_score <= 149):
+                    player_game_message = player_low_message
+
+
                 print(f'''
 
-                Congratulations!!! you have successfully completed the game and have score {colour_yellow}ENTER SCORE HERE{colour_end}
+                {player_game_message} {colour_yellow}{play_max_score} out of {game_start_score}{colour_end}
 
                 The random 5 letter word is:
 
@@ -300,6 +335,13 @@ class Play_Game:
                 Print_Slow(f"{colour_green}{figlet_format(random_word)}{colour_end}")
 
                 input(f"{colour_violet_bg}The game has ended!!! Press Enter key to exit{colour_end}")
+
+                print(f''' 
+
+                {self.get_firstname} Bye for now !!!
+                
+                
+                ''')
 
                 os.sys.exit()
 
@@ -359,13 +401,15 @@ class Play_Game:
             {game_header.renderText("REVEAL")}
             {colour_end}
             
-            {colour_blue_bg}{player_firstname}{colour_end}, below are the two letters of the 5 letter word:
+            {colour_blue_bg}{player_firstname}{colour_end}, below are the {letter_counter} letters of the 5 letter word:
 
             {colour_green}Remember your partial reveal help if you have not taken it..{colour_end}
 
 
 
             ''')
+
+            
 
             #Get help
             while not (help_counter > 0):
@@ -376,7 +420,7 @@ class Play_Game:
                     print(f'''{colour_yellow}{game_header.renderText("REVEAL")}{colour_end}''')
                     print(f'''
 
-                    Below are the 2 letters from the random word. Any clues!!! 
+                    Below are the {letter_counter} letters from the random word. Any clues!!! 
                     You can get one time help at any point in the game.
                     
                     ''')
@@ -386,6 +430,8 @@ class Play_Game:
                     Print_Slow(f'''{colour_green}{figlet_format(both_letters)}{colour_end}''')
                     
                     print()
+
+                    
 
                     try:
 
@@ -416,9 +462,9 @@ class Play_Game:
 
                 {colour_blue_bg}{player_firstname}{colour_end} you have 2 choices in the help menu
 
-                1. Reveal 3 of the 5 letter word - {colour_yellow}Cost 50 points{colour_end}
+                1. Reveal 3 of the 5 letter word - {colour_yellow}Cost {play_take_help_reveal_three_letters} points{colour_end}
 
-                2. Reveal 4 of the 5 letter word - {colour_red}Cost 300 points{colour_end}
+                2. Reveal 4 of the 5 letter word - {colour_red}Cost {play_take_help_reveal_four_letters} points{colour_end}
                 
                 ''')
                 
@@ -448,6 +494,9 @@ class Play_Game:
                     #Reveal 3 letters of the random word
                     temp_reveal_word = random_word[0:3]
 
+                    #Dedeuct cost for three letters
+                    play_max_score -= play_take_help_reveal_three_letters
+
                     Print_Slow(f'''{colour_blue}{figlet_format(temp_reveal_word)}{colour_end}''')
                     print()
                 
@@ -455,6 +504,10 @@ class Play_Game:
 
                     #Reveal 4 letters of the random word
                     temp_reveal_word = random_word[0:4]
+
+                    #Deduct cost for four letters
+                    play_max_score -= play_take_help_reveal_four_letters
+
 
                     Print_Slow(f'''{colour_blue}{figlet_format(temp_reveal_word)}{colour_end}''')
                     print()
@@ -535,6 +588,9 @@ class Play_Game:
                 input(f"Correct guess: {colour_blue}{guess_letter}{colour_end} Press Enter key to continue..")
                 print()
 
+                #Letter Counter
+                letter_counter += 1
+
                 for letter in letter_list:
 
                     if (letter == guess_letter):
@@ -562,18 +618,35 @@ class Play_Game:
                 input(f"Incorrect guess: {colour_red}{guess_letter}{colour_end} Press Enter key to continue...")
                 print()
 
+                #Deduct incorrect letter
+                play_max_score -= play_incorrect_guess
+
                 #Update play description counter 
                 play_description_counter += 1
 
         #Guess second letter
         Clear_Screen()
 
+         #Evaluate the score
+        if (play_max_score == game_start_score):
+            player_game_message = player_excellent_message
+
+        elif (play_max_score >= 200 and play_max_score <= 399):
+            player_game_message = player_very_good_message
+
+        elif (play_max_score >= 150 and play_max_score <= 199):
+            player_game_message = player_good_message
+
+        elif (play_max_score <= 149):
+            player_game_message = player_low_message
+
         #Print header
         print(f'''{colour_yellow}{game_header.renderText("REVEAL")}{colour_end}''')
 
+
         print(f'''
         
-        The game has ended and your score is: {colour_yellow}ENTER SCORE HERE{colour_end}   
+        {player_game_message} {colour_yellow}{play_max_score} out of {game_start_score}{colour_end}   
 
          ''')
             
