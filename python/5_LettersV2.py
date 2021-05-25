@@ -101,11 +101,11 @@ def Clear_Screen():
 
 class Player_Info:
 
-    def __init__(self,in_firstname,in_lastname,in_word):
+    def __init__(self,in_firstname,in_lastname):
 
         self.in_firstname = in_firstname
         self.in_lastname = in_lastname
-        self.in_word = in_word #Run function to produce word
+    
 
     
     #Test student information
@@ -114,10 +114,9 @@ class Player_Info:
 
         get_player_firstname = self.in_firstname
         get_player_lastname = self.in_lastname
-        get_dic_word = self.in_word
 
 
-        return get_player_firstname, get_player_lastname,get_dic_word
+        return get_player_firstname, get_player_lastname
 
 
     
@@ -212,7 +211,7 @@ print(f'''
 ''')
 
 #Input player infomation
-get_player_information = Player_Info(input("Enter your firstname: ").capitalize(),input("Enter your lastname: ").capitalize(),Load_Dictionary())
+get_player_information = Player_Info(input("Enter your firstname: ").capitalize(),input("Enter your lastname: ").capitalize())
 
 
 class Play_Game:
@@ -231,6 +230,23 @@ class Play_Game:
         player_firstname = self.get_firstname
         player_lastname = self.get_lastname
         random_word = self.get_word
+
+        #Funciotn to process repeat words
+        def Repeat_Word_Check(in_random_word,in_played_letters,in_letter):
+
+            #Count input letter in both randome and played words
+            count_in_char_in_random_word = in_random_word.count(in_letter) #Random Word Count
+            count_in_char_in_played_word = in_played_letters.count(in_letter) #Played letters count
+
+            #Evaluate both random word and played letters
+            if (count_in_char_in_played_word < count_in_char_in_random_word):
+
+                return True
+            else:
+
+                return False
+
+
 
 
         #Create random numbers to reveal word
@@ -283,6 +299,8 @@ class Play_Game:
 
 
         #Take Help and incorrect letter
+        player_incorrect_counter = 0
+
         play_take_help_reveal_three_letters = 50
         play_take_help_reveal_four_letters = 300
         play_incorrect_guess = 20
@@ -293,6 +311,7 @@ class Play_Game:
         player_very_good_message = "Very good!!! You are a few points below the max score"
         player_good_message = "Good!!! Average score. I am sure you will do better next time"
         player_low_message = "You have completed the game!!! Better play next time"
+        player_four_incorrect_message = "Unfortunately, you had 4 incorrect guesses. Better luck next time"
         player_game_message = " "
 
 
@@ -334,16 +353,10 @@ class Play_Game:
 
                 Print_Slow(f"{colour_green}{figlet_format(random_word)}{colour_end}")
 
-                input(f"{colour_violet_bg}The game has ended!!! Press Enter key to exit{colour_end}")
+                input(f"{colour_violet_bg}{self.get_firstname} the game has ended!!! Press Enter key to continue{colour_end}")
 
-                print(f''' 
+                break
 
-                {self.get_firstname} Bye for now !!!
-                
-                
-                ''')
-
-                os.sys.exit()
 
             
 
@@ -582,7 +595,7 @@ class Play_Game:
                     pass
 
 
-            if (guess_letter in random_word):
+            if ((guess_letter in random_word) and (Repeat_Word_Check(random_word, both_letters, guess_letter) == True)):
 
                 print()
                 input(f"Correct guess: {colour_blue}{guess_letter}{colour_end} Press Enter key to continue..")
@@ -615,7 +628,7 @@ class Play_Game:
             else:
 
                 print()
-                input(f"Incorrect guess: {colour_red}{guess_letter}{colour_end} Press Enter key to continue...")
+                input(f"Incorrect guess or letter already part of word!!! {colour_red}{guess_letter}{colour_end} Press Enter key to continue...")
                 print()
 
                 #Deduct incorrect letter
@@ -624,11 +637,17 @@ class Play_Game:
                 #Update play description counter 
                 play_description_counter += 1
 
+                #Count incorrect guesses
+                player_incorrect_counter += 1
+
         #Guess second letter
         Clear_Screen()
 
          #Evaluate the score
-        if (play_max_score == game_start_score):
+        if (player_incorrect_counter >= 4):
+            player_game_message = player_four_incorrect_message
+            play_max_score = 0
+        elif (play_max_score == game_start_score):
             player_game_message = player_excellent_message
 
         elif (play_max_score >= 200 and play_max_score <= 399):
@@ -654,20 +673,51 @@ class Play_Game:
         print(f"{colour_green}{figlet_format(random_word)}{colour_end}")
         print()
 
-        input(f"{colour_violet_bg}Press Enter key to continue{colour_end}")
+        #input(f"{colour_violet_bg}{self.get_firstname} Press Enter key to continue{colour_end}")
 
-        print(f''' 
-
-        {self.get_firstname} Bye for now !!!
-        
-        
-        ''')
 
     
         
+game_play = "y"
 
-#Play game
-Play_Game(get_player_information.Process_Player_Information()[0], get_player_information.Process_Player_Information()[1], get_player_information.Process_Player_Information()[2]).Begin_Play()
+while (game_play == "y"):
+
+    #Play game
+    Play_Game(get_player_information.Process_Player_Information()[0], get_player_information.Process_Player_Information()[1], Load_Dictionary()).Begin_Play()
+
+    print()
+
+    #Test the input
+    while True:
+
+        try:
+            game_play = input(f"Do you wish to play again: y/n: ")
+
+            if (game_play == "y" or game_play == "Y" or game_play == "n" or game_play == "N"):
+
+                break
+
+            else:
+
+                print()
+                input(f"{colour_red}Inavlid input!!! Press enter key to continue...{colour_end}")
+
+        except:
+
+            pass
+
+
+    print(f'''
+    
+    {colour_blue_bg}{get_player_information.in_firstname}{colour_end} {colour_green}Bye for now!!!{colour_end}
+    
+    
+    
+    ''')
+
+    
+
+        
 
 
 
