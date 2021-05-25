@@ -147,15 +147,22 @@ for attendee in range(len(raffle_numbers)):
 
     input(f"{colour_violet_bg}Press Enter key to enter next player{colour_end}")
 
+    print(''' 
+    ''')
+
+GCU_Banner()
 
 
-
-raffle_cols = ["Name","Draw Number"]
 #Using Pandas to create dataframe
-raffer_dataFrame = pd.DataFrame(raffle_draw_list,columns=raffle_cols)
+raffle_cols = ["Name","Draw Number"]
+
+raffle_dataFrame = pd.DataFrame(raffle_draw_list,columns=raffle_cols)
+
+
+
 
 #Print Raffle Draw List
-print(raffer_dataFrame)
+print(raffle_dataFrame.to_string(index=False))
 
 
 
