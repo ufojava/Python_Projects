@@ -31,12 +31,13 @@ def Slow_Display(in_word):
 
     for letter in in_word:
 
-        display_slow.write(letter)
+        display_slow.write(f"{colour_green}{letter}{colour_end}")
         display_slow.flush()
         time.sleep(0.05)
 
-    print(''' 
-    ''')
+    return ""
+
+    
 
 
 
@@ -85,6 +86,12 @@ class Raffle_Attendees:
 
         return temp_attendee_list
 
+    
+    #Save Results
+    def Save_Raffle_Results(self,in_name,in_number):
+
+        pass
+
 
 raffle_draw_list = []
 
@@ -114,6 +121,9 @@ while True:
 #Create raffle numbers
 raffle_numbers = Generate_Raffle_Number(number_of_attendees)
 
+#Raffer Number picker (Winner)
+raffle_pick_winner = random.choice(raffle_numbers)
+
 for attendee in range(len(raffle_numbers)):
 
     #GCU Banner
@@ -121,7 +131,7 @@ for attendee in range(len(raffle_numbers)):
 
     
     #Input attendee name
-    attendee_name = input("Input name: ")
+    attendee_name = input("Input name: ").capitalize()
 
     #Generate number from list
     get_random_number = random.choice(raffle_numbers)
@@ -130,9 +140,14 @@ for attendee in range(len(raffle_numbers)):
     raffle_numbers.remove(get_random_number)
 
     
+    #Test display
+    attendee_name_raffle_number = f"{attendee_name}  {get_random_number}"
 
+    
+    print(figlet_format(attendee_name_raffle_number,font="banner"))
+    
 
-    Slow_Display(f"{attendee_name}, {get_random_number}")
+   
 
 
 
@@ -150,6 +165,36 @@ for attendee in range(len(raffle_numbers)):
     print(''' 
     ''')
 
+input(f"{colour_yellow}Press Enter Key to reveal Winning Number{colour_end}")
+
+#Inset GCU Header
+GCU_Banner()
+
+print(f"...and the winning number is:")
+print()
+
+display_winning_number = f"{str(raffle_pick_winner)}"
+
+Slow_Display(figlet_format(display_winning_number,font="small"))
+print()
+
+
+input(f"{colour_yellow}Press Enter Key to display the winner{colour_end}")
+
+GCU_Banner()
+
+for winner in raffle_draw_list:
+
+    if (winner[1] == raffle_pick_winner):
+
+        print(winner)
+
+print()
+
+input("Press enter to contine")
+
+
+
 GCU_Banner()
 
 
@@ -157,8 +202,6 @@ GCU_Banner()
 raffle_cols = ["Name","Draw Number"]
 
 raffle_dataFrame = pd.DataFrame(raffle_draw_list,columns=raffle_cols)
-
-
 
 
 #Print Raffle Draw List
