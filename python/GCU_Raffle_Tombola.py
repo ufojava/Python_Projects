@@ -124,14 +124,43 @@ raffle_numbers = Generate_Raffle_Number(number_of_attendees)
 #Raffer Number picker (Winner)
 raffle_pick_winner = random.choice(raffle_numbers)
 
-for attendee in range(len(raffle_numbers)):
+#Monitor name entered
+name_checker = []
 
+for attendee in range(len(raffle_numbers)):
+    
     #GCU Banner
     GCU_Banner()
 
+    while True:
+
+        try:
+
+            GCU_Banner()
+            #Input attendee name
+            attendee_name = input("Input name: ").capitalize()
+
+            if not (attendee_name in name_checker):
+
+                break
+
+            else:
+
+
+                print(f'''
+
+                {colour_yellow}{name_checker}{colour_end}
+
+                ''')
+                
+                input(f"{colour_red}Attendee name exist!!! Press Enter key to enter another name{colour_end}")
+        except:
+
+            pass
     
-    #Input attendee name
-    attendee_name = input("Input name: ").capitalize()
+    #Add name to the list
+    name_checker.append(attendee_name)
+
 
     #Generate number from list
     get_random_number = random.choice(raffle_numbers)
@@ -142,6 +171,9 @@ for attendee in range(len(raffle_numbers)):
     
     #Test display
     attendee_name_raffle_number = f"{attendee_name}  {get_random_number}"
+
+    #Clear screen and display the banner
+    GCU_Banner()
 
     
     print(figlet_format(attendee_name_raffle_number,font="banner"))
@@ -170,12 +202,12 @@ input(f"{colour_yellow}Press Enter Key to reveal Winning Number{colour_end}")
 #Inset GCU Header
 GCU_Banner()
 
-print(f"...and the winning number is:")
+print(f'''{figlet_format("...and the winning number is:",font="digital")}''')
 print()
 
 display_winning_number = f"{str(raffle_pick_winner)}"
 
-Slow_Display(figlet_format(display_winning_number,font="small"))
+Slow_Display(figlet_format(display_winning_number,font="banner"))
 print()
 
 
@@ -187,7 +219,26 @@ for winner in raffle_draw_list:
 
     if (winner[1] == raffle_pick_winner):
 
-        print(winner)
+        reveal_winner = f"{winner[0], winner[1]}"
+
+        temp_list = []
+        #Add name
+        temp_list.append(winner[0])
+        temp_list.append(str(winner[1]))
+
+        
+
+
+
+
+        print(f'''{figlet_format("And the winner is.....",font="digital")}''')
+
+
+        Slow_Display(figlet_format(" ".join(temp_list),font="banner"))
+
+
+
+
 
 print()
 
