@@ -37,6 +37,17 @@ def Slow_Display(in_word):
 
     return ""
 
+#Function to speak
+def Speak_Text(in_text):
+
+    if (os.name == "posix"):
+
+        os.system(f"say {in_text}")
+
+    elif (os.name == "Linux"):
+
+        os.system(f"espeak {in_text}")
+
     
 
 
@@ -175,14 +186,11 @@ for attendee in range(len(raffle_numbers)):
     #Clear screen and display the banner
     GCU_Banner()
 
-    
+   
     print(figlet_format(attendee_name_raffle_number,font="banner"))
     
 
    
-
-
-
     #Create an obeject with the name and random number
     create_attendee_obj = Raffle_Attendees(attendee_name, get_random_number)
 
@@ -234,6 +242,13 @@ for winner in raffle_draw_list:
         print(f'''{figlet_format("And the winner is.....",font="digital")}''')
 
 
+        ''' 
+        ******** WINNER DISPLAY NOTES ********
+        The line below:
+        1. Format the list usint the Join function the list (Temp_list)
+        2. Then use the Slow display function to display
+        
+        '''
         Slow_Display(figlet_format(" ".join(temp_list),font="banner"))
 
 
@@ -244,19 +259,119 @@ print()
 
 input("Press enter to contine")
 
+''' 
+Need to add the wining number and title to the lists
+1. Raffle list is: raffle_draw_list
+2. Raffle number is: raffle_pick_winner
+
+'''
+
+def Add_Winning_Num_To_List(in_winning_number):
+
+    raffle_title = "Winning Number"
+
+    winner_list = [raffle_title,in_winning_number]
+
+    return winner_list
+
+#Create winner object
+create_winner_number_obj = Add_Winning_Num_To_List(raffle_pick_winner)
+
+#Append to the Raffle list
+raffle_draw_list.append(create_winner_number_obj)
 
 
-GCU_Banner()
+
+''' 
+This section will faciliate the saving of the output file to csv file
+Also have the user enter the file name to make for flexibility
+A funciton will be used to implement this
+
+'''
+
+#Funciton to Display and or save record
+def Display_Save_Results(in_results):
+
+    #Import Library
+    import pandas as pd
+
+    #Create dataframe columns
+    dataframe_columns = ["Name","Draw"]
 
 
-#Using Pandas to create dataframe
-raffle_cols = ["Name","Draw Number"]
+    #Create dataframe
+    result_data = pd.DataFrame(in_results,columns=dataframe_columns)
 
-raffle_dataFrame = pd.DataFrame(raffle_draw_list,columns=raffle_cols)
+    #Clear banner
+    GCU_Banner()
+
+    def Report_Menu():
+
+        #Report Menu
+        print(''' 
+        
+        1. Display Results
+        2. Save Results
+        3. Exit Program
+
+        ''')
+
+        #Iput Option
+
+        while True:
+
+            try:
+
+                in_report_option = input("Input an option: ")
+
+                if (in_report_option == "1" or in_report_option == "2" or in_report_option == "3"):
+
+                    break
+                else:
+
+                    input(f"{colour_red}Invalid option!!! Press Enter Key to try again{colour_end}")
+            except:
+
+                pass
+
+        #Retun option
+
+        if (in_report_option == "1"):
+
+            return "1"
+
+        elif (in_report_option == "2"):
+
+            return "2"
+
+        elif (in_report_option == "3"):
+
+            return "3"
 
 
-#Print Raffle Draw List
-print(raffle_dataFrame.to_string(index=False))
+
+    #Execute option
+    if (Report_Menu() == "1"):
+
+        #Clear Screen
+        GCU_Banner()
+
+        #Print raw data for testing purpose
+        print(result_data.to_string(index=False))
+
+    elif (Report_Menu() == "2"):
+
+        pass
+
+    elif (Report_Menu() == "3"):
+
+        pass
+
+
+#Call funciton
+Display_Save_Results(raffle_draw_list)
+
+
 
 
 
