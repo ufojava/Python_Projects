@@ -408,11 +408,6 @@ def Display_Save_Results(in_results):
 
         
 
-
-
-
-        pass
-
     elif (get_report_menu == "3"):
 
         pass
