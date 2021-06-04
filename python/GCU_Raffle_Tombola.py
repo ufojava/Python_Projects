@@ -306,6 +306,7 @@ def Display_Save_Results(in_results):
     GCU_Banner()
 
     def Report_Menu():
+        
 
         #Report Menu
         print(''' 
@@ -348,28 +349,126 @@ def Display_Save_Results(in_results):
 
             return "3"
 
+    
+    #Get report menu
+    get_report_menu = Report_Menu()
+
 
 
     #Execute option
-    if (Report_Menu() == "1"):
+    if (get_report_menu == "1"):
 
         #Clear Screen
         GCU_Banner()
 
         #Print raw data for testing purpose
         print(result_data.to_string(index=False))
+        print()
 
-    elif (Report_Menu() == "2"):
+        input(f"{colour_violet_bg}Press Enter Key to go back to Menu{colour_end}")
+
+
+    elif (get_report_menu == "2"):
+
+
+        #Setup enviroment for file
+        file_extension = ".csv"
+
+        while True:
+
+            try:
+
+
+                #Take file name
+                in_file_name = input(f"Input filename, {colour_yellow}excluding the file extension{colour_end}: ")
+
+                #File exist variable
+                if not (os.path.isfile(f"{in_file_name}{file_extension}")):
+
+                    break
+
+                else:
+
+                    input(f"{colour_red}File Exist or no file name input!!! Press Enter Key to try again{colour_end}")
+
+            except:
+
+                pass
+
+        
+        #Variable for file name
+        save_file_name = f"{in_file_name}{file_extension}"
+
+        input(f"This is the save filename {save_file_name}!!!")
+
+        #Save results to csv
+        result_data.to_csv(save_file_name,index=False)
+        print()
+        input(f"{colour_violet_bg}Raffle draw results saved to file name: {save_file_name} successfully. Press Enter key to continue{colour_end}")
+
+        
+
+
+
 
         pass
 
-    elif (Report_Menu() == "3"):
+    elif (get_report_menu == "3"):
 
         pass
 
+    
 
-#Call funciton
-Display_Save_Results(raffle_draw_list)
+
+#******* MAIN PROGRAM STARTS HERE *********
+
+
+#Variable to hole value to run program
+run_program = "y"
+
+while (run_program == "y"):
+
+    #Call funciton
+    Display_Save_Results(raffle_draw_list)
+
+
+    while True:
+
+        try:
+
+            print()
+            run_program = input("y = Report Menu n = Exit: ")
+
+            if (run_program == "y" or run_program == "n"):
+
+                break
+
+            else:
+
+                input(f"{colour_red}Invalid input!! Press Enter Key to try again.{colour_end}")
+        except:
+
+            pass
+
+
+
+GCU_Banner()
+
+print(f''' 
+
+{colour_green}
+Bye for now
+
+See you next time !!!
+
+{colour_end}
+
+
+''')
+
+
+
+
 
 
 
